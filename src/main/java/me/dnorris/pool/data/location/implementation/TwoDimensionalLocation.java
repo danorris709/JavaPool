@@ -46,6 +46,12 @@ public class TwoDimensionalLocation implements Location {
         throw new UnsupportedOperationException("Cannot have a Z value for a 2dimensional location");
     }
 
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
+    @Override
+    public Location clone() {
+        return new TwoDimensionalLocation(this.x, this.y);
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {

@@ -14,4 +14,6 @@ public interface Location {
 
     void setZ(double z);
 
+    Location clone();
+
 }
