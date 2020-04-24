@@ -20,12 +20,13 @@ import java.lang.reflect.Parameter;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class JFrameArena extends JFrame implements GameArena {
 
     private final List<Entity> entities = Lists.newArrayList();
-    private final Map<Class, List<Pair<Long, TriFunction<GameArena, JFrame, KeyEvent>>>> classFunctionCache = Maps.newHashMap();
-    private final Map<Long, List<GameFunction>> keyHandlers = new Long2ObjectOpenHashMap();
+    private final Map<Class<?>, List<Pair<Long, TriFunction<GameArena, JFrame, KeyEvent>>>> classFunctionCache = Maps.newHashMap();
+    private final Map<Long, List<GameFunction>> keyHandlers = new Long2ObjectOpenHashMap<>();
 
     public JFrameArena(String title, Dimension dimensions, boolean resizable, Color backgroundColour) {
         this.setTitle(title);
@@ -67,7 +68,7 @@ public class JFrameArena extends JFrame implements GameArena {
     }
 
     @Override
-    public void addHandler(Class keyHandler) {
+    public void addHandler(Class<?> keyHandler) {
         Object keyHandlerInstance = this.getClassInstance(keyHandler);
 
         for (Method declaredMethod : keyHandler.getDeclaredMethods()) {
@@ -92,10 +93,10 @@ public class JFrameArena extends JFrame implements GameArena {
         }
     }
 
-    private Object getClassInstance(Class clazz) {
+    private Object getClassInstance(Class<?> clazz) {
         try {
-            return clazz.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            return clazz.getConstructor().newInstance();
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
 
@@ -113,9 +114,9 @@ public class JFrameArena extends JFrame implements GameArena {
     }
 
     @Override
-    public void removeHandler(Class keyHandler) {
+    public void removeHandler(Class<?> keyHandler) {
         for (Pair<Long, TriFunction<GameArena, JFrame, KeyEvent>> pairs : this.classFunctionCache.getOrDefault(keyHandler, Collections.emptyList())) {
-            this.keyHandlers.getOrDefault(pairs.getFirst(), Collections.emptyList()).remove(pairs.getSecond());
+            this.keyHandlers.getOrDefault(pairs.getFirst(), Collections.emptyList()).removeIf(gameFunction -> Objects.equals(gameFunction.getFunction(), pairs.getSecond()));
         }
 
         this.classFunctionCache.remove(keyHandler);

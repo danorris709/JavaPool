@@ -12,9 +12,9 @@ public interface GameArena {
 
     List<GameFunction> getHandlers(long key);
 
-    void addHandler(Class keyHandler);
+    void addHandler(Class<?> keyHandler);
 
-    void removeHandler(Class keyHandler);
+    void removeHandler(Class<?> keyHandler);
 
     void tick();
 
