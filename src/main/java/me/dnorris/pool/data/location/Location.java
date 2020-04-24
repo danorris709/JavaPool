@@ -1,5 +1,7 @@
 package me.dnorris.pool.data.location;
 
+import java.awt.*;
+
 public interface Location {
 
     double getX();
@@ -13,6 +15,8 @@ public interface Location {
     double getZ();
 
     void setZ(double z);
+
+    Point asPoint();
 
     Location clone();
 

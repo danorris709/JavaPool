@@ -52,14 +52,14 @@ public class JFrameArena extends JFrame implements GameArena {
     public void addEntity(Entity entity) {
         this.entities.add(entity);
 
-        // TODO: 24/04/2020 add to jframe
+        this.add(entity.getComponent());
     }
 
     @Override
     public void removeEntity(Entity entity) {
         this.entities.add(entity);
 
-        // TODO: 24/04/2020 remove from jframe
+        this.remove(entity.getComponent());
     }
 
     @Override
