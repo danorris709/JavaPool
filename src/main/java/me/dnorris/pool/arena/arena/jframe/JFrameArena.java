@@ -1,10 +1,11 @@
-package me.dnorris.pool.arena.arena;
+package me.dnorris.pool.arena.arena.jframe;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
+import me.dnorris.pool.arena.GameFunction;
 import me.dnorris.pool.arena.key.KeyHandler;
 import me.dnorris.pool.data.Pair;
 import me.dnorris.pool.data.TriFunction;
@@ -23,7 +24,7 @@ public class JFrameArena extends JFrame implements GameArena {
 
     private final List<Entity> entities = Lists.newArrayList();
     private final Map<Class, List<Pair<Long, TriFunction<GameArena, JFrame, KeyEvent>>>> classFunctionCache = Maps.newHashMap();
-    private final Map<Long, List<TriFunction<GameArena, JFrame, KeyEvent>>> keyHandlers = new Long2ObjectOpenHashMap();
+    private final Map<Long, List<GameFunction>> keyHandlers = new Long2ObjectOpenHashMap();
 
     public JFrameArena(String title, Dimension dimensions, boolean resizable, Color backgroundColour) {
         this.setTitle(title);
@@ -58,7 +59,7 @@ public class JFrameArena extends JFrame implements GameArena {
     }
 
     @Override
-    public List<TriFunction<GameArena, JFrame, KeyEvent>> getHandlers(long key) {
+    public List<GameFunction> getHandlers(long key) {
         return this.keyHandlers.getOrDefault(key, Collections.emptyList());
     }
 
@@ -83,7 +84,7 @@ public class JFrameArena extends JFrame implements GameArena {
 
             TriFunction<GameArena, JFrame, KeyEvent> function = this.createFunctionFromMethod(declaredMethod, keyHandlerInstance);
 
-            this.keyHandlers.computeIfAbsent(keyHandlerAnnotation.keyCode(), ___ -> Lists.newArrayList()).add(function);
+            this.keyHandlers.computeIfAbsent(keyHandlerAnnotation.keyCode(), ___ -> Lists.newArrayList()).add(new GameFunction(keyHandlerAnnotation.getType(), function));
             this.classFunctionCache.computeIfAbsent(keyHandler, ___ -> Lists.newArrayList()).add(new Pair<>(keyHandlerAnnotation.keyCode(), function));
         }
     }
