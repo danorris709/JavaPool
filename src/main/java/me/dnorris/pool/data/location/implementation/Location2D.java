@@ -1,15 +1,15 @@
-package me.dnorris.pool.data.vector.implementation;
+package me.dnorris.pool.data.location.implementation;
 
-import me.dnorris.pool.data.vector.Vector;
+import me.dnorris.pool.data.location.Location;
 
 import java.util.Objects;
 
-public class TwoDimensionalVector implements Vector {
+public class Location2D implements Location {
 
     private double x;
     private double y;
 
-    public TwoDimensionalVector(double x, double y) {
+    public Location2D(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -48,24 +48,8 @@ public class TwoDimensionalVector implements Vector {
 
     @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
-    public Vector clone() {
-        return new TwoDimensionalVector(this.x, this.y);
-    }
-
-    @Override
-    public double getLength() {
-        return Math.abs((this.x * this.x) + (this.y * this.y));
-    }
-
-    @Override
-    public Vector getUnitVector() {
-        Vector clone = this.clone();
-        double length = clone.getLength();
-
-        clone.setX(clone.getX() / length);
-        clone.setY(clone.getY() / length);
-
-        return clone;
+    public Location clone() {
+        return new Location2D(this.x, this.y);
     }
 
     @Override
@@ -78,7 +62,7 @@ public class TwoDimensionalVector implements Vector {
             return false;
         }
 
-        TwoDimensionalVector that = (TwoDimensionalVector) object;
+        Location2D that = (Location2D) object;
 
         return Double.compare(that.x, this.x) == 0 &&
                 Double.compare(that.y, this.y) == 0;
