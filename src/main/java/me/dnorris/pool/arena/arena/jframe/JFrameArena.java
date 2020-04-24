@@ -6,6 +6,7 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.GameFunction;
+import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
 import me.dnorris.pool.arena.key.KeyHandler;
 import me.dnorris.pool.data.Pair;
 import me.dnorris.pool.data.TriFunction;
@@ -33,6 +34,8 @@ public class JFrameArena extends JFrame implements GameArena {
         this.setBackground(backgroundColour);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+
+        this.addKeyListener(new KeyHandlerListener(this));
     }
 
     public JFrameArena(Dimension dimensions) {
