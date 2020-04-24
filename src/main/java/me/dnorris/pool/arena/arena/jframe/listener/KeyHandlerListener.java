@@ -1,7 +1,7 @@
 package me.dnorris.pool.arena.arena.jframe.listener;
 
 import me.dnorris.pool.arena.GameFunction;
-import me.dnorris.pool.arena.arena.jframe.JFrameArena;
+import me.dnorris.pool.arena.arena.jframe.SimpleArena;
 import me.dnorris.pool.arena.key.KeyEventType;
 
 import java.awt.event.KeyEvent;
@@ -9,9 +9,9 @@ import java.awt.event.KeyListener;
 
 public class KeyHandlerListener implements KeyListener {
 
-    private final JFrameArena gameArena;
+    private final SimpleArena gameArena;
 
-    public KeyHandlerListener(JFrameArena gameArena) {
+    public KeyHandlerListener(SimpleArena gameArena) {
         this.gameArena = gameArena;
     }
 

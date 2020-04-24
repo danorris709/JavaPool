@@ -1,4 +1,4 @@
-package me.dnorris.pool.arena.arena.jframe;
+package me.dnorris.pool.arena.arena;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -6,7 +6,6 @@ import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.GameFunction;
-import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
 import me.dnorris.pool.arena.key.KeyHandler;
 import me.dnorris.pool.data.Pair;
 import me.dnorris.pool.data.TriFunction;
@@ -22,25 +21,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class JFrameArena extends JFrame implements GameArena {
+public abstract class AbstractGameArena implements GameArena {
 
     private final List<Entity> entities = Lists.newArrayList();
     private final Map<Class<?>, List<Pair<Long, TriFunction<GameArena, JFrame, KeyEvent>>>> classFunctionCache = Maps.newHashMap();
     private final Map<Long, List<GameFunction>> keyHandlers = new Long2ObjectOpenHashMap<>();
 
-    public JFrameArena(String title, Dimension dimensions, boolean resizable, Color backgroundColour) {
-        this.setTitle(title);
-        this.setSize(dimensions);
-        this.setResizable(resizable);
-        this.setBackground(backgroundColour);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
+    private Dimension dimensions;
 
-        this.addKeyListener(new KeyHandlerListener(this));
+    public AbstractGameArena(Dimension dimensions) {
+        this.dimensions = dimensions;
     }
 
-    public JFrameArena(Dimension dimensions) {
-        this("Let's Play Pool!", dimensions, false, Color.BLACK);
+    @Override
+    public Dimension getDimensions() {
+        return this.dimensions;
+    }
+
+    @Override
+    public void setDimensions(Dimension dimensions) {
+        this.dimensions = dimensions;
     }
 
     @Override
@@ -51,15 +51,11 @@ public class JFrameArena extends JFrame implements GameArena {
     @Override
     public void addEntity(Entity entity) {
         this.entities.add(entity);
-
-        this.add(entity.getComponent());
     }
 
     @Override
     public void removeEntity(Entity entity) {
         this.entities.add(entity);
-
-        this.remove(entity.getComponent());
     }
 
     @Override
@@ -120,10 +116,5 @@ public class JFrameArena extends JFrame implements GameArena {
         }
 
         this.classFunctionCache.remove(keyHandler);
-    }
-
-    @Override
-    public void tick() {
-
     }
 }

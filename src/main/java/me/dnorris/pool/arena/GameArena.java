@@ -1,8 +1,13 @@
 package me.dnorris.pool.arena;
 
+import java.awt.*;
 import java.util.List;
 
 public interface GameArena {
+
+    Dimension getDimensions();
+
+    void setDimensions(Dimension dimensions);
 
     List<Entity> getEntities();
 
@@ -16,6 +21,6 @@ public interface GameArena {
 
     void removeHandler(Class<?> keyHandler);
 
-    void tick();
+    void tick(Graphics2D graphics);
 
 }
