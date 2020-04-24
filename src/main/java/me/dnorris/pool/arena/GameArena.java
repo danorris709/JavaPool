@@ -1,20 +1,24 @@
 package me.dnorris.pool.arena;
 
+import me.dnorris.pool.data.TriFunction;
+
+import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 public interface GameArena {
 
-    List<Object> getEntities();
+    List<Entity> getEntities();
 
-    void addEntity(Object object);
+    void addEntity(Entity object);
 
-    void removeEntity(Object object);
+    void removeEntity(Entity object);
 
-    List<Object> getHandlers(long key);
+    List<TriFunction<GameArena, JFrame, KeyEvent>> getHandlers(long key);
 
-    void addHandler(Class<? extends Object> keyHandler);
+    void addHandler(Class keyHandler);
 
-    void removeHandler(Class<? extends Object> keyHandler);
+    void removeHandler(Class keyHandler);
 
     void tick();
 
