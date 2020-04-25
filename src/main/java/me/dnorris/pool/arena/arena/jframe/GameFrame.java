@@ -28,7 +28,7 @@ public class GameFrame extends JFrame {
         Dimension dimension = new Dimension(width, height);
 
         this.gameArena.setDimensions(dimension);
-        super.setSize(dimension);
+        super.setSize(dimension.width, dimension.height);
     }
 
     @Override
