@@ -36,7 +36,7 @@ public class KeyHandlerListener implements KeyListener {
                 continue;
             }
 
-            handler.getFunction().run(this.gameArena, this.gameArena, event);
+            handler.getFunction().run(this.gameArena, event);
         }
     }
 }

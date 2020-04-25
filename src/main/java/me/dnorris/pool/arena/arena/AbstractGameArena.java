@@ -8,7 +8,7 @@ import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.GameFunction;
 import me.dnorris.pool.arena.key.KeyHandler;
 import me.dnorris.pool.data.Pair;
-import me.dnorris.pool.data.TriFunction;
+import me.dnorris.pool.data.BiFunction;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +24,7 @@ import java.util.Objects;
 public abstract class AbstractGameArena implements GameArena {
 
     private final List<Entity> entities = Lists.newArrayList();
-    private final Map<Class<?>, List<Pair<Long, TriFunction<GameArena, JFrame, KeyEvent>>>> classFunctionCache = Maps.newHashMap();
+    private final Map<Class<?>, List<Pair<Long, BiFunction<GameArena, KeyEvent>>>> classFunctionCache = Maps.newHashMap();
     private final Map<Long, List<GameFunction>> keyHandlers = new Long2ObjectOpenHashMap<>();
 
     private Dimension dimensions;
@@ -82,7 +82,7 @@ public abstract class AbstractGameArena implements GameArena {
                 continue;
             }
 
-            TriFunction<GameArena, JFrame, KeyEvent> function = this.createFunctionFromMethod(declaredMethod, keyHandlerInstance);
+            BiFunction<GameArena, KeyEvent> function = this.createFunctionFromMethod(declaredMethod, keyHandlerInstance);
 
             this.keyHandlers.computeIfAbsent(keyHandlerAnnotation.keyCode(), ___ -> Lists.newArrayList()).add(new GameFunction(keyHandlerAnnotation.getType(), function));
             this.classFunctionCache.computeIfAbsent(keyHandler, ___ -> Lists.newArrayList()).add(new Pair<>(keyHandlerAnnotation.keyCode(), function));
@@ -99,10 +99,10 @@ public abstract class AbstractGameArena implements GameArena {
         return null;
     }
 
-    private TriFunction<GameArena, JFrame, KeyEvent> createFunctionFromMethod(Method method, Object instance) {
-        return (gameArena, jFrame, keyEvent) -> {
+    private BiFunction<GameArena, KeyEvent> createFunctionFromMethod(Method method, Object instance) {
+        return (gameArena, keyEvent) -> {
             try {
-                method.invoke(instance, gameArena, jFrame, keyEvent);
+                method.invoke(instance, gameArena, keyEvent);
             } catch (IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
@@ -111,7 +111,7 @@ public abstract class AbstractGameArena implements GameArena {
 
     @Override
     public void removeHandler(Class<?> keyHandler) {
-        for (Pair<Long, TriFunction<GameArena, JFrame, KeyEvent>> pairs : this.classFunctionCache.getOrDefault(keyHandler, Collections.emptyList())) {
+        for (Pair<Long, BiFunction<GameArena, KeyEvent>> pairs : this.classFunctionCache.getOrDefault(keyHandler, Collections.emptyList())) {
             this.keyHandlers.getOrDefault(pairs.getFirst(), Collections.emptyList()).removeIf(gameFunction -> Objects.equals(gameFunction.getFunction(), pairs.getSecond()));
         }
 
