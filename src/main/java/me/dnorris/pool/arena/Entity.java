@@ -8,6 +8,10 @@ import java.awt.*;
 
 public interface Entity {
 
+    Color getColour();
+
+    void setColour(Color colour);
+
     Location getLocation();
 
     void setLocation(Location location);
