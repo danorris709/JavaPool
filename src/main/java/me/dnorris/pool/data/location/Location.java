@@ -4,17 +4,17 @@ import java.awt.*;
 
 public interface Location {
 
-    double getX();
+    int getX();
 
-    void setX(double x);
+    void setX(int x);
 
-    double getY();
+    int getY();
 
-    void setY(double y);
+    void setY(int y);
 
-    double getZ();
+    int getZ();
 
-    void setZ(double z);
+    void setZ(int z);
 
     Point asPoint();
 

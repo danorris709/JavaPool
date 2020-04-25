@@ -2,48 +2,54 @@ package me.dnorris.pool.data.location.implementation;
 
 import me.dnorris.pool.data.location.Location;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class Location2D implements Location {
 
-    private double x;
-    private double y;
+    private int x;
+    private int y;
 
-    public Location2D(double x, double y) {
+    public Location2D(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
     @Override
-    public double getX() {
+    public int getX() {
         return this.x;
     }
 
     @Override
-    public void setX(double x) {
+    public void setX(int x) {
         this.x = x;
     }
 
     @Override
-    public double getY() {
+    public int getY() {
         return this.y;
     }
 
     @Override
-    public void setY(double y) {
+    public void setY(int y) {
         this.y = y;
     }
 
     @Deprecated
     @Override
-    public double getZ() {
+    public int getZ() {
         throw new UnsupportedOperationException("Cannot have a Z value for a 2 dimensional location");
     }
 
     @Deprecated
     @Override
-    public void setZ(double z) {
+    public void setZ(int z) {
         throw new UnsupportedOperationException("Cannot have a Z value for a 2 dimensional location");
+    }
+
+    @Override
+    public Point asPoint() {
+        return new Point(this.x, this.y);
     }
 
     @SuppressWarnings("MethodDoesntCallSuperMethod")
@@ -64,8 +70,7 @@ public class Location2D implements Location {
 
         Location2D that = (Location2D) object;
 
-        return Double.compare(that.x, this.x) == 0 &&
-                Double.compare(that.y, this.y) == 0;
+        return that.x == this.x && that.y == this.y;
     }
 
     @Override
