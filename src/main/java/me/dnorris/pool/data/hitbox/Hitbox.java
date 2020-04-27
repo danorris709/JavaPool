@@ -10,6 +10,10 @@ public interface Hitbox {
 
     Dimension getDimensions();
 
+    boolean isImmovable();
+
+    void setImmovable(boolean immovable);
+
     boolean isColliding(Hitbox other);
 
 }
