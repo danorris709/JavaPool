@@ -7,8 +7,8 @@ import java.awt.*;
 
 public class SquareLocationHitbox extends AbstractLocationHitbox {
 
-    public SquareLocationHitbox(Location center, Dimension dimensions) {
-        super(center, dimensions);
+    public SquareLocationHitbox(Location center, Dimension dimensions, boolean immovable) {
+        super(center, dimensions, immovable);
     }
 
     @Override

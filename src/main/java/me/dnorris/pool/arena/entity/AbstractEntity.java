@@ -16,14 +16,25 @@ public abstract class AbstractEntity implements Entity {
     private Location location;
     private Hitbox hitbox;
     private Vector motion;
+
+    protected boolean hollow;
     protected boolean dirty;
 
-    protected AbstractEntity(Color colour, Location location, Hitbox hitbox, Vector motion) {
+    protected AbstractEntity(Color colour, Location location, Hitbox hitbox, Vector motion, boolean hollow) {
         this.colour = colour;
         this.location = location;
         this.hitbox = hitbox;
         this.motion = motion;
+        this.hollow = hollow;
         this.dirty = true;
+    }
+
+    protected boolean isHollow() {
+        return this.hollow;
+    }
+
+    protected void setHollow(boolean hollow) {
+        this.hollow = hollow;
     }
 
     protected boolean isDirty() {
