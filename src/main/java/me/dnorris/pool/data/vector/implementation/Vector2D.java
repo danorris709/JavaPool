@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public class Vector2D implements Vector {
 
+    public static final Vector NONE = new Vector2D(0.0, 0.0);
+
     private double x;
     private double y;
 
