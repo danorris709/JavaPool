@@ -11,16 +11,16 @@ import java.lang.reflect.InvocationTargetException;
 
 public class EntityBuilder {
 
-    private Color colour;
-    private Location location;
-    private Hitbox hitbox;
-    private Vector motion;
-    private boolean hollow;
-    private boolean dirty;
-    private boolean immovable;
-    private boolean interactable;
-    private Dimension dimension;
-    private EntityType type;
+    protected Color colour;
+    protected Location location;
+    protected Hitbox hitbox;
+    protected Vector motion;
+    protected boolean hollow;
+    protected boolean dirty;
+    protected boolean immovable;
+    protected boolean interactable;
+    protected Dimension dimension;
+    protected EntityType type;
 
     public EntityBuilder() {}
 
