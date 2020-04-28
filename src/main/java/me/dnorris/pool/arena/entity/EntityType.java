@@ -1,7 +1,6 @@
 package me.dnorris.pool.arena.entity;
 
 import me.dnorris.pool.arena.Entity;
-import me.dnorris.pool.arena.entity.compound.shape.HollowRectangle;
 import me.dnorris.pool.arena.entity.shape.RectangleEntity;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
@@ -24,7 +23,7 @@ public enum EntityType {
         }
 
         try {
-            this.entityConstructor = entityClass.getConstructor(Location.class, Color.class, Vector.class, Dimension.class, Boolean.class, Boolean.class, Boolean.class);
+            this.entityConstructor = entityClass.getConstructor(Location.class, Color.class, Vector.class, Dimension.class, boolean.class, boolean.class, boolean.class);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }

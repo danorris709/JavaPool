@@ -3,6 +3,7 @@ package me.dnorris.pool.arena.entity.compound.shape;
 import com.google.common.collect.Lists;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.entity.EntityBuilder;
+import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.CompoundEntity;
 import me.dnorris.pool.arena.entity.shape.RectangleEntity;
 import me.dnorris.pool.data.hitbox.Hitbox;
@@ -37,6 +38,51 @@ public class HollowRectangle extends CompoundEntity {
         private int outsideWidth;
 
         public Builder() { super(); }
+
+        @Override
+        public Builder setColour(Color colour) {
+            return (Builder) super.setColour(colour);
+        }
+
+        @Override
+        public Builder setLocation(Location location) {
+            return (Builder) super.setLocation(location);
+        }
+
+        @Override
+        public Builder setHitbox(Hitbox hitbox) {
+            return (Builder) super.setHitbox(hitbox);
+        }
+
+        @Override
+        public Builder setMotion(Vector motion) {
+            return (Builder) super.setMotion(motion);
+        }
+
+        @Override
+        public Builder setHollow(boolean hollow) {
+            return (Builder) super.setHollow(hollow);
+        }
+
+        @Override
+        public Builder setType(EntityType type) {
+            return (Builder) super.setType(type);
+        }
+
+        @Override
+        public Builder setImmovable(boolean immovable) {
+            return (Builder) super.setImmovable(immovable);
+        }
+
+        @Override
+        public Builder setInteractable(boolean interactable) {
+            return (Builder) super.setInteractable(interactable);
+        }
+
+        @Override
+        public Builder setDimension(Dimension dimension) {
+            return (Builder) super.setDimension(dimension);
+        }
 
         public Builder setOutsideWidth(int outsideWidth) {
             this.outsideWidth = outsideWidth;
