@@ -9,8 +9,8 @@ import java.awt.*;
 
 public class RectangleEntity extends AbstractEntity {
 
-    public RectangleEntity(Location location, Dimension dimension, boolean hollow, boolean immovable) {
-        super(Color.YELLOW, location, new SquareLocationHitbox(location, dimension, immovable), new Vector2D(0.0, 0.0), hollow);
+    public RectangleEntity(Color colour, Location location, Dimension dimension, boolean hollow, boolean immovable) {
+        super(colour, location, new SquareLocationHitbox(location, dimension, immovable), new Vector2D(0.0, 0.0), hollow);
     }
 
     @Override
