@@ -33,7 +33,7 @@ public class GameEntity {
             try {
                 cloth = new EntityBuilder()
                         .setLocation(new Location2D(100, 100))
-                        .setColour(Color.GREEN)
+                        .setColour(Colour.DARK_GREEN)
                         .setDimension(new Dimension(500, 250))
                         .setImmovable(true)
                         .setInteractable(false)
