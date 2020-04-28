@@ -52,6 +52,26 @@ public class Location2D implements Location {
         return new Point(this.x, this.y);
     }
 
+    @Override
+    public Location add(int x, int y, int z) {
+        Location location = this.clone();
+
+        location.setX(location.getX() + x);
+        location.setY(location.getY() + y);
+
+        return location;
+    }
+
+    @Override
+    public Location subtract(int x, int y, int z) {
+        Location location = this.clone();
+
+        location.setX(location.getX() - x);
+        location.setY(location.getY() - y);
+
+        return location;
+    }
+
     @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public Location clone() {
