@@ -1,7 +1,8 @@
-package me.dnorris.pool.arena.entity;
+package me.dnorris.pool.arena.entity.compound;
 
 import com.google.common.collect.Lists;
 import me.dnorris.pool.arena.Entity;
+import me.dnorris.pool.arena.entity.AbstractEntity;
 import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
@@ -34,6 +35,13 @@ public abstract class CompoundEntity extends AbstractEntity {
 
         for (Entity entity : this.entities) {
             entity.setMotion(motion);
+        }
+    }
+
+    @Override
+    public void paint(Graphics2D graphics) {
+        for (Entity entity : this.entities) {
+            entity.paint(graphics);
         }
     }
 }
