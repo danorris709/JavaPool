@@ -75,8 +75,9 @@ public interface Location {
      * @param x The value to be added to the X
      * @param y The value to be added to the Y
      * @param z The value to be added to the Z
+     * @return The clone of the object with updated {@link Location#getX()}, {@link Location#getY()}, {@link Location#getZ()} values
      */
-    void add(int x, int y, int z);
+    Location add(int x, int y, int z);
 
     /**
      *
@@ -85,7 +86,8 @@ public interface Location {
      * @param x The value to be taken from the X
      * @param y The value to be taken from the Y
      * @param z The value to be taken from the Z
+     * @return The clone of the object with updated {@link Location#getX()}, {@link Location#getY()}, {@link Location#getZ()} values
      */
-    void subtract(int x, int y, int z);
+    Location subtract(int x, int y, int z);
 
 }
