@@ -12,13 +12,17 @@ import java.lang.reflect.Constructor;
 public enum EntityType {
 
     RECTANGLE(RectangleEntity.class),
-    HOLLOW_RECTANGLE(HollowRectangle.class),
+    HOLLOW_RECTANGLE(null),
 
     ;
 
-    private Constructor<? extends Entity> entityConstructor;
+    private Constructor<? extends Entity> entityConstructor = null;
 
     EntityType(Class<? extends Entity> entityClass) {
+        if(entityClass == null) {
+            return;
+        }
+
         try {
             this.entityConstructor = entityClass.getConstructor(Location.class, Color.class, Vector.class, Dimension.class, Boolean.class, Boolean.class, Boolean.class);
         } catch (NoSuchMethodException e) {
@@ -26,7 +30,11 @@ public enum EntityType {
         }
     }
 
-    public Constructor<? extends Entity> getConstructor() {
+    public Constructor<? extends Entity> getConstructor() throws UnsupportedOperationException {
+        if(this.entityConstructor == null) {
+            throw new UnsupportedOperationException("Use correct builder for this type");
+        }
+
         return this.entityConstructor;
     }
 }
