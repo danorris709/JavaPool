@@ -4,6 +4,7 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
+import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
 import java.lang.reflect.Constructor;
@@ -14,9 +15,8 @@ public class EntityBuilder {
     protected Color colour;
     protected Location location;
     protected Hitbox hitbox;
-    protected Vector motion;
+    protected Vector motion = Vector2D.NONE;
     protected boolean hollow;
-    protected boolean dirty;
     protected boolean immovable;
     protected boolean interactable;
     protected Dimension dimension;
@@ -46,11 +46,6 @@ public class EntityBuilder {
 
     public EntityBuilder setHollow(boolean hollow) {
         this.hollow = hollow;
-        return this;
-    }
-
-    public EntityBuilder setDirty(boolean dirty) {
-        this.dirty = dirty;
         return this;
     }
 
