@@ -106,7 +106,7 @@ public class LineEntity extends AbstractEntity {
         }
 
         @Override
-        public Entity build() {
+        public LineEntity build() {
             return new LineEntity(
                     this.location,
                     this.endPoint,

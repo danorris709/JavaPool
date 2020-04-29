@@ -71,7 +71,7 @@ public class GameEntity {
             .setArcAngle(90)
             .build();
 
-    private static final Entity POINTER = new LineEntity.Builder()
+    private static final LineEntity POINTER = new LineEntity.Builder()
             .setColour(Color.WHITE)
             .setType(EntityType.LINE)
             .setLocation(new Location2D(100 + (1000 / 4), 100 + 250))
@@ -221,7 +221,7 @@ public class GameEntity {
         return percentageBar;
     }
 
-    public static Entity getPointer() {
+    public static LineEntity getPointer() {
         return POINTER;
     }
 }
