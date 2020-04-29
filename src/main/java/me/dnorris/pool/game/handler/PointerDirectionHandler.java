@@ -21,16 +21,72 @@ public class PointerDirectionHandler {
 
     private void movePointerEndPoint(LineEntity line, Arrow arrow) {
         Location endPoint = line.getEndPoint();
+        Pair<Integer, Integer> pair = arrow.moveLine(line);
 
-        // TODO: 30/04/2020  
+        line.setEndPoint(endPoint.add(pair.getFirst(), pair.getSecond(), 0));
     }
 
     enum Arrow {
 
-        LEFT(KeyEvent.VK_RIGHT),
-        RIGHT(KeyEvent.VK_LEFT),
+        LEFT(KeyEvent.VK_RIGHT) {
+            @Override
+            public Pair<Integer, Integer> moveLine(LineEntity lineEntity) {
+                Location endPoint = lineEntity.getEndPoint();
+
+                if (endPoint.getY() == TOP_Y_POINT) {
+                    if (endPoint.getX() == RIGHT_X_POINT || endPoint.getX() != LEFT_X_POINT) {
+                        return new Pair<>(-10, 0);
+                    }
+
+                    return new Pair<>(0, 10);
+                } else if (endPoint.getY() == BOTTOM_Y_POINT) {
+                    if (endPoint.getX() == RIGHT_X_POINT) {
+                        return new Pair<>(0, -10);
+                    }
+
+                    return new Pair<>(10, 0);
+                } else {
+                    if(endPoint.getX() == LEFT_X_POINT) {
+                        return new Pair<>(0, 10);
+                    }
+
+                    return new Pair<>(0, -10);
+                }
+            }
+        },
+        RIGHT(KeyEvent.VK_LEFT) {
+            @Override
+            public Pair<Integer, Integer> moveLine(LineEntity lineEntity) {
+                Location endPoint = lineEntity.getEndPoint();
+
+                if (endPoint.getY() == TOP_Y_POINT) {
+                    if (endPoint.getX() == RIGHT_X_POINT) {
+                        return new Pair<>(0, 10);
+                    }
+
+                    return new Pair<>(10, 0);
+                } else if (endPoint.getY() == BOTTOM_Y_POINT) {
+                    if (endPoint.getX() == LEFT_X_POINT) {
+                        return new Pair<>(0, -10);
+                    }
+
+                    return new Pair<>(-10, 0);
+                } else {
+                    if(endPoint.getX() == LEFT_X_POINT) {
+                        return new Pair<>(0, -10);
+                    }
+
+                    return new Pair<>(0, 10);
+                }
+            }
+        },
 
         ;
+
+        private static final int LEFT_X_POINT = 100;
+        private static final int RIGHT_X_POINT = 100 + (1000 / 4) + 750;
+        private static final int TOP_Y_POINT = 100;
+        private static final int BOTTOM_Y_POINT = 600;
 
         private static final Map<Long, Arrow> ARROW_MAP = Maps.newHashMap();
 
@@ -46,9 +102,7 @@ public class PointerDirectionHandler {
             this.keyCode = keyCode;
         }
         
-        public Pair<Integer, Integer> moveLine(LineEntity lineEntity) {
-            return null; // TODO: 30/04/2020
-        }
+        public abstract Pair<Integer, Integer> moveLine(LineEntity lineEntity);
 
         public static Arrow fromKeyCode(long keyCode) {
             return ARROW_MAP.get(keyCode);
