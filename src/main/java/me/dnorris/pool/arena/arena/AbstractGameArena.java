@@ -7,10 +7,9 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.GameFunction;
 import me.dnorris.pool.arena.key.KeyHandler;
-import me.dnorris.pool.data.Pair;
 import me.dnorris.pool.data.BiFunction;
+import me.dnorris.pool.data.Pair;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.InvocationTargetException;
@@ -70,15 +69,14 @@ public abstract class AbstractGameArena implements GameArena {
         for (Method declaredMethod : keyHandler.getDeclaredMethods()) {
             KeyHandler keyHandlerAnnotation = declaredMethod.getAnnotation(KeyHandler.class);
 
-            if (keyHandlerAnnotation == null || declaredMethod.getParameterCount() != 3) {
+            if (keyHandlerAnnotation == null || declaredMethod.getParameterCount() != 2) {
                 continue;
             }
 
             Parameter[] parameters = declaredMethod.getParameters();
 
             if (!GameArena.class.isAssignableFrom(parameters[0].getType())
-                    || !JFrame.class.isAssignableFrom(parameters[1].getType())
-                    || !KeyEvent.class.isAssignableFrom(parameters[2].getType())) {
+                    || !KeyEvent.class.isAssignableFrom(parameters[1].getType())) {
                 continue;
             }
 
