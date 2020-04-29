@@ -64,4 +64,12 @@ public interface Hitbox {
      */
     boolean isColliding(Hitbox other);
 
+    /**
+     *
+     * Creates a direct copy of the object
+     *
+     * @return New version of the {@link Hitbox}
+     */
+    Hitbox clone();
+
 }
