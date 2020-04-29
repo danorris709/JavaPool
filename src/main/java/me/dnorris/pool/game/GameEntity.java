@@ -23,7 +23,7 @@ public class GameEntity {
             .setOutsideWidth(20)
             .build();
 
-    private static final Entity TOP_CORNER_HOLE = new ArcShape.Builder()
+    private static final Entity TOP_RIGHT_CORNER_HOLE = new ArcShape.Builder()
             .setType(EntityType.ARC)
             .setColour(Color.BLACK)
             .setDimension(new Dimension(60, 60))
@@ -35,6 +35,18 @@ public class GameEntity {
             .setArcAngle(-90)
             .build();
 
+    private static final Entity TOP_LEFT_CORNER_HOLE = new ArcShape.Builder()
+            .setType(EntityType.ARC)
+            .setColour(Color.BLACK)
+            .setDimension(new Dimension(60, 60))
+            .setHollow(false)
+            .setImmovable(true)
+            .setInteractable(false)
+            .setLocation(new Location2D(70, 570))
+            .setStartAngle(0)
+            .setArcAngle(90)
+            .build();
+
     private static Entity cloth;
     private static Entity headString;
 
@@ -42,8 +54,12 @@ public class GameEntity {
         return BORDER;
     }
 
-    public static Entity getTopCornerHole() {
-        return TOP_CORNER_HOLE;
+    public static Entity getTopRightCornerHole() {
+        return TOP_RIGHT_CORNER_HOLE;
+    }
+
+    public static Entity getTopLeftCornerHole() {
+        return TOP_LEFT_CORNER_HOLE;
     }
 
     public static Entity getCloth() {
