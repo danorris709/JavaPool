@@ -19,4 +19,14 @@ public class SquareLocationHitbox extends AbstractLocationHitbox {
 
         return false;
     }
+
+    @Override
+    public Hitbox clone() {
+        return new SquareLocationHitbox(
+                this.getCenter().clone(),
+                new Dimension(this.getDimensions().width, this.getDimensions().height),
+                this.isImmovable(),
+                this.isInteractable()
+        );
+    }
 }
