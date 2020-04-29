@@ -6,6 +6,7 @@ import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.shape.HollowRectangle;
 import me.dnorris.pool.arena.entity.compound.shape.PercentageBar;
 import me.dnorris.pool.arena.entity.shape.ArcShape;
+import me.dnorris.pool.arena.entity.shape.LineEntity;
 import me.dnorris.pool.data.Colour;
 import me.dnorris.pool.data.location.implementation.Location2D;
 
@@ -70,13 +71,19 @@ public class GameEntity {
             .setArcAngle(90)
             .build();
 
+    private static final Entity POINTER = new LineEntity.Builder()
+            .setColour(Color.WHITE)
+            .setType(EntityType.LINE)
+            .setLocation(new Location2D(100 + (1000 / 4), 100 + 250))
+            .setEndPoint(new Location2D(100 + (1000 / 4) + 750, 100 + 250))
+            .build();
+
     private static Entity cloth;
     private static Entity headString;
     private static Entity blackBallSpot;
     private static Entity cueBall;
     private static Entity blackBall;
     private static PercentageBar percentageBar;
-    private static Entity pointer;
 
     public static Entity getBorder() {
         return BORDER;
@@ -215,22 +222,6 @@ public class GameEntity {
     }
 
     public static Entity getPointer() {
-        if(pointer == null) {
-            try {
-                pointer = new EntityBuilder()
-                        .setLocation(new Location2D(100 + (1000 / 4), 100 + 250))
-                        .setColour(Color.WHITE)
-                        .setDimension(new Dimension(750, 1))
-                        .setInteractable(false)
-                        .setImmovable(false)
-                        .setHollow(false)
-                        .setType(EntityType.RECTANGLE)
-                        .build();
-            } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return pointer;
+        return POINTER;
     }
 }

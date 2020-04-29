@@ -15,10 +15,6 @@ public class RectangleEntity extends AbstractEntity {
 
     @Override
     public void paint(Graphics2D graphics) {
-        if(!this.isDirty()) {
-            return;
-        }
-
         graphics.setColor(this.getColour());
 
         if (this.hollow) {
@@ -26,8 +22,6 @@ public class RectangleEntity extends AbstractEntity {
         } else {
             graphics.fill(new Rectangle(this.getLocation().asPoint(), this.getHitbox().getDimensions()));
         }
-
-        this.setDirty(false);
     }
 
     @Override
