@@ -82,8 +82,10 @@ public abstract class AbstractGameArena implements GameArena {
 
             BiFunction<GameArena, KeyEvent> function = this.createFunctionFromMethod(declaredMethod, keyHandlerInstance);
 
-            this.keyHandlers.computeIfAbsent(keyHandlerAnnotation.keyCode(), ___ -> Lists.newArrayList()).add(new GameFunction(keyHandlerAnnotation.getType(), function));
-            this.classFunctionCache.computeIfAbsent(keyHandler, ___ -> Lists.newArrayList()).add(new Pair<>(keyHandlerAnnotation.keyCode(), function));
+            for (long keyCode : keyHandlerAnnotation.keyCode()) {
+                this.keyHandlers.computeIfAbsent(keyCode, ___ -> Lists.newArrayList()).add(new GameFunction(keyHandlerAnnotation.getType(), function));
+                this.classFunctionCache.computeIfAbsent(keyHandler, ___ -> Lists.newArrayList()).add(new Pair<>(keyCode, function));
+            }
         }
     }
 
