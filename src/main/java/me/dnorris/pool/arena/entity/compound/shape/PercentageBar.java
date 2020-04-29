@@ -6,7 +6,6 @@ import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.CompoundEntity;
 import me.dnorris.pool.data.location.Location;
-import me.dnorris.pool.data.location.implementation.Location2D;
 import me.dnorris.pool.data.vector.Vector;
 
 import java.awt.*;
@@ -15,34 +14,37 @@ import java.util.List;
 
 public class PercentageBar extends CompoundEntity {
 
-    private int filledPercentage;
     private Entity emptyBar;
     private Entity filledBar;
 
-    public PercentageBar(Location centerLocation, Color colour, Vector motion, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
-        super(centerLocation, colour, motion, null, createEntities(centerLocation, colour, dimension, outsideWidth, immovable, interactable));
+    private int filledPercentage;
+    private int maxHeight;
 
+    public PercentageBar(Location centerLocation, Color colour, Vector motion, Dimension dimension, int maxHeight, boolean immovable, boolean interactable) {
+        super(centerLocation, colour, motion, null, createEntities(centerLocation, colour, dimension, maxHeight, immovable, interactable));
+
+        this.maxHeight = maxHeight + 2;
         this.emptyBar = this.entities.get(0);
         this.filledBar = this.entities.get(1);
     }
 
-    private static Entity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
+    private static Entity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int maxHeight, boolean immovable, boolean interactable) {
         List<Entity> entities = Lists.newArrayList();
 
-        entities.add(createEmptyPowerBar());
-        entities.add(createFullPowerBar());
+        entities.add(createEmptyPowerBar(centerPoint, colour, dimension, immovable, interactable));
+        entities.add(createFullPowerBar(centerPoint, colour, maxHeight, immovable, interactable));
 
         return entities.toArray(new Entity[0]);
     }
 
-    public static Entity createEmptyPowerBar() {
+    public static Entity createEmptyPowerBar(Location centerLocation, Color colour, Dimension dimension, boolean interactable, boolean immovable) {
         try {
             return new EntityBuilder()
-                    .setLocation(new Location2D(1120, 81))
-                    .setColour(Color.RED)
-                    .setDimension(new Dimension(25, 538))
-                    .setInteractable(false)
-                    .setImmovable(true)
+                    .setLocation(centerLocation)
+                    .setColour(colour)
+                    .setDimension(dimension)
+                    .setInteractable(interactable)
+                    .setImmovable(immovable)
                     .setHollow(true)
                     .setType(EntityType.RECTANGLE)
                     .build();
@@ -53,14 +55,14 @@ public class PercentageBar extends CompoundEntity {
         return null;
     }
 
-    private static Entity createFullPowerBar() {
+    private static Entity createFullPowerBar(Location centerLocation, Color colour, int maxHeight, boolean interactable, boolean immovable) {
         try {
             return new EntityBuilder()
-                    .setLocation(new Location2D(1120, 619))
-                    .setColour(Color.RED)
+                    .setLocation(centerLocation.add(0, maxHeight, 0))
+                    .setColour(colour)
                     .setDimension(new Dimension(25, 0))
-                    .setInteractable(false)
-                    .setImmovable(true)
+                    .setInteractable(interactable)
+                    .setImmovable(immovable)
                     .setHollow(false)
                     .setType(EntityType.RECTANGLE)
                     .build();
@@ -76,17 +78,29 @@ public class PercentageBar extends CompoundEntity {
     }
 
     public void addPercentage(int delta) {
+        if((this.filledPercentage + delta) > 100) {
+            delta = 100 - this.filledPercentage;
+        }
+
         this.filledPercentage += delta;
 
-        this.updateFilledPercentage(delta);
-        this.updateEmptyPercentage(-delta);
+        int pixelPercent = (int) ((delta / 100.0) * this.maxHeight);
+
+        this.updateFilledPercentage(pixelPercent);
+        this.updateEmptyPercentage(pixelPercent);
     }
 
     public void takePercentage(int delta) {
+        if((this.filledPercentage - delta) < 0) {
+            delta = this.filledPercentage;
+        }
+
         this.filledPercentage -= delta;
 
-        this.updateFilledPercentage(-delta);
-        this.updateEmptyPercentage(delta);
+        int pixelPercent = (int) ((delta / 100.0) * this.maxHeight);
+
+        this.updateFilledPercentage(-pixelPercent);
+        this.updateEmptyPercentage(-pixelPercent);
     }
 
     private void updateFilledPercentage(int change) {
@@ -105,7 +119,7 @@ public class PercentageBar extends CompoundEntity {
 
         this.emptyBar.getHitbox().getDimensions().setSize(
                 emptyDimensions.getWidth(),
-                emptyDimensions.getHeight() - 10
+                emptyDimensions.getHeight() - change
         );
         this.emptyBar.setDirty(true);
     }
