@@ -119,7 +119,7 @@ public class ArcShape extends AbstractEntity {
         }
 
         @Override
-        public EntityBuilder clone() {
+        public Builder clone() {
             Builder builder = (Builder) super.clone();
 
             builder.arcAngle = this.arcAngle;
