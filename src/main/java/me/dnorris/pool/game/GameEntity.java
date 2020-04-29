@@ -4,6 +4,7 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.shape.HollowRectangle;
+import me.dnorris.pool.arena.entity.shape.ArcShape;
 import me.dnorris.pool.data.Colour;
 import me.dnorris.pool.data.location.implementation.Location2D;
 
@@ -12,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class GameEntity {
 
-    private static Entity BORDER = new HollowRectangle.Builder()
+    private static final Entity BORDER = new HollowRectangle.Builder()
             .setLocation(new Location2D(100, 100))
             .setColour(Colour.BROWN)
             .setInteractable(true)
@@ -22,11 +23,27 @@ public class GameEntity {
             .setOutsideWidth(20)
             .build();
 
+    private static final Entity TOP_CORNER_HOLE = new ArcShape.Builder()
+            .setType(EntityType.ARC)
+            .setColour(Color.BLACK)
+            .setDimension(new Dimension(60, 60))
+            .setHollow(false)
+            .setImmovable(true)
+            .setInteractable(false)
+            .setLocation(new Location2D(70, 70))
+            .setStartAngle(0)
+            .setArcAngle(-90)
+            .build();
+
     private static Entity cloth;
     private static Entity headString;
 
     public static Entity getBorder() {
         return BORDER;
+    }
+
+    public static Entity getTopCornerHole() {
+        return TOP_CORNER_HOLE;
     }
 
     public static Entity getCloth() {
