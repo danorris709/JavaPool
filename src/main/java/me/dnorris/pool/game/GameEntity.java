@@ -74,6 +74,8 @@ public class GameEntity {
     private static Entity blackBallSpot;
     private static Entity cueBall;
     private static Entity blackBall;
+    private static Entity emptyPowerBar;
+    private static Entity fullPowerBar;
 
     public static Entity getBorder() {
         return BORDER;
@@ -201,5 +203,45 @@ public class GameEntity {
         }
 
         return blackBall;
+    }
+
+    public static Entity getEmptyPowerBar() {
+        if(emptyPowerBar == null) {
+            try {
+                emptyPowerBar = new EntityBuilder()
+                        .setLocation(new Location2D(1120, 81))
+                        .setColour(Color.RED)
+                        .setDimension(new Dimension(25, 538))
+                        .setInteractable(false)
+                        .setImmovable(true)
+                        .setHollow(true)
+                        .setType(EntityType.RECTANGLE)
+                        .build();
+            } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return emptyPowerBar;
+    }
+
+    public static Entity getFullPowerBar() {
+        if(fullPowerBar == null) {
+            try {
+                fullPowerBar = new EntityBuilder()
+                        .setLocation(new Location2D(1120, 619))
+                        .setColour(Color.RED)
+                        .setDimension(new Dimension(25, 0))
+                        .setInteractable(false)
+                        .setImmovable(true)
+                        .setHollow(false)
+                        .setType(EntityType.RECTANGLE)
+                        .build();
+            } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return fullPowerBar;
     }
 }
