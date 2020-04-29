@@ -37,11 +37,13 @@ public abstract class AbstractEntity implements Entity {
         this.hollow = hollow;
     }
 
-    protected boolean isDirty() {
+    @Override
+    public boolean isDirty() {
         return this.dirty;
     }
 
-    protected void setDirty(boolean dirty) {
+    @Override
+    public void setDirty(boolean dirty) {
         this.dirty = dirty;
     }
 
