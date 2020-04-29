@@ -55,7 +55,11 @@ public class PointerDirectionHandler {
         }
         
         public Pair<Integer, Integer> moveLine(LineEntity lineEntity) {
-            return null; // TODO: 30/04/2020  
+            return null; // TODO: 30/04/2020
+        }
+
+        public static Arrow fromKeyCode(long keyCode) {
+            return ARROW_MAP.get(keyCode);
         }
     }
 }
