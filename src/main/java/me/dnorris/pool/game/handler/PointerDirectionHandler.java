@@ -16,21 +16,13 @@ public class PointerDirectionHandler {
 
     @KeyHandler(keyCode = { KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT }, getType = KeyEventType.KEY_PRESSED)
     public void onLeftArrowPressed(GameArena arena, KeyEvent event) {
-        GameEntity.getPointer().setEndPoint(GameEntity.getPointer().getEndPoint().add(0, 10, 0));
+        this.movePointerEndPoint(GameEntity.getPointer(), Arrow.fromKeyCode(event.getKeyCode()));
     }
 
-    private void movePointerEndPoint(LineEntity line, int deltaX, int deltaY) {
+    private void movePointerEndPoint(LineEntity line, Arrow arrow) {
         Location endPoint = line.getEndPoint();
 
-        if(endPoint.getX() != 100 && endPoint.getX() != 1000) {
-            deltaY = 0;
-        }
-
-        if(endPoint.getY() != 100 && endPoint.getY() != 200) {
-            deltaX = 0;
-        }
-
-        line.setEndPoint(endPoint.add(deltaX, deltaY, 0));
+        // TODO: 30/04/2020  
     }
 
     enum Arrow {
