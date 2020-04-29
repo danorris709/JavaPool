@@ -5,6 +5,7 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.CompoundEntity;
+import me.dnorris.pool.arena.entity.shape.ArcShape;
 import me.dnorris.pool.arena.entity.shape.RectangleEntity;
 import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.hitbox.implementation.SquareLocationHitbox;
@@ -100,6 +101,15 @@ public class HollowRectangle extends CompoundEntity {
                     this.immovable,
                     this.interactable
             );
+        }
+
+        @Override
+        public EntityBuilder clone() {
+            Builder builder = (Builder) super.clone();
+
+            builder.outsideWidth = this.outsideWidth;
+
+            return builder;
         }
     }
 }

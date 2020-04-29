@@ -117,5 +117,15 @@ public class ArcShape extends AbstractEntity {
                     this.arcAngle
             );
         }
+
+        @Override
+        public EntityBuilder clone() {
+            Builder builder = (Builder) super.clone();
+
+            builder.arcAngle = this.arcAngle;
+            builder.startAngle = this.startAngle;
+
+            return builder;
+        }
     }
 }
