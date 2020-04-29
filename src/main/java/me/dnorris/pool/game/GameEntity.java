@@ -72,6 +72,7 @@ public class GameEntity {
     private static Entity cloth;
     private static Entity headString;
     private static Entity blackBallSpot;
+    private static Entity cueBall;
 
     public static Entity getBorder() {
         return BORDER;
@@ -159,5 +160,25 @@ public class GameEntity {
         }
 
         return blackBallSpot;
+    }
+
+    public static Entity getCueBall() {
+        if(cueBall == null) {
+            try {
+                cueBall = new EntityBuilder()
+                        .setLocation(new Location2D(100 + (1000 / 4) - 10, 100 + 250 - 10))
+                        .setColour(Color.WHITE)
+                        .setDimension(new Dimension(20, 20))
+                        .setInteractable(true)
+                        .setImmovable(false)
+                        .setHollow(false)
+                        .setType(EntityType.CIRCLE)
+                        .build();
+            } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return cueBall;
     }
 }
