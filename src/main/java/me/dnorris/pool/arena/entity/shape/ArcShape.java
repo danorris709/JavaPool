@@ -5,7 +5,7 @@ import me.dnorris.pool.arena.entity.AbstractEntity;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.data.hitbox.Hitbox;
-import me.dnorris.pool.data.hitbox.implementation.SquareLocationHitbox;
+import me.dnorris.pool.data.hitbox.implementation.location.SquareLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 
@@ -39,7 +39,7 @@ public class ArcShape extends AbstractEntity {
                     this.startAngle, this.arcAngle);
         }
 
-        this.setDirty(true);
+        this.setDirty(false);
     }
 
     @Override

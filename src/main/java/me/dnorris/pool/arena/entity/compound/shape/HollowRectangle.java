@@ -5,10 +5,9 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.CompoundEntity;
-import me.dnorris.pool.arena.entity.shape.ArcShape;
 import me.dnorris.pool.arena.entity.shape.RectangleEntity;
 import me.dnorris.pool.data.hitbox.Hitbox;
-import me.dnorris.pool.data.hitbox.implementation.SquareLocationHitbox;
+import me.dnorris.pool.data.hitbox.implementation.location.SquareLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 

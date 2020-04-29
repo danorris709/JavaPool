@@ -1,7 +1,7 @@
 package me.dnorris.pool.arena.entity.shape;
 
 import me.dnorris.pool.arena.entity.AbstractEntity;
-import me.dnorris.pool.data.hitbox.implementation.SquareLocationHitbox;
+import me.dnorris.pool.data.hitbox.implementation.location.SquareLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 
@@ -27,7 +27,7 @@ public class RectangleEntity extends AbstractEntity {
             graphics.fill(new Rectangle(this.getLocation().asPoint(), this.getHitbox().getDimensions()));
         }
 
-        this.setDirty(true);
+        this.setDirty(false);
     }
 
     @Override
