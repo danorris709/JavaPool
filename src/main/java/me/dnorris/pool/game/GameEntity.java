@@ -55,6 +55,18 @@ public class GameEntity {
             .setArcAngle(180)
             .build();
 
+    private static final Entity BOTTOM_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
+            .setLocation(new Location2D(70 + 1000, 70))
+            .setStartAngle(180)
+            .setArcAngle(90)
+            .build();
+
+    private static final Entity BOTTOM_LEFT_CORNER_HOLE = HOLE_TEMPLATE.clone()
+            .setLocation(new Location2D(70 + 1000, 570))
+            .setStartAngle(90)
+            .setArcAngle(90)
+            .build();
+
     private static Entity cloth;
     private static Entity headString;
 
@@ -76,6 +88,14 @@ public class GameEntity {
 
     public static Entity getBottomMiddleHole() {
         return BOTTOM_MIDDLE_HOLE;
+    }
+
+    public static Entity getBottomRightCornerHole() {
+        return BOTTOM_RIGHT_CORNER_HOLE;
+    }
+
+    public static Entity getBottomLeftCornerHole() {
+        return BOTTOM_LEFT_CORNER_HOLE;
     }
 
     public static Entity getCloth() {
