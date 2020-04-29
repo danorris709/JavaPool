@@ -208,7 +208,7 @@ public class GameEntity {
 
     public static PercentageBar getPercentageBar() {
         if(percentageBar == null) {
-            percentageBar = new PercentageBar(new Location2D(1120, 81), Color.RED, null, new Dimension(25, 538), 538, true, false);
+            percentageBar = new PercentageBar(new Location2D(1130, 100), Color.RED, null, new Dimension(25, 500), 500, true, false);
         }
 
         return percentageBar;
