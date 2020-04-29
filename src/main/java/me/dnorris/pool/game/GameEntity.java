@@ -71,6 +71,7 @@ public class GameEntity {
 
     private static Entity cloth;
     private static Entity headString;
+    private static Entity blackBallSpot;
 
     public static Entity getBorder() {
         return BORDER;
@@ -138,5 +139,25 @@ public class GameEntity {
         }
 
         return headString;
+    }
+
+    public static Entity getBlackBallSpot() {
+        if(blackBallSpot == null) {
+            try {
+                blackBallSpot = new EntityBuilder()
+                        .setLocation(new Location2D(850, 100 + 250))
+                        .setColour(Color.WHITE)
+                        .setDimension(new Dimension(4, 4))
+                        .setInteractable(false)
+                        .setImmovable(true)
+                        .setHollow(false)
+                        .setType(EntityType.CIRCLE)
+                        .build();
+            } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return blackBallSpot;
     }
 }

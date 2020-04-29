@@ -20,5 +20,6 @@ public class PoolClient {
         gameArena.addEntity(GameEntity.getBottomMiddleHole());
         gameArena.addEntity(GameEntity.getBottomRightCornerHole());
         gameArena.addEntity(GameEntity.getBottomLeftCornerHole());
+        gameArena.addEntity(GameEntity.getBlackBallSpot());
     }
 }
