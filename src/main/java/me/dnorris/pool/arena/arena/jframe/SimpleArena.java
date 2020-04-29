@@ -2,6 +2,7 @@ package me.dnorris.pool.arena.arena.jframe;
 
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.arena.AbstractGameArena;
+import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +15,8 @@ public class SimpleArena extends AbstractGameArena {
         super(dimensions);
 
         JFrame jFrame = new GameFrame(this);
+
+        jFrame.addKeyListener(new KeyHandlerListener(this));
 
         new Thread(() -> {
             while(true) {
