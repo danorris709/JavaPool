@@ -23,28 +23,36 @@ public class GameEntity {
             .setOutsideWidth(20)
             .build();
 
-    private static final Entity TOP_RIGHT_CORNER_HOLE = new ArcShape.Builder()
+    private static final ArcShape.Builder HOLE_TEMPLATE = new ArcShape.Builder()
             .setType(EntityType.ARC)
             .setColour(Color.BLACK)
             .setDimension(new Dimension(60, 60))
             .setHollow(false)
             .setImmovable(true)
-            .setInteractable(false)
+            .setInteractable(false);
+
+    private static final Entity TOP_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
             .setLocation(new Location2D(70, 70))
             .setStartAngle(0)
             .setArcAngle(-90)
             .build();
 
-    private static final Entity TOP_LEFT_CORNER_HOLE = new ArcShape.Builder()
-            .setType(EntityType.ARC)
-            .setColour(Color.BLACK)
-            .setDimension(new Dimension(60, 60))
-            .setHollow(false)
-            .setImmovable(true)
-            .setInteractable(false)
+    private static final Entity TOP_LEFT_CORNER_HOLE = HOLE_TEMPLATE.clone()
             .setLocation(new Location2D(70, 570))
             .setStartAngle(0)
             .setArcAngle(90)
+            .build();
+
+    private static final Entity TOP_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
+            .setLocation(new Location2D(100 + 500, 70))
+            .setStartAngle(180)
+            .setArcAngle(180)
+            .build();
+
+    private static final Entity BOTTOM_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
+            .setLocation(new Location2D(100 + 500, 570))
+            .setStartAngle(0)
+            .setArcAngle(180)
             .build();
 
     private static Entity cloth;
@@ -60,6 +68,14 @@ public class GameEntity {
 
     public static Entity getTopLeftCornerHole() {
         return TOP_LEFT_CORNER_HOLE;
+    }
+
+    public static Entity getTopMiddleHole() {
+        return TOP_MIDDLE_HOLE;
+    }
+
+    public static Entity getBottomMiddleHole() {
+        return BOTTOM_MIDDLE_HOLE;
     }
 
     public static Entity getCloth() {
