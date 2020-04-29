@@ -12,7 +12,7 @@ import java.util.List;
 
 public abstract class CompoundEntity extends AbstractEntity {
 
-    private List<Entity> entities;
+    protected List<Entity> entities;
 
     public CompoundEntity(Location centerLocation, Color colour, Vector motion, Hitbox hitbox, Entity... entities) {
         super(colour, centerLocation, hitbox, motion, false);
