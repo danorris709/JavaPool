@@ -13,7 +13,9 @@ public enum EntityType {
 
     RECTANGLE(RectangleEntity.class),
     CIRCLE(CircleEntity.class),
+
     HOLLOW_RECTANGLE(null),
+    ARC(null),
 
     ;
 
