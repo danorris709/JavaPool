@@ -1,6 +1,7 @@
-package me.dnorris.pool.data.hitbox.implementation;
+package me.dnorris.pool.data.hitbox.implementation.location;
 
 import me.dnorris.pool.data.hitbox.Hitbox;
+import me.dnorris.pool.data.hitbox.implementation.AbstractLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 
 import java.awt.*;
