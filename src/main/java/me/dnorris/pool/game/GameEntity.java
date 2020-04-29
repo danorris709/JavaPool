@@ -76,6 +76,7 @@ public class GameEntity {
     private static Entity cueBall;
     private static Entity blackBall;
     private static PercentageBar percentageBar;
+    private static Entity pointer;
 
     public static Entity getBorder() {
         return BORDER;
@@ -211,5 +212,25 @@ public class GameEntity {
         }
 
         return percentageBar;
+    }
+
+    public static Entity getPointer() {
+        if(pointer == null) {
+            try {
+                pointer = new EntityBuilder()
+                        .setLocation(new Location2D(100 + (1000 / 4), 100 + 250))
+                        .setColour(Color.WHITE)
+                        .setDimension(new Dimension(750, 1))
+                        .setInteractable(false)
+                        .setImmovable(false)
+                        .setHollow(false)
+                        .setType(EntityType.RECTANGLE)
+                        .build();
+            } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return pointer;
     }
 }
