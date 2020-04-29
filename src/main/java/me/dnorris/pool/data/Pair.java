@@ -1,5 +1,14 @@
 package me.dnorris.pool.data;
 
+/**
+ *
+ *  A DTO used for reducing the number of parameters passed to constructors
+ *  and keeping related immutable objects together.
+ *
+ * @param <A> First type
+ * @param <B> Second type
+ * @author https://github.com/danorris709
+ */
 public class Pair<A, B> {
 
     private final A first;
