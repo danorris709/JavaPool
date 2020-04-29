@@ -1,6 +1,7 @@
 package me.dnorris.pool.arena.entity;
 
 import me.dnorris.pool.arena.Entity;
+import me.dnorris.pool.arena.entity.shape.CircleEntity;
 import me.dnorris.pool.arena.entity.shape.RectangleEntity;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
@@ -11,6 +12,7 @@ import java.lang.reflect.Constructor;
 public enum EntityType {
 
     RECTANGLE(RectangleEntity.class),
+    CIRCLE(CircleEntity.class),
     HOLLOW_RECTANGLE(null),
 
     ;
