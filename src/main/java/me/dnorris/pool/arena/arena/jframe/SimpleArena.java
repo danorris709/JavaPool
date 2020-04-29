@@ -8,6 +8,8 @@ import java.awt.*;
 
 public class SimpleArena extends AbstractGameArena {
 
+    private final Object lock = new Object();
+
     public SimpleArena(Dimension dimensions) {
         super(dimensions);
 
@@ -27,10 +29,26 @@ public class SimpleArena extends AbstractGameArena {
     }
 
     @Override
+    public void addEntity(Entity entity) {
+        synchronized (this.lock) {
+            super.addEntity(entity);
+        }
+    }
+
+    @Override
+    public void removeEntity(Entity entity) {
+        synchronized (this.lock) {
+            super.removeEntity(entity);
+        }
+    }
+
+    @Override
     public void tick(Graphics2D graphics) {
-        for (Entity entity : this.getEntities()) {
-            entity.paint(graphics);
-            entity.tick();
+        synchronized (this.lock) {
+            for (Entity entity : this.getEntities()) {
+                entity.paint(graphics);
+                entity.tick();
+            }
         }
     }
 }
