@@ -16,6 +16,8 @@ public enum EntityType {
 
     HOLLOW_RECTANGLE(null),
     ARC(null),
+    LINE(null),
+    PERCENTAGE_BAR(null),
 
     ;
 
