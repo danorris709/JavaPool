@@ -27,11 +27,12 @@ public class ArcShape extends AbstractEntity {
     public void paint(Graphics2D graphics) {
         graphics.setColor(this.getColour());
 
-
         if (this.hollow)
-            graphics.drawOval(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
+            graphics.drawArc(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight(),
+                    this.startAngle, this.arcAngle);
         else {
-            graphics.fillOval(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
+            graphics.fillArc(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight(),
+                    this.startAngle, this.arcAngle);
         }
     }
 
