@@ -23,6 +23,7 @@ public class GameEntity {
             .build();
 
     private static Entity cloth;
+    private static Entity headString;
 
     public static Entity getBorder() {
         return BORDER;
@@ -48,4 +49,23 @@ public class GameEntity {
         return cloth;
     }
 
+    public static Entity getHeadString() {
+        if(headString == null) {
+            try {
+                headString = new EntityBuilder()
+                        .setLocation(new Location2D(100 + (1000 / 4), 100))
+                        .setColour(Color.WHITE)
+                        .setDimension(new Dimension(1, 500))
+                        .setInteractable(false)
+                        .setImmovable(true)
+                        .setHollow(true)
+                        .setType(EntityType.RECTANGLE)
+                        .build();
+            } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return headString;
+    }
 }
