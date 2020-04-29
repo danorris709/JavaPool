@@ -120,12 +120,31 @@ public class ArcShape extends AbstractEntity {
 
         @Override
         public Builder clone() {
-            Builder builder = (Builder) super.clone();
+            Builder newBuilder = new Builder();
 
-            builder.arcAngle = this.arcAngle;
-            builder.startAngle = this.startAngle;
+            if (this.hitbox != null) {
+                newBuilder.hitbox = this.hitbox.clone();
+            }
 
-            return builder;
+            if (this.location != null) {
+                newBuilder.location = this.location.clone();
+            }
+
+            if (this.dimension != null) {
+                newBuilder.dimension = new Dimension(this.dimension.width, this.dimension.height);
+            }
+
+            newBuilder.colour = this.colour;
+            newBuilder.motion = this.motion;
+            newBuilder.hollow = this.hollow;
+            newBuilder.immovable = this.immovable;
+            newBuilder.interactable = this.interactable;
+            newBuilder.type = this.type;
+
+            newBuilder.arcAngle = this.arcAngle;
+            newBuilder.startAngle = this.startAngle;
+
+            return newBuilder;
         }
     }
 }

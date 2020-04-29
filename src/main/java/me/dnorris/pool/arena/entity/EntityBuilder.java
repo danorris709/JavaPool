@@ -78,14 +78,23 @@ public class EntityBuilder {
     public EntityBuilder clone() {
         EntityBuilder newBuilder = new EntityBuilder();
 
+        if (this.hitbox != null) {
+            newBuilder.hitbox = this.hitbox.clone();
+        }
+
+        if (this.location != null) {
+            newBuilder.location = this.location.clone();
+        }
+
+        if (this.dimension != null) {
+            newBuilder.dimension = new Dimension(this.dimension.width, this.dimension.height);
+        }
+
         newBuilder.colour = this.colour;
-        newBuilder.location = this.location.clone();
-        newBuilder.hitbox = this.hitbox.clone();
         newBuilder.motion = this.motion;
         newBuilder.hollow = this.hollow;
         newBuilder.immovable = this.immovable;
         newBuilder.interactable = this.interactable;
-        newBuilder.dimension = new Dimension(this.dimension.width, this.dimension.height);
         newBuilder.type = this.type;
 
         return newBuilder;
