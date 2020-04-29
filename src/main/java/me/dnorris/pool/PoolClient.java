@@ -29,8 +29,7 @@ public class PoolClient {
         gameArena.addEntity(GameEntity.getBlackBallSpot());
         gameArena.addEntity(GameEntity.getCueBall());
         gameArena.addEntity(GameEntity.getBlackBall());
-        gameArena.addEntity(GameEntity.getEmptyPowerBar());
-        gameArena.addEntity(GameEntity.getFullPowerBar());
+        gameArena.addEntity(GameEntity.getPercentageBar());
 
         for(int i = 0; i < GameLocation.BALL_SPAWN_POINTS.length; i++) {
             gameArena.addEntity(getBall(i));
