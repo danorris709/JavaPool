@@ -18,7 +18,7 @@ public class GameEntity {
             .setInteractable(true)
             .setImmovable(true)
             .setType(EntityType.HOLLOW_RECTANGLE)
-            .setDimension(new Dimension(500, 250))
+            .setDimension(new Dimension(1000, 500))
             .setOutsideWidth(20)
             .build();
 
@@ -34,7 +34,7 @@ public class GameEntity {
                 cloth = new EntityBuilder()
                         .setLocation(new Location2D(100, 100))
                         .setColour(Colour.DARK_GREEN)
-                        .setDimension(new Dimension(500, 250))
+                        .setDimension(new Dimension(1000, 500))
                         .setImmovable(true)
                         .setInteractable(false)
                         .setHollow(false)
