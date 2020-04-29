@@ -15,13 +15,19 @@ public class CircleEntity extends AbstractEntity {
 
     @Override
     public void paint(Graphics2D graphics) {
+        if(!this.isDirty()) {
+            return;
+        }
+
         graphics.setColor(this.getColour());
 
-        if (this.hollow)
+        if (this.hollow) {
             graphics.drawOval(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
-        else {
+        } else {
             graphics.fillOval(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
         }
+
+        this.setDirty(false);
     }
 
     @Override

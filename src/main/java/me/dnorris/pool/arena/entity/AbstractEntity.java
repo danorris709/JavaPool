@@ -99,5 +99,6 @@ public abstract class AbstractEntity implements Entity {
 
         this.getMotion().setX(this.getMotion().getX() * FRICTION.getX());
         this.getMotion().setY(this.getMotion().getY() * FRICTION.getY());
+        this.dirty = true;
     }
 }
