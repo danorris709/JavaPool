@@ -10,7 +10,7 @@ import java.awt.*;
 
 public abstract class AbstractEntity implements Entity {
 
-    private static Vector FRICTION = new Vector2D(0.05, 0.05);
+    private static Vector FRICTION = new Vector2D(0.95, 0.95);
 
     private Color colour;
     private Location location;
