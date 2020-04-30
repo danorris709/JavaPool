@@ -8,6 +8,7 @@ import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameLocation;
 import me.dnorris.pool.game.handler.CuePowerHandler;
+import me.dnorris.pool.game.handler.CueReleaseHandler;
 import me.dnorris.pool.game.handler.PointerDirectionHandler;
 
 import java.awt.*;
@@ -39,6 +40,7 @@ public class PoolClient {
 
         gameArena.addHandler(CuePowerHandler.class);
         gameArena.addHandler(PointerDirectionHandler.class);
+        gameArena.addHandler(CueReleaseHandler.class);
     }
 
     private static Entity getBall(int position) {
