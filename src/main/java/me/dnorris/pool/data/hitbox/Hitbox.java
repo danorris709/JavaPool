@@ -4,6 +4,12 @@ import me.dnorris.pool.data.location.Location;
 
 import java.awt.*;
 
+/**
+ *
+ * Hitbox interface for determining what entities have what physical space
+ *
+ * @author https://github.com/danorris709
+ */
 public interface Hitbox {
 
     /**

@@ -2,6 +2,12 @@ package me.dnorris.pool.data.location;
 
 import java.awt.*;
 
+/**
+ *
+ * Location interface for representing a single point in the x,y,z plane
+ *
+ * @author https://github.com/danorris709
+ */
 public interface Location {
 
     /**
