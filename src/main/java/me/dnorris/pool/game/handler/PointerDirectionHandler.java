@@ -14,23 +14,32 @@ import java.util.Map;
 
 public class PointerDirectionHandler {
 
+    private boolean slowed = false;
+
     @KeyHandler(keyCode = { KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT }, getType = KeyEventType.KEY_PRESSED)
     public void onLeftArrowPressed(GameArena arena, KeyEvent event) {
         this.movePointerEndPoint(GameEntity.getPointer(), Arrow.fromKeyCode(event.getKeyCode()));
     }
 
-    private void movePointerEndPoint(LineEntity line, Arrow arrow) {
-        Location endPoint = line.getEndPoint();
-        Pair<Integer, Integer> pair = arrow.moveLine(line);
+    @KeyHandler(keyCode = KeyEvent.VK_SHIFT, getType = KeyEventType.KEY_PRESSED)
+    public void onShiftHeld(GameArena arena, KeyEvent event) {
+        this.slowed = true;
+    }
 
-        line.setEndPoint(endPoint.add(pair.getFirst(), pair.getSecond(), 0));
+    @KeyHandler(keyCode = KeyEvent.VK_SHIFT, getType = KeyEventType.KEY_RELEASED)
+    public void onShiftRelease(GameArena arena, KeyEvent event) {
+        this.slowed = false;
+    }
+
+    private void movePointerEndPoint(LineEntity line, Arrow arrow) {
+        line.setEndPoint(arrow.moveLine(line, slowed));
     }
 
     enum Arrow {
 
         LEFT(KeyEvent.VK_RIGHT) {
             @Override
-            public Pair<Integer, Integer> moveLine(LineEntity lineEntity) {
+            public Pair<Integer, Integer> getNextPosition(LineEntity lineEntity) {
                 Location endPoint = lineEntity.getEndPoint();
 
                 if (endPoint.getY() == TOP_Y_POINT) {
@@ -56,7 +65,7 @@ public class PointerDirectionHandler {
         },
         RIGHT(KeyEvent.VK_LEFT) {
             @Override
-            public Pair<Integer, Integer> moveLine(LineEntity lineEntity) {
+            public Pair<Integer, Integer> getNextPosition(LineEntity lineEntity) {
                 Location endPoint = lineEntity.getEndPoint();
 
                 if (endPoint.getY() == TOP_Y_POINT) {
@@ -102,7 +111,47 @@ public class PointerDirectionHandler {
             this.keyCode = keyCode;
         }
         
-        public abstract Pair<Integer, Integer> moveLine(LineEntity lineEntity);
+        public abstract Pair<Integer, Integer> getNextPosition(LineEntity lineEntity);
+
+        public Location moveLine(LineEntity lineEntity, boolean slowed) {
+            Location endPoint = this.getUpdateNextPos(lineEntity, slowed);
+
+            if(endPoint.getX() <= LEFT_X_POINT) {
+                endPoint.setX(LEFT_X_POINT);
+            }else if(endPoint.getX() >= RIGHT_X_POINT) {
+                endPoint.setX(RIGHT_X_POINT);
+            }
+
+            if(endPoint.getY() <= TOP_Y_POINT) {
+                endPoint.setY(TOP_Y_POINT);
+            }else if(endPoint.getY() >= BOTTOM_Y_POINT) {
+                endPoint.setY(BOTTOM_Y_POINT);
+            }
+
+            return endPoint;
+        }
+
+        private Location getUpdateNextPos(LineEntity lineEntity, boolean slowed) {
+            Pair<Integer, Integer> nextPosition = getNextPosition(lineEntity);
+
+            if (slowed) {
+                if(nextPosition.getFirst() != 0) {
+                    if(nextPosition.getFirst() < 0) {
+                        nextPosition = new Pair<>(-1, 0);
+                    }else {
+                        nextPosition = new Pair<>(1, 0);
+                    }
+                }else {
+                    if(nextPosition.getSecond() < 0) {
+                        nextPosition = new Pair<>(0, -1);
+                    }else {
+                        nextPosition = new Pair<>(0, 1);
+                    }
+                }
+            }
+
+            return lineEntity.getEndPoint().add(nextPosition.getFirst(), nextPosition.getSecond(), 0);
+        }
 
         public static Arrow fromKeyCode(long keyCode) {
             return ARROW_MAP.get(keyCode);
