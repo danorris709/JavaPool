@@ -18,7 +18,6 @@ public abstract class AbstractEntity implements Entity {
     private Vector motion;
 
     protected boolean hollow;
-    protected boolean dirty;
 
     protected AbstractEntity(Color colour, Location location, Hitbox hitbox, Vector motion, boolean hollow) {
         this.colour = colour;
@@ -26,7 +25,6 @@ public abstract class AbstractEntity implements Entity {
         this.hitbox = hitbox;
         this.motion = motion;
         this.hollow = hollow;
-        this.dirty = true;
     }
 
     protected boolean isHollow() {
@@ -35,16 +33,6 @@ public abstract class AbstractEntity implements Entity {
 
     protected void setHollow(boolean hollow) {
         this.hollow = hollow;
-    }
-
-    @Override
-    public boolean isDirty() {
-        return this.dirty;
-    }
-
-    @Override
-    public void setDirty(boolean dirty) {
-        this.dirty = dirty;
     }
 
     @Override
@@ -101,6 +89,5 @@ public abstract class AbstractEntity implements Entity {
 
         this.getMotion().setX(this.getMotion().getX() * FRICTION.getX());
         this.getMotion().setY(this.getMotion().getY() * FRICTION.getY());
-        this.dirty = true;
     }
 }
