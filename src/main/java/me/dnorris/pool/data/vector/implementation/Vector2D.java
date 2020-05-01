@@ -4,13 +4,26 @@ import me.dnorris.pool.data.vector.Vector;
 
 import java.util.Objects;
 
+/**
+ *
+ * Two dimensional implementation of the {@link Vector} implementation
+ *
+ * @author https://github.com/danorris709
+ */
 public class Vector2D implements Vector {
 
-    public static final Vector NONE = new Vector2D(0.0, 0.0);
+    public static final Vector NONE = new Vector2D(0.0, 0.0); // No motion vector constant
 
-    private double x;
-    private double y;
+    private double x;                                               // x motion of the Vector
+    private double y;                                               // y motion of the Vector
 
+    /**
+     *
+     * Basic constructor passing x, and y values for the two dimensional vector
+     *
+     * @param x The x motion of the vector
+     * @param y The y motion of the vector
+     */
     public Vector2D(double x, double y) {
         this.x = x;
         this.y = y;
