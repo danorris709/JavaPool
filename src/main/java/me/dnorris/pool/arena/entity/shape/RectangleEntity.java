@@ -10,7 +10,7 @@ import java.awt.*;
 public class RectangleEntity extends AbstractEntity {
 
     public RectangleEntity(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable) {
-        super(colour, location, new SquareLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
+        super(colour, location, new SquareLocationHitbox(1, location, dimension, immovable, interactable), motion, hollow);
     }
 
     @Override
