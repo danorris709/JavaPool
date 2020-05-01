@@ -8,10 +8,6 @@ import java.awt.*;
 
 public interface Entity {
 
-    boolean isDirty();
-
-    void setDirty(boolean dirty);
-
     Color getColour();
 
     void setColour(Color colour);

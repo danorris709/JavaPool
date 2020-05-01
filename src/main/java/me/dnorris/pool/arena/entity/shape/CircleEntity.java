@@ -10,15 +10,11 @@ import java.awt.*;
 public class CircleEntity extends AbstractEntity {
 
     public CircleEntity(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable) {
-        super(colour, location, new SquareLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
+        super(colour, location, new SquareLocationHitbox(1, location, dimension, immovable, interactable), motion, hollow);
     }
 
     @Override
     public void paint(Graphics2D graphics) {
-        if(!this.isDirty()) {
-            return;
-        }
-
         graphics.setColor(this.getColour());
 
         if (this.hollow) {
@@ -26,8 +22,6 @@ public class CircleEntity extends AbstractEntity {
         } else {
             graphics.fillOval(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
         }
-
-        this.setDirty(false);
     }
 
     @Override

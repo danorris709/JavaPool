@@ -111,7 +111,6 @@ public class PercentageBar extends CompoundEntity {
                 fullDimensions.getWidth(),
                 fullDimensions.getHeight() + change
         );
-        this.filledBar.setDirty(true);
     }
 
     private void updateEmptyPercentage(int change) {
@@ -121,6 +120,5 @@ public class PercentageBar extends CompoundEntity {
                 emptyDimensions.getWidth(),
                 emptyDimensions.getHeight() - change
         );
-        this.emptyBar.setDirty(true);
     }
 }

@@ -27,19 +27,12 @@ public class LineEntity extends AbstractEntity {
 
     public void setEndPoint(Location endPoint) {
         this.endPoint = endPoint;
-        this.setDirty(true);
     }
 
     @Override
     public void paint(Graphics2D graphics) {
-        if (!this.isDirty()) {
-            return;
-        }
-
         graphics.setColor(this.getColour());
         graphics.drawLine(this.getLocation().getX(), this.getLocation().getY(), this.getEndPoint().getX(), this.getEndPoint().getY());
-
-        this.setDirty(false);
     }
 
     @Override
