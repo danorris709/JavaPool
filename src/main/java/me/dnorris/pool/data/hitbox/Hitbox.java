@@ -14,6 +14,15 @@ public interface Hitbox {
 
     /**
      *
+     * Each {@link Hitbox} type will have a priority which determines which {@link Hitbox} should handle the collision.
+     * Therefore, higher priority {@link Hitbox}s will handle the collisions.
+     *
+     * @return
+     */
+    int getPriority();
+
+    /**
+     *
      * Center {@link Location} of the {@link Hitbox}
      *
      * @return The center of the {@link Hitbox}

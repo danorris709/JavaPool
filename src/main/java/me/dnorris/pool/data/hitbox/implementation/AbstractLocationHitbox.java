@@ -7,16 +7,23 @@ import java.awt.*;
 
 public abstract class AbstractLocationHitbox implements Hitbox {
 
+    private final int priority;
     private Location center;
     private Dimension dimensions;
     private boolean immovable;
     private boolean interactable;
 
-    public AbstractLocationHitbox(Location center, Dimension dimensions, boolean immovable, boolean interactable) {
+    public AbstractLocationHitbox(int priority, Location center, Dimension dimensions, boolean immovable, boolean interactable) {
+        this.priority = priority;
         this.center = center;
         this.dimensions = dimensions;
         this.immovable = immovable;
         this.interactable = interactable;
+    }
+
+    @Override
+    public int getPriority() {
+        return this.priority;
     }
 
     @Override

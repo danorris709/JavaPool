@@ -9,7 +9,7 @@ import java.awt.*;
 public class EmptyHitbox extends AbstractLocationHitbox {
 
     public EmptyHitbox(Location center, boolean immovable) {
-        super(center, new Dimension(0, 0), immovable, false);
+        super(Integer.MIN_VALUE, center, new Dimension(0, 0), immovable, false);
     }
 
     @Override

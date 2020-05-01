@@ -8,12 +8,16 @@ import java.awt.*;
 
 public class SquareLocationHitbox extends AbstractLocationHitbox {
 
-    public SquareLocationHitbox(Location center, Dimension dimensions, boolean immovable, boolean interactable) {
-        super(center, dimensions, immovable, interactable);
+    public SquareLocationHitbox(int priority, Location center, Dimension dimensions, boolean immovable, boolean interactable) {
+        super(priority, center, dimensions, immovable, interactable);
     }
 
     @Override
     public boolean isColliding(Hitbox other) {
+        if(other.getPriority() > this.getPriority()) {
+            return other.isColliding(this);
+        }
+
         if(!super.isColliding(other)) {
             return false;
         }
@@ -24,6 +28,7 @@ public class SquareLocationHitbox extends AbstractLocationHitbox {
     @Override
     public Hitbox clone() {
         return new SquareLocationHitbox(
+                this.getPriority(),
                 this.getCenter().clone(),
                 new Dimension(this.getDimensions().width, this.getDimensions().height),
                 this.isImmovable(),
