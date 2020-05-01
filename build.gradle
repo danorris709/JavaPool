@@ -17,3 +17,11 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '21.0'
     compile group: 'it.unimi.dsi', name: 'fastutil', version: '8.2.1'
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'me.dnorris.pool.PoolClient'
+        )
+    }
+}
