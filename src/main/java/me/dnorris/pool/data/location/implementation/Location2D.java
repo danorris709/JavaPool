@@ -5,11 +5,24 @@ import me.dnorris.pool.data.location.Location;
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ *
+ * Two dimensional implementation of the {@link Location} interface
+ *
+ * @author https://github.com/danorris709
+ */
 public class Location2D implements Location {
 
-    private int x;
-    private int y;
+    private int x;      // x position of the Location
+    private int y;      // y position of the Location
 
+    /**
+     *
+     * Basic constructor passing x, and y values for the two dimensional location
+     *
+     * @param x The x position of the location
+     * @param y The y position of the location
+     */
     public Location2D(int x, int y) {
         this.x = x;
         this.y = y;

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  *
- * Two dimensional implementation of the {@link Vector} implementation
+ * Two dimensional implementation of the {@link Vector} interface
  *
  * @author https://github.com/danorris709
  */
