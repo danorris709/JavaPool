@@ -8,14 +8,13 @@ import java.awt.*;
 
 public class RectangleLocationHitbox extends AbstractLocationHitbox {
 
-    public RectangleLocationHitbox(int priority, Location center, Dimension dimensions, boolean immovable, boolean interactable) {
-        super(priority, center, dimensions, immovable, interactable);
+    public RectangleLocationHitbox(Location center, Dimension dimensions, boolean immovable, boolean interactable) {
+        super(1, center, dimensions, immovable, interactable);
     }
 
     @Override
     public Hitbox clone() {
         return new RectangleLocationHitbox(
-                this.getPriority(),
                 this.getCenter().clone(),
                 new Dimension(this.getDimensions().width, this.getDimensions().height),
                 this.isImmovable(),
