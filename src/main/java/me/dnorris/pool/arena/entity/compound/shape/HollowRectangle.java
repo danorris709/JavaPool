@@ -7,6 +7,7 @@ import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.CompoundEntity;
 import me.dnorris.pool.arena.entity.shape.RectangleEntity;
 import me.dnorris.pool.data.hitbox.Hitbox;
+import me.dnorris.pool.data.hitbox.implementation.location.HollowRectangleLocationHitbox;
 import me.dnorris.pool.data.hitbox.implementation.location.RectangleLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
@@ -17,7 +18,8 @@ import java.util.List;
 public class HollowRectangle extends CompoundEntity {
 
     public HollowRectangle(Location centerLocation, Color colour, Vector motion, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
-        super(centerLocation, colour, motion, null, createEntities(centerLocation, colour, dimension, outsideWidth, immovable, interactable));
+        super(centerLocation, colour, motion, new HollowRectangleLocationHitbox(centerLocation, dimension, outsideWidth, immovable, interactable),
+                createEntities(centerLocation, colour, dimension, outsideWidth, immovable, interactable));
     }
 
     private static RectangleEntity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
