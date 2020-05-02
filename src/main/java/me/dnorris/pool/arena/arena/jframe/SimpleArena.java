@@ -57,8 +57,7 @@ public class SimpleArena extends AbstractGameArena {
                     }
 
                     if(other.getHitbox().isColliding(entity.getHitbox())) {
-                        other.setMotion(new Vector2D(10, 10));
-                        break;
+                        // TODO: 02/05/2020 physics belong here
                     }
                 }
 
