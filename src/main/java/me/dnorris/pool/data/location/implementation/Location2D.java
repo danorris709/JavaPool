@@ -123,4 +123,12 @@ public class Location2D implements Location {
     public int hashCode() {
         return Objects.hash(this.x, this.y);
     }
+
+    @Override
+    public String toString() {
+        return "Location2D{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
