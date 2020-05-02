@@ -22,7 +22,15 @@ public class RectangleLocationHitbox extends AbstractLocationHitbox {
             return false;
         }
 
-        return false;
+        double distanceY = Math.abs(this.getCenter().getY() - other.getCenter().getY());
+
+        if(distanceY <= this.getDimensions().getHeight()) {
+            return true;
+        }
+
+        double distanceX = Math.abs(this.getCenter().getX() - other.getCenter().getX());
+
+        return distanceX <= this.getDimensions().width;
     }
 
     @Override
