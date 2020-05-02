@@ -85,6 +85,19 @@ public class Location2D implements Location {
         return location;
     }
 
+    @Override
+    public double distance(Location other) {
+        return this.distanceSquared(other);
+    }
+
+    @Override
+    public double distanceSquared(Location other) {
+        double xDistance = Math.abs(this.x - other.getX());
+        double yDistance = Math.abs(this.y - other.getY());
+
+        return Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));
+    }
+
     @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Override
     public Location clone() {

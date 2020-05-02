@@ -96,4 +96,22 @@ public interface Location {
      */
     Location subtract(int x, int y, int z);
 
+    /**
+     *
+     * Finds the distance between the two {@link Location}
+     *
+     * @param other The second {@link Location}
+     * @return The distance between the two
+     */
+    double distance(Location other);
+
+    /**
+     *
+     * Finds the squared distance between the two {@link Location}
+     *
+     * @param other The second {@link Location}
+     * @return The squared distance between the two
+     */
+    double distanceSquared(Location other);
+
 }
