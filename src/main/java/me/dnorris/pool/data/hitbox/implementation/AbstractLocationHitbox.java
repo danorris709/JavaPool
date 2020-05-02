@@ -58,7 +58,23 @@ public abstract class AbstractLocationHitbox implements Hitbox {
 
     @Override
     public boolean isColliding(Hitbox other) {
-        return this.isInteractable() && other.isInteractable();
+        if(!(this.isInteractable() && other.isInteractable())) {
+            return false;
+        }
+
+        if(other.getPriority() > this.getPriority()) {
+            return other.isColliding(this);
+        }
+
+        double distanceY = Math.abs(this.getCenter().getY() - other.getCenter().getY());
+
+        if(distanceY <= this.getDimensions().getHeight()) {
+            return true;
+        }
+
+        double distanceX = Math.abs(this.getCenter().getX() - other.getCenter().getX());
+
+        return distanceX <= this.getDimensions().width;
     }
 
     @Override
