@@ -17,7 +17,7 @@ public class ArcShape extends AbstractEntity {
     private int arcAngle;
 
     public ArcShape(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable, int startAngle, int arcAngle) {
-        super(colour, location, new RectangleLocationHitbox(1, location, dimension, immovable, interactable), motion, hollow);
+        super(colour, location, new RectangleLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
 
         this.startAngle = startAngle;
         this.arcAngle = arcAngle;

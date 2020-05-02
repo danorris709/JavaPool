@@ -10,7 +10,7 @@ import java.awt.*;
 public class CircleEntity extends AbstractEntity {
 
     public CircleEntity(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable) {
-        super(colour, location, new RectangleLocationHitbox(1, location, dimension, immovable, interactable), motion, hollow);
+        super(colour, location, new RectangleLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
     }
 
     @Override

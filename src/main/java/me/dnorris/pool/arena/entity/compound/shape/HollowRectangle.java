@@ -25,7 +25,7 @@ public class HollowRectangle extends CompoundEntity {
 
         for(int i = 0; i < outsideWidth; i++) {
             Location nextPoint = centerPoint.subtract(i, i, 0);
-            Hitbox hitbox = new RectangleLocationHitbox(1, nextPoint, new Dimension(dimension.width + 2*i, dimension.height + 2*i), immovable, interactable);
+            Hitbox hitbox = new RectangleLocationHitbox(nextPoint, new Dimension(dimension.width + 2*i, dimension.height + 2*i), immovable, interactable);
 
             entities.add(new RectangleEntity(nextPoint, colour, null, hitbox.getDimensions(), true, immovable, interactable));
         }
