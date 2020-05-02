@@ -78,6 +78,10 @@ public class PercentageBar extends CompoundEntity {
         return this.filledPercentage;
     }
 
+    public double getPercentage() {
+        return this.filledPercentage / 100.00;
+    }
+
     public void addPercentage(int delta) {
         if((this.filledPercentage + delta) > 100) {
             delta = 100 - this.filledPercentage;
