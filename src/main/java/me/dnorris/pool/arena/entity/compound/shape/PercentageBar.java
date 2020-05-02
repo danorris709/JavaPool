@@ -5,6 +5,7 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.CompoundEntity;
+import me.dnorris.pool.data.hitbox.implementation.location.EmptyHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 
@@ -21,7 +22,7 @@ public class PercentageBar extends CompoundEntity {
     private int maxHeight;
 
     public PercentageBar(Location centerLocation, Color colour, Vector motion, Dimension dimension, int maxHeight, boolean immovable, boolean interactable) {
-        super(centerLocation, colour, motion, null, createEntities(centerLocation, colour, dimension, maxHeight, immovable, interactable));
+        super(centerLocation, colour, motion, new EmptyHitbox(centerLocation, immovable), createEntities(centerLocation, colour, dimension, maxHeight, immovable, interactable));
 
         this.maxHeight = maxHeight + 2;
         this.emptyBar = this.entities.get(0);
