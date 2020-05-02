@@ -1,7 +1,7 @@
 package me.dnorris.pool.arena.entity.shape;
 
 import me.dnorris.pool.arena.entity.AbstractEntity;
-import me.dnorris.pool.data.hitbox.implementation.location.SquareLocationHitbox;
+import me.dnorris.pool.data.hitbox.implementation.location.RectangleLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 
@@ -10,7 +10,7 @@ import java.awt.*;
 public class RectangleEntity extends AbstractEntity {
 
     public RectangleEntity(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable) {
-        super(colour, location, new SquareLocationHitbox(1, location, dimension, immovable, interactable), motion, hollow);
+        super(colour, location, new RectangleLocationHitbox(1, location, dimension, immovable, interactable), motion, hollow);
     }
 
     @Override

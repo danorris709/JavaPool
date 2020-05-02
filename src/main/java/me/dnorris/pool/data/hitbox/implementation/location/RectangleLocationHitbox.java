@@ -6,9 +6,9 @@ import me.dnorris.pool.data.location.Location;
 
 import java.awt.*;
 
-public class SquareLocationHitbox extends AbstractLocationHitbox {
+public class RectangleLocationHitbox extends AbstractLocationHitbox {
 
-    public SquareLocationHitbox(int priority, Location center, Dimension dimensions, boolean immovable, boolean interactable) {
+    public RectangleLocationHitbox(int priority, Location center, Dimension dimensions, boolean immovable, boolean interactable) {
         super(priority, center, dimensions, immovable, interactable);
     }
 
@@ -27,7 +27,7 @@ public class SquareLocationHitbox extends AbstractLocationHitbox {
 
     @Override
     public Hitbox clone() {
-        return new SquareLocationHitbox(
+        return new RectangleLocationHitbox(
                 this.getPriority(),
                 this.getCenter().clone(),
                 new Dimension(this.getDimensions().width, this.getDimensions().height),
