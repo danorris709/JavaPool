@@ -58,7 +58,7 @@ public abstract class AbstractLocationHitbox implements Hitbox {
 
     @Override
     public boolean isColliding(Hitbox other) {
-        return !this.isInteractable();
+        return this.isInteractable() && other.isInteractable();
     }
 
     @Override
