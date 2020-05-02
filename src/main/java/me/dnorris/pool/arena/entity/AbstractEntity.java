@@ -80,7 +80,7 @@ public abstract class AbstractEntity implements Entity {
 
     @Override
     public void tick() {
-        if(this.hitbox == null || this.hitbox.isImmovable()) {
+        if (this.hitbox == null || this.hitbox.isImmovable()) {
             return;
         }
 
@@ -89,5 +89,13 @@ public abstract class AbstractEntity implements Entity {
 
         this.getMotion().setX(this.getMotion().getX() * FRICTION.getX());
         this.getMotion().setY(this.getMotion().getY() * FRICTION.getY());
+
+        if (this.getMotion().getX() <= 1.0 && this.getMotion().getY() <= 1.0) {
+            this.setMotion(Vector2D.NONE);
+        } else if (this.getMotion().getX() <= 1.0) {
+            this.setMotion(new Vector2D(0, this.getMotion().getY()));
+        } else if (this.getMotion().getY() <= 1.0) {
+            this.setMotion(new Vector2D(this.getMotion().getX(), 0));
+        }
     }
 }
