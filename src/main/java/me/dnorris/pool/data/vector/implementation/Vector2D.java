@@ -103,4 +103,12 @@ public class Vector2D implements Vector {
     public int hashCode() {
         return Objects.hash(this.x, this.y);
     }
+
+    @Override
+    public String toString() {
+        return "Vector2D{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
