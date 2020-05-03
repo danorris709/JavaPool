@@ -16,6 +16,22 @@ public interface Entity {
 
     /**
      *
+     * Gets the {@link GameArena} with which the entity is associated
+     *
+     * @return The {@link GameArena} where the entity lives
+     */
+    GameArena getArena();
+
+    /**
+     *
+     * Sets the {@link GameArena} with which the entity is associated
+     *
+     * @param arena The new {@link GameArena} where the entity lives
+     */
+    void setArena(GameArena arena);
+
+    /**
+     *
      * Gets the {@link Color} of the {@link Entity} on the {@link GameArena}
      *
      * @return The {@link Color} of the {@link Entity}
