@@ -73,7 +73,7 @@ public class SimpleArena extends AbstractGameArena {
         Location firstLocation = first.getLocation();
         Location secondLocation = second.getLocation();
 
-        Vector impactVector = new Vector2D(secondLocation.getX() - firstLocation.getX(), secondLocation.getX() - firstLocation.getX()).normalize();
+        Vector impactVector = this.calculateNormalizedImpact(firstLocation, secondLocation);
         double firstDotProduct = first.getMotion().dotProduct(impactVector);
         double secondDotProduct = second.getMotion().dotProduct(impactVector);
 
@@ -87,6 +87,10 @@ public class SimpleArena extends AbstractGameArena {
 
         first.setMotion(firstEndMotion.multiply(scalar));
         second.setMotion(secondEndMotion.multiply(scalar));
+    }
+
+    private Vector calculateNormalizedImpact(Location firstLocation, Location secondLocation) {
+        return new Vector2D(secondLocation.getX() - firstLocation.getX(), secondLocation.getY() - firstLocation.getY()).normalize();
     }
 
     private double calculateScalar(Vector startFirst, Vector startSecond, Vector endFirst, Vector endSecond) {
