@@ -70,7 +70,16 @@ public interface Vector {
      *
      * @return a new unit {@link Vector}
      */
-    Vector getUnitVector();
+    Vector normalize();
+
+    /**
+     *
+     * Multiply the X and Y values of the {@link Vector} by the specified parameter
+     *
+     * @param value The amount to multiply by
+     * @return a new clone of the vector
+     */
+    Vector multiply(double value);
 
     /**
      *
@@ -79,6 +88,15 @@ public interface Vector {
      * @return The new clone
      */
     Vector clone();
+
+    /**
+     *
+     * Calculate the dot product between the two {@link Vector}s
+     *
+     * @param vector The other {@link Vector}
+     * @return the dot product
+     */
+    double dotProduct(Vector vector);
 
     // TODO: 21/04/2020 Add more maths functions as required
 

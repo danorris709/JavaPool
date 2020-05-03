@@ -73,7 +73,7 @@ public class Vector2D implements Vector {
     }
 
     @Override
-    public Vector getUnitVector() {
+    public Vector normalize() {
         Vector clone = this.clone();
         double length = clone.getLength();
 
@@ -81,6 +81,16 @@ public class Vector2D implements Vector {
         clone.setY(clone.getY() / length);
 
         return clone;
+    }
+
+    @Override
+    public double dotProduct(Vector vector) {
+        return Math.abs((this.getX() * vector.getX()) + (this.getY() * vector.getY()));
+    }
+
+    @Override
+    public Vector multiply(double value) {
+        return new Vector2D(this.x * value, this.y * value);
     }
 
     @Override
