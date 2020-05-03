@@ -53,18 +53,21 @@ public class SimpleArena extends AbstractGameArena {
     public void tick(Graphics2D graphics) {
         synchronized (this.lock) {
             for (Entity entity : this.getEntities()) {
-                for(Entity other : this.getEntities()) {
-                    if(Objects.equals(other, entity) || other.getHitbox() == null || entity.getHitbox() == null) {
-                        continue;
-                    }
-
-                    if(other.getHitbox().isColliding(entity.getHitbox())) {
-                        this.handlePhysics(entity, other);
-                    }
-                }
-
                 entity.paint(graphics);
                 entity.tick();
+            }
+        }
+    }
+
+    @Override
+    public void doPhysics(Entity entity) {
+        for(Entity other : this.getEntities()) {
+            if(Objects.equals(other, entity) || other.getHitbox() == null || entity.getHitbox() == null) {
+                continue;
+            }
+
+            if(other.getHitbox().isColliding(entity.getHitbox())) {
+                this.handlePhysics(entity, other);
             }
         }
     }

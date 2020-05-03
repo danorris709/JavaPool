@@ -84,8 +84,15 @@ public abstract class AbstractEntity implements Entity {
             return;
         }
 
-        this.getLocation().setX((int) (this.getLocation().getX() + this.getMotion().getX()));
-        this.getLocation().setY((int) (this.getLocation().getY() + this.getMotion().getY()));
+        for(int i = 0; i < this.getMotion().getX(); i++) {
+            this.getLocation().setX(this.getLocation().getX() + 1);
+            // TODO: 03/05/2020 physics check
+        }
+
+        for(int i = 0; i < this.getMotion().getY(); i++) {
+            this.getLocation().setY(this.getLocation().getY() + 1);
+            // TODO: 03/05/2020 physics check
+        }
 
         this.getMotion().setX(this.getMotion().getX() * FRICTION.getX());
         this.getMotion().setY(this.getMotion().getY() * FRICTION.getY());

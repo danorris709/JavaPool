@@ -23,4 +23,6 @@ public interface GameArena {
 
     void tick(Graphics2D graphics);
 
+    void doPhysics(Entity entity);
+
 }
