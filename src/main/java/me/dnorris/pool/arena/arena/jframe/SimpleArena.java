@@ -3,6 +3,8 @@ package me.dnorris.pool.arena.arena.jframe;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.arena.AbstractGameArena;
 import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
+import me.dnorris.pool.data.location.Location;
+import me.dnorris.pool.data.vector.Vector;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import javax.swing.*;
@@ -57,7 +59,7 @@ public class SimpleArena extends AbstractGameArena {
                     }
 
                     if(other.getHitbox().isColliding(entity.getHitbox())) {
-                        // TODO: 02/05/2020 physics belong here
+                        this.handlePhysics(entity, other);
                     }
                 }
 
@@ -65,5 +67,29 @@ public class SimpleArena extends AbstractGameArena {
                 entity.tick();
             }
         }
+    }
+
+    private void handlePhysics(Entity first, Entity second) {
+        Location firstLocation = first.getLocation();
+        Location secondLocation = second.getLocation();
+
+        Vector impactVector = new Vector2D(secondLocation.getX() - firstLocation.getX(), secondLocation.getX() - firstLocation.getX()).normalize();
+        double firstDotProduct = first.getMotion().dotProduct(impactVector);
+        double secondDotProduct = second.getMotion().dotProduct(impactVector);
+
+        Vector firstDeflect = new Vector2D(-impactVector.getX() * secondDotProduct, -impactVector.getY() * secondDotProduct);
+        Vector secondDeflect = new Vector2D(impactVector.getX() * firstDotProduct, impactVector.getY() * firstDotProduct);
+
+        Vector firstEndMotion = new Vector2D(first.getMotion().getX() + firstDeflect.getX() - secondDeflect.getX(), first.getMotion().getY() + firstDeflect.getY() - secondDeflect.getY());
+        Vector secondEndMotion = new Vector2D(second.getMotion().getX() + secondDeflect.getX() - firstDeflect.getX(), second.getMotion().getY() + secondDeflect.getY() - firstDeflect.getY());
+
+        double scalar = this.calculateScalar(first.getMotion(), second.getMotion(), firstEndMotion, secondEndMotion);
+
+        first.setMotion(firstEndMotion.multiply(scalar));
+        second.setMotion(secondEndMotion.multiply(scalar));
+    }
+
+    private double calculateScalar(Vector startFirst, Vector startSecond, Vector endFirst, Vector endSecond) {
+        return (startFirst.getLength() + startSecond.getLength()) / (endFirst.getLength() + endSecond.getLength());
     }
 }
