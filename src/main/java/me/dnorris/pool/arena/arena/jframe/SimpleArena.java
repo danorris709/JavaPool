@@ -3,6 +3,7 @@ package me.dnorris.pool.arena.arena.jframe;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.arena.AbstractGameArena;
 import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
+import me.dnorris.pool.arena.entity.compound.shape.HollowRectangle;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
@@ -27,7 +28,7 @@ public class SimpleArena extends AbstractGameArena {
                 jFrame.repaint();
 
                 try {
-                    Thread.sleep(5);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -73,9 +74,8 @@ public class SimpleArena extends AbstractGameArena {
     }
 
     private void handlePhysics(Entity first, Entity second) {
-        Location firstLocation = first.getLocation();
-        Location secondLocation = second.getLocation();
-
+        Location firstLocation = getEntityLocation(first, second);
+        Location secondLocation = getEntityLocation(second, first);
         Vector impactVector = this.calculateNormalizedImpact(firstLocation, secondLocation);
         double firstDotProduct = first.getMotion().dotProduct(impactVector);
         double secondDotProduct = second.getMotion().dotProduct(impactVector);
@@ -83,13 +83,24 @@ public class SimpleArena extends AbstractGameArena {
         Vector firstDeflect = new Vector2D(-impactVector.getX() * secondDotProduct, -impactVector.getY() * secondDotProduct);
         Vector secondDeflect = new Vector2D(impactVector.getX() * firstDotProduct, impactVector.getY() * firstDotProduct);
 
-        Vector firstEndMotion = new Vector2D(first.getMotion().getX() + firstDeflect.getX() - secondDeflect.getX(), first.getMotion().getY() + firstDeflect.getY() - secondDeflect.getY());
-        Vector secondEndMotion = new Vector2D(second.getMotion().getX() + secondDeflect.getX() - firstDeflect.getX(), second.getMotion().getY() + secondDeflect.getY() - firstDeflect.getY());
+        Vector firstEndMotion = new Vector2D(first.getMotion().getX() + firstDeflect.getX() - secondDeflect.getX(), -(first.getMotion().getY() + firstDeflect.getY() - secondDeflect.getY()));
+        Vector secondEndMotion = new Vector2D(second.getMotion().getX() + secondDeflect.getX() - firstDeflect.getX(), -(second.getMotion().getY() + secondDeflect.getY() - firstDeflect.getY()));
 
         double scalar = this.calculateScalar(first.getMotion(), second.getMotion(), firstEndMotion, secondEndMotion);
 
+        System.out.println(firstEndMotion.multiply(scalar) + " " + secondEndMotion.multiply(scalar));
         first.setMotion(firstEndMotion.multiply(scalar));
         second.setMotion(secondEndMotion.multiply(scalar));
+    }
+
+    private Location getEntityLocation(Entity checking, Entity second) {
+        Location location = checking.getLocation();
+
+        if(checking instanceof HollowRectangle) {
+            location = checking.getHitbox().getLocation(second.getHitbox());
+        }
+
+        return location;
     }
 
     private Vector calculateNormalizedImpact(Location firstLocation, Location secondLocation) {
@@ -97,6 +108,10 @@ public class SimpleArena extends AbstractGameArena {
     }
 
     private double calculateScalar(Vector startFirst, Vector startSecond, Vector endFirst, Vector endSecond) {
+        if((endFirst.getLength() + endSecond.getLength()) == 0) {
+            return 1;
+        }
+
         return (startFirst.getLength() + startSecond.getLength()) / (endFirst.getLength() + endSecond.getLength());
     }
 }
