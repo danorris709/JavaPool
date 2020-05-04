@@ -1,6 +1,5 @@
 package me.dnorris.pool.arena.entity.shape;
 
-import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.entity.AbstractEntity;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
@@ -8,6 +7,7 @@ import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.hitbox.implementation.location.EmptyHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
+import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
 
@@ -130,10 +130,10 @@ public class LineEntity extends AbstractEntity {
             }
 
             newBuilder.colour = this.colour;
-            newBuilder.motion = this.motion;
-            newBuilder.hollow = this.hollow;
-            newBuilder.immovable = this.immovable;
-            newBuilder.interactable = this.interactable;
+            newBuilder.motion = Vector2D.NONE;
+            newBuilder.hollow = false;
+            newBuilder.immovable = true;
+            newBuilder.interactable = false;
             newBuilder.type = this.type;
 
             return newBuilder;
