@@ -65,6 +65,7 @@ public abstract class AbstractEntity implements Entity {
     @Override
     public void setLocation(Location location) {
         this.location = location;
+        this.hitbox.setCenter(location);
     }
 
     @Override
@@ -96,11 +97,12 @@ public abstract class AbstractEntity implements Entity {
             return;
         }
 
+        this.getArena().doPhysics(this);
+
         Vector motion = this.getMotion();
 
         this.getLocation().setX(this.getLocation().getX() + motion.getX());
         this.getLocation().setY(this.getLocation().getY() + motion.getY());
-        this.getArena().doPhysics(this);
         this.getMotion().setX(this.getMotion().getX() * FRICTION.getX());
         this.getMotion().setY(this.getMotion().getY() * FRICTION.getY());
 
