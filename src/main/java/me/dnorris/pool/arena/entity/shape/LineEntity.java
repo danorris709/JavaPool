@@ -32,7 +32,7 @@ public class LineEntity extends AbstractEntity {
     @Override
     public void paint(Graphics2D graphics) {
         graphics.setColor(this.getColour());
-        graphics.drawLine(this.getLocation().getX(), this.getLocation().getY(), this.getEndPoint().getX(), this.getEndPoint().getY());
+        graphics.drawLine((int) this.getLocation().getX(),(int)  this.getLocation().getY(), (int) this.getEndPoint().getX(), (int) this.getEndPoint().getY());
     }
 
     @Override
