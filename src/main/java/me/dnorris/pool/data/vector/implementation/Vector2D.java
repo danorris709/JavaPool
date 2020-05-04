@@ -1,5 +1,6 @@
 package me.dnorris.pool.data.vector.implementation;
 
+import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 
 import java.util.Objects;
@@ -27,6 +28,18 @@ public class Vector2D implements Vector {
     public Vector2D(double x, double y) {
         this.x = x;
         this.y = y;
+    }
+
+    /**
+     *
+     * Basic constructor between the two points passed
+     *
+     * @param firstPoint First point
+     * @param secondPoint Second point
+     */
+    public Vector2D(Location firstPoint, Location secondPoint) {
+        this.x = firstPoint.getX() - secondPoint.getX();
+        this.y = firstPoint.getY() - secondPoint.getY();
     }
 
     @Override
@@ -76,6 +89,10 @@ public class Vector2D implements Vector {
     public Vector normalize() {
         Vector clone = this.clone();
         double length = clone.getLength();
+
+        if(length == 0) {
+            return NONE;
+        }
 
         clone.setX(clone.getX() / length);
         clone.setY(clone.getY() / length);
