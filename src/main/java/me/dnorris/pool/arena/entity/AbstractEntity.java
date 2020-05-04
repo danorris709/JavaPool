@@ -96,9 +96,8 @@ public abstract class AbstractEntity implements Entity {
             return;
         }
 
-        Vector motion = this.getMotion().multiply(0.01);
+        Vector motion = this.getMotion();
 
-        this.getArena().doPhysics(this);
         this.getLocation().setX(this.getLocation().getX() + motion.getX());
         this.getLocation().setY(this.getLocation().getY() + motion.getY());
         this.getArena().doPhysics(this);
