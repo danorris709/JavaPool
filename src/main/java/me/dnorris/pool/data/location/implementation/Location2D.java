@@ -13,8 +13,8 @@ import java.util.Objects;
  */
 public class Location2D implements Location {
 
-    private int x;      // x position of the Location
-    private int y;      // y position of the Location
+    private double x;      // x position of the Location
+    private double y;      // y position of the Location
 
     /**
      *
@@ -23,50 +23,50 @@ public class Location2D implements Location {
      * @param x The x position of the location
      * @param y The y position of the location
      */
-    public Location2D(int x, int y) {
+    public Location2D(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     @Override
-    public int getX() {
+    public double getX() {
         return this.x;
     }
 
     @Override
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
     @Override
-    public int getY() {
+    public double getY() {
         return this.y;
     }
 
     @Override
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
     @Deprecated
     @Override
-    public int getZ() {
+    public double getZ() {
         throw new UnsupportedOperationException("Cannot have a Z value for a 2 dimensional location");
     }
 
     @Deprecated
     @Override
-    public void setZ(int z) {
+    public void setZ(double z) {
         throw new UnsupportedOperationException("Cannot have a Z value for a 2 dimensional location");
     }
 
     @Override
     public Point asPoint() {
-        return new Point(this.x, this.y);
+        return new Point((int) this.x, (int) this.y);
     }
 
     @Override
-    public Location add(int x, int y, int z) {
+    public Location add(double x, double y, double z) {
         Location location = this.clone();
 
         location.setX(location.getX() + x);
@@ -76,7 +76,7 @@ public class Location2D implements Location {
     }
 
     @Override
-    public Location subtract(int x, int y, int z) {
+    public Location subtract(double x, double y, double z) {
         Location location = this.clone();
 
         location.setX(location.getX() - x);

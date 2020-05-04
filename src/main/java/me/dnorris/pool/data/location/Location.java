@@ -16,7 +16,7 @@ public interface Location {
      *
      * @return the X value
      */
-    int getX();
+    double getX();
 
     /**
      *
@@ -24,7 +24,7 @@ public interface Location {
      *
      * @param x set the X value to this
      */
-    void setX(int x);
+    void setX(double x);
 
     /**
      *
@@ -32,7 +32,7 @@ public interface Location {
      *
      * @return the Y value
      */
-    int getY();
+    double getY();
 
     /**
      *
@@ -40,7 +40,7 @@ public interface Location {
      *
      * @param y set the Y value to this
      */
-    void setY(int y);
+    void setY(double y);
 
     /**
      *
@@ -48,7 +48,7 @@ public interface Location {
      *
      * @return the Z value
      */
-    int getZ();
+    double getZ();
 
     /**
      *
@@ -56,7 +56,7 @@ public interface Location {
      *
      * @param z set the Z value to this
      */
-    void setZ(int z);
+    void setZ(double z);
 
     /**
      *
@@ -83,7 +83,7 @@ public interface Location {
      * @param z The value to be added to the Z
      * @return The clone of the object with updated {@link Location#getX()}, {@link Location#getY()}, {@link Location#getZ()} values
      */
-    Location add(int x, int y, int z);
+    Location add(double x, double y, double z);
 
     /**
      *
@@ -94,7 +94,7 @@ public interface Location {
      * @param z The value to be taken from the Z
      * @return The clone of the object with updated {@link Location#getX()}, {@link Location#getY()}, {@link Location#getZ()} values
      */
-    Location subtract(int x, int y, int z);
+    Location subtract(double x, double y, double z);
 
     /**
      *
