@@ -19,9 +19,9 @@ public class CircleEntity extends AbstractEntity {
         graphics.setColor(this.getColour());
 
         if (this.hollow) {
-            graphics.drawOval(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
+            graphics.drawOval((int) this.getLocation().getX(), (int) this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
         } else {
-            graphics.fillOval(this.getLocation().getX(), this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
+            graphics.fillOval((int) this.getLocation().getX(), (int) this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
         }
     }
 
