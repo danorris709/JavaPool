@@ -32,6 +32,11 @@ public abstract class AbstractLocationHitbox implements Hitbox {
     }
 
     @Override
+    public void setCenter(Location center) {
+        this.center = center;
+    }
+
+    @Override
     public Dimension getDimensions() {
         return this.dimensions;
     }
@@ -75,6 +80,11 @@ public abstract class AbstractLocationHitbox implements Hitbox {
         double distanceX = Math.abs(this.getCenter().getX() - other.getCenter().getX());
 
         return distanceX <= (this.getDimensions().getWidth() / 2);
+    }
+
+    @Override
+    public Location getLocation(Hitbox other) {
+        return null;
     }
 
     @Override

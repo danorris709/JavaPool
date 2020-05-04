@@ -31,6 +31,23 @@ public interface Hitbox {
 
     /**
      *
+     * Sets the center {@link Location} of the {@link Hitbox}
+     *
+     * @param location New center point
+     */
+    void setCenter(Location location);
+
+    /**
+     *
+     * Get collision point
+     *
+     * @param other Other {@link Hitbox}
+     * @return point of collision between the two
+     */
+    Location getLocation(Hitbox other);
+
+    /**
+     *
      * The height and width of the {@link Hitbox}
      *
      * @return The {@link Dimension} for the {@link Hitbox}
