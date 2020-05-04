@@ -4,6 +4,7 @@ import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.entity.shape.LineEntity;
 import me.dnorris.pool.arena.key.KeyEventType;
 import me.dnorris.pool.arena.key.KeyHandler;
+import me.dnorris.pool.data.vector.Vector;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameEntity;
 
@@ -17,17 +18,14 @@ public class CueReleaseHandler {
     @KeyHandler(keyCode = KeyEvent.VK_SPACE, getType = KeyEventType.KEY_PRESSED)
     public void onSpaceBarPressed(GameArena arena, KeyEvent event) {
         if(!Objects.equals(GameEntity.getCueBall().getMotion(), Vector2D.NONE)) {
-            System.out.println("Hello");
-            System.out.println(GameEntity.getCueBall().getMotion().toString());
             return;
         }
 
         LineEntity line = GameEntity.getPointer();
-        double opp = line.getEndPoint().getY() - line.getLocation().getY();
-        double adj = line.getEndPoint().getX() - line.getLocation().getX();
-        double angle = Math.atan(opp / adj);
-        double strength = (10.0 + GameEntity.getPercentageBar().getFilledPercentage()) / 2.00;
+        Vector normalVector = new Vector2D(line.getEndPoint(), line.getLocation()).normalize();
+        double strength = GameEntity.getPercentageBar().getFilledPercentage() * 10_000;
+        Vector vector = normalVector.multiply(Math.max(1, strength));
 
-        GameEntity.getCueBall().setMotion(new Vector2D(Math.cos(angle) * strength, Math.sin(angle) / strength));
+        GameEntity.getCueBall().setMotion(vector);
     }
 }
