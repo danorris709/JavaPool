@@ -18,10 +18,13 @@ public class CircleEntity extends AbstractEntity {
     public void paint(Graphics2D graphics) {
         graphics.setColor(this.getColour());
 
+        int xPos = (int) (this.getLocation().getX() - (this.getHitbox().getDimensions().getWidth() / 2.0));
+        int yPos = (int) (this.getLocation().getY() - (this.getHitbox().getDimensions().getHeight() / 2.0));
+
         if (this.hollow) {
-            graphics.drawOval((int) this.getLocation().getX(), (int) this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
+            graphics.drawOval(xPos, yPos, (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
         } else {
-            graphics.fillOval((int) this.getLocation().getX(), (int) this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
+            graphics.fillOval(xPos, yPos, (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight());
         }
     }
 
