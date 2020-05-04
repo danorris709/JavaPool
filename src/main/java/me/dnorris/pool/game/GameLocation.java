@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class GameLocation {
 
-    private static final Pair<Integer, Integer> BLACK_BALL_POSITION = new Pair<>(850 - 10, 100 + 250 - 10);
+    private static final Pair<Integer, Integer> BLACK_BALL_POSITION = new Pair<>(850, 100 + 250);
 
     @SuppressWarnings("unchecked")
     public static final Pair<Location, Color>[] BALL_SPAWN_POINTS = new Pair[] {

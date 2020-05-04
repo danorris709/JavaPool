@@ -177,7 +177,7 @@ public class GameEntity {
         if(cueBall == null) {
             try {
                 cueBall = new EntityBuilder()
-                        .setLocation(new Location2D(100 + (1000 / 4) - 10, 100 + 250 - 10))
+                        .setLocation(new Location2D(100 + (1000.0 / 4), 100 + 250))
                         .setColour(Color.WHITE)
                         .setDimension(new Dimension(20, 20))
                         .setInteractable(true)
@@ -197,7 +197,7 @@ public class GameEntity {
         if(blackBall == null) {
             try {
                 blackBall = new EntityBuilder()
-                        .setLocation(new Location2D(850 - 10, 100 + 250 - 10))
+                        .setLocation(new Location2D(850, 100 + 250))
                         .setColour(Color.BLACK)
                         .setDimension(new Dimension(20, 20))
                         .setInteractable(true)
