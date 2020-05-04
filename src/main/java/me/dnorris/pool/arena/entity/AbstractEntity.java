@@ -11,7 +11,7 @@ import java.awt.*;
 
 public abstract class AbstractEntity implements Entity {
 
-    private static Vector FRICTION = new Vector2D(0.95, 0.95);
+    private static Vector FRICTION = new Vector2D(0.995, 0.995);
 
     private GameArena arena;
     private Color colour;
@@ -96,24 +96,23 @@ public abstract class AbstractEntity implements Entity {
             return;
         }
 
-        for(int i = 0; i < this.getMotion().getX(); i++) {
-            this.getLocation().setX(this.getLocation().getX() + 1);
-            this.getArena().doPhysics(this);
-        }
+        Vector motion = this.getMotion().multiply(0.01);
 
-        for(int i = 0; i < this.getMotion().getY(); i++) {
-            this.getLocation().setY(this.getLocation().getY() + 1);
-            this.getArena().doPhysics(this);
-        }
-
+        this.getArena().doPhysics(this);
+        this.getLocation().setX(this.getLocation().getX() + motion.getX());
+        this.getLocation().setY(this.getLocation().getY() + motion.getY());
+        this.getArena().doPhysics(this);
         this.getMotion().setX(this.getMotion().getX() * FRICTION.getX());
         this.getMotion().setY(this.getMotion().getY() * FRICTION.getY());
 
-        if (this.getMotion().getX() <= 1.0 && this.getMotion().getY() <= 1.0) {
+        double absX = Math.abs(this.getMotion().getX());
+        double absY = Math.abs(this.getMotion().getY());
+
+        if (absX <= 1e-3 && absY <= 1e-3) {
             this.setMotion(Vector2D.NONE);
-        } else if (this.getMotion().getX() <= 1.0) {
+        } else if (absX <= 1e-3) {
             this.setMotion(new Vector2D(0, this.getMotion().getY()));
-        } else if (this.getMotion().getY() <= 1.0) {
+        } else if (absY <= 1e-3) {
             this.setMotion(new Vector2D(this.getMotion().getX(), 0));
         }
     }
