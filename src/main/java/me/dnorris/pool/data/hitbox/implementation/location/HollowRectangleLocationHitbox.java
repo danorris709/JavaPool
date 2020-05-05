@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.hitbox.implementation.AbstractLocationHitbox;
 import me.dnorris.pool.data.location.Location;
-import me.dnorris.pool.data.location.implementation.Location2D;
 
 import java.awt.*;
 import java.util.List;
@@ -20,10 +19,10 @@ public class HollowRectangleLocationHitbox extends AbstractLocationHitbox {
         this.hitboxes = Lists.newArrayList();
         this.thickness = thickness;
 
-        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, -thickness, 0), new Dimension(thickness, dimensions.height + thickness), immovable, interactable));
-        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, -thickness, 0), new Dimension(dimensions.width, thickness), immovable, interactable));
-        this.hitboxes.add(new RectangleLocationHitbox(center.add(dimensions.width, -thickness, 0), new Dimension(thickness, dimensions.height), immovable, interactable));
-        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, dimensions.height, 0), new Dimension(dimensions.width + thickness, thickness), immovable, interactable));
+        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, -thickness, 0), new Dimension(thickness, dimensions.height + 2*thickness), immovable, interactable));
+        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, -thickness, 0), new Dimension(dimensions.width + 2*thickness, thickness), immovable, interactable));
+        this.hitboxes.add(new RectangleLocationHitbox(center.add(dimensions.width, -thickness, 0), new Dimension(thickness, dimensions.height + 2*thickness), immovable, interactable));
+        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, dimensions.height, 0), new Dimension(dimensions.width + 2*thickness, thickness), immovable, interactable));
     }
 
     @Override
