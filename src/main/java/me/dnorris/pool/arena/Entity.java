@@ -96,6 +96,14 @@ public interface Entity {
 
     /**
      *
+     * Handles the collision between the two entities
+     *
+     * @param other The entity being collided with
+     */
+    void collide(Entity other);
+
+    /**
+     *
      * Updates the details of the {@link Entity} and is called every frame
      * For example, updates the location of the {@link Entity} using the motion
      *
