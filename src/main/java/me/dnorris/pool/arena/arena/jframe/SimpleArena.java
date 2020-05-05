@@ -4,6 +4,7 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.arena.AbstractGameArena;
 import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
 import me.dnorris.pool.arena.entity.compound.shape.HollowRectangle;
+import me.dnorris.pool.arena.entity.shape.RectangleEntity;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
@@ -83,12 +84,11 @@ public class SimpleArena extends AbstractGameArena {
         Vector firstDeflect = new Vector2D(-impactVector.getX() * secondDotProduct, -impactVector.getY() * secondDotProduct);
         Vector secondDeflect = new Vector2D(impactVector.getX() * firstDotProduct, impactVector.getY() * firstDotProduct);
 
-        Vector firstEndMotion = new Vector2D(first.getMotion().getX() + firstDeflect.getX() - secondDeflect.getX(), -(first.getMotion().getY() + firstDeflect.getY() - secondDeflect.getY()));
-        Vector secondEndMotion = new Vector2D(second.getMotion().getX() + secondDeflect.getX() - firstDeflect.getX(), -(second.getMotion().getY() + secondDeflect.getY() - firstDeflect.getY()));
+        Vector firstEndMotion = new Vector2D(first.getMotion().getX() + firstDeflect.getX() - secondDeflect.getX(), (first.getMotion().getY() + firstDeflect.getY() - secondDeflect.getY()));
+        Vector secondEndMotion = new Vector2D(second.getMotion().getX() + secondDeflect.getX() - firstDeflect.getX(), (second.getMotion().getY() + secondDeflect.getY() - firstDeflect.getY()));
 
         double scalar = this.calculateScalar(first.getMotion(), second.getMotion(), firstEndMotion, secondEndMotion);
 
-        System.out.println(firstEndMotion.multiply(scalar) + " " + secondEndMotion.multiply(scalar));
         first.setMotion(firstEndMotion.multiply(scalar));
         second.setMotion(secondEndMotion.multiply(scalar));
     }
