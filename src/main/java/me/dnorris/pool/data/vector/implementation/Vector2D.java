@@ -14,6 +14,7 @@ import java.util.Objects;
 public class Vector2D implements Vector {
 
     public static final Vector NONE = new Vector2D(0.0, 0.0); // No motion vector constant
+    public static final Vector i = new Vector2D(1.0, 0.0); // unit vector along the x axis
 
     private double x;                                               // x motion of the Vector
     private double y;                                               // y motion of the Vector
@@ -91,7 +92,7 @@ public class Vector2D implements Vector {
         double length = clone.getLength();
 
         if(length == 0) {
-            return NONE;
+            return i;
         }
 
         clone.setX(clone.getX() / length);
