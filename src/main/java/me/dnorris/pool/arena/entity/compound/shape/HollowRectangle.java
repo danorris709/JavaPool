@@ -29,7 +29,7 @@ public class HollowRectangle extends CompoundEntity {
             return;
         }
 
-        // TODO: 05/05/2020  
+        // TODO: 05/05/2020
     }
 
     private static RectangleEntity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
