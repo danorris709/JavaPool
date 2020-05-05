@@ -112,6 +112,11 @@ public class Vector2D implements Vector {
     }
 
     @Override
+    public Vector multiply(Vector vector) {
+        return new Vector2D(vector.getX() * this.getX(), vector.getY() * this.getY());
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (this == object) {
             return true;

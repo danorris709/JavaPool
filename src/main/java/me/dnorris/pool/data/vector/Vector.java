@@ -83,6 +83,19 @@ public interface Vector {
 
     /**
      *
+     * Multiply the x by the other {@link Vector}'s X and the y by the other {@link Vector}'s Y
+     * Similar to using a 2 by 2 Matrix in the following format:
+     *  (x 0)
+     *  (0 y)
+     * Where the x and y values are the {@link Vector}'s x and y values
+     *
+     * @param vector The vector multiplying by
+     * @return The new, multiplied vector
+     */
+    Vector multiply(Vector vector);
+
+    /**
+     *
      * A new copy of the existing {@link Vector} object
      *
      * @return The new clone
