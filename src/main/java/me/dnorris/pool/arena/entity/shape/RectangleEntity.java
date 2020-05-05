@@ -21,7 +21,22 @@ public class RectangleEntity extends AbstractEntity {
             return;
         }
 
-        // TODO: 05/05/2020
+        Dimension dimension = this.getHitbox().getDimensions();
+
+        if(dimension.getHeight() > dimension.getWidth()) {
+            Vector newMotion = other.getMotion().clone();
+
+            newMotion.setX(newMotion.getX() * -1);
+
+            other.setMotion(newMotion);
+            return;
+        }
+
+        Vector newMotion = other.getMotion().clone();
+
+        newMotion.setY(newMotion.getY() * -1);
+
+        other.setMotion(newMotion);
     }
 
     @Override
