@@ -1,20 +1,29 @@
 package me.dnorris.pool.data.hitbox.implementation.location;
 
+import com.google.common.collect.Lists;
 import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.hitbox.implementation.AbstractLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.location.implementation.Location2D;
 
 import java.awt.*;
+import java.util.List;
 
 public class HollowRectangleLocationHitbox extends AbstractLocationHitbox {
 
-    private int thickness;
+    private final List<Hitbox> hitboxes;
+    private final int thickness;
 
     public HollowRectangleLocationHitbox(Location center, Dimension dimensions, int thickness, boolean immovable, boolean interactable) {
         super(10, center, dimensions, immovable, interactable);
 
+        this.hitboxes = Lists.newArrayList();
         this.thickness = thickness;
+
+        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, -thickness, 0), new Dimension(thickness, dimensions.height + thickness), immovable, interactable));
+        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, -thickness, 0), new Dimension(dimensions.width, thickness), immovable, interactable));
+        this.hitboxes.add(new RectangleLocationHitbox(center.add(dimensions.width, -thickness, 0), new Dimension(thickness, dimensions.height), immovable, interactable));
+        this.hitboxes.add(new RectangleLocationHitbox(center.add(-thickness, dimensions.height, 0), new Dimension(dimensions.width + thickness, thickness), immovable, interactable));
     }
 
     @Override
@@ -32,32 +41,10 @@ public class HollowRectangleLocationHitbox extends AbstractLocationHitbox {
             return other.getLocation(this);
         }
 
-        double topSide = this.getCenter().getY();
-        double otherHeightTop = other.getCenter().getY();
-
-        if(topSide >= otherHeightTop && otherHeightTop >= (topSide - thickness)) {
-            return new Location2D(other.getCenter().getX(), topSide);
-        }
-
-        double bottomSide = this.getCenter().getY() + this.getDimensions().getHeight();
-        double otherSideBottom = other.getCenter().getY() + other.getDimensions().getHeight();
-
-        if(bottomSide <= otherSideBottom && otherSideBottom <= (bottomSide + thickness)) {
-            return new Location2D(other.getCenter().getX(), bottomSide);
-        }
-
-        double thisSide = this.getCenter().getX();
-        double otherSideLeft = other.getCenter().getX();
-
-        if(thisSide <= otherSideLeft && otherSideLeft <= (thisSide + thickness)) {
-            return new Location2D(thisSide, other.getCenter().getY());
-        }
-
-        double farSide = this.getCenter().getX() + this.getDimensions().getWidth();
-        double otherSideRight = other.getCenter().getX() + other.getDimensions().getWidth();
-
-        if(farSide <= otherSideRight && otherSideRight <= (farSide + thickness)) {
-            return new Location2D(farSide, other.getCenter().getY());
+        for (Hitbox hitbox : this.hitboxes) {
+            if(hitbox.isColliding(other)) {
+                return hitbox.getLocation(other);
+            }
         }
 
         return null;
