@@ -83,7 +83,7 @@ public class Vector2D implements Vector {
 
     @Override
     public double getLength() {
-        return Math.abs((this.x * this.x) + (this.y * this.y));
+        return Math.sqrt((this.x * this.x) + (this.y * this.y));
     }
 
     @Override
