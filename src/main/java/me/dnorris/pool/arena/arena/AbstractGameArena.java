@@ -55,7 +55,7 @@ public abstract class AbstractGameArena implements GameArena {
 
     @Override
     public void removeEntity(Entity entity) {
-        this.entities.add(entity);
+        this.entities.remove(entity);
         entity.setArena(null);
     }
 
