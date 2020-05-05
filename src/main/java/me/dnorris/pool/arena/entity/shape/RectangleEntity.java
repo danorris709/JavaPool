@@ -5,6 +5,7 @@ import me.dnorris.pool.arena.entity.AbstractEntity;
 import me.dnorris.pool.data.hitbox.implementation.location.RectangleLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
+import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
 
@@ -24,19 +25,11 @@ public class RectangleEntity extends AbstractEntity {
         Dimension dimension = this.getHitbox().getDimensions();
 
         if(dimension.getHeight() > dimension.getWidth()) {
-            Vector newMotion = other.getMotion().clone();
-
-            newMotion.setX(newMotion.getX() * -1);
-
-            other.setMotion(newMotion);
+            other.setMotion(this.getMotion().multiply(new Vector2D(-1, 1)));
             return;
         }
 
-        Vector newMotion = other.getMotion().clone();
-
-        newMotion.setY(newMotion.getY() * -1);
-
-        other.setMotion(newMotion);
+        other.setMotion(this.getMotion().multiply(new Vector2D(1, -1)));
     }
 
     @Override
