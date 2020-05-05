@@ -4,7 +4,6 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.arena.AbstractGameArena;
 import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
 import me.dnorris.pool.arena.entity.compound.shape.HollowRectangle;
-import me.dnorris.pool.arena.entity.shape.RectangleEntity;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
