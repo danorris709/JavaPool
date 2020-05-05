@@ -24,7 +24,14 @@ public class CueReleaseHandler {
         LineEntity line = GameEntity.getPointer();
         Vector normalVector = new Vector2D(line.getEndPoint(), line.getLocation()).normalize();
         double strength = GameEntity.getPercentageBar().getFilledPercentage();
-        Vector vector = normalVector.multiply(Math.max(1, strength));
+
+        if(strength > 0) {
+            strength = 105 - strength;
+        }
+
+        Vector vector = normalVector.multiply(strength / 0.1);
+
+        System.out.println(vector + " " + vector.normalize() + " " + strength);
 
         GameEntity.getCueBall().setMotion(vector.normalize());
         arena.removeEntity(GameEntity.getPointer());
