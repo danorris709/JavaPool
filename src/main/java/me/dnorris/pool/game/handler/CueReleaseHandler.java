@@ -27,5 +27,6 @@ public class CueReleaseHandler {
         Vector vector = normalVector.multiply(Math.max(1, strength));
 
         GameEntity.getCueBall().setMotion(vector.normalize());
+        arena.removeEntity(GameEntity.getPointer());
     }
 }
