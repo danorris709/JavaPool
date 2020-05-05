@@ -11,6 +11,7 @@ import me.dnorris.pool.data.hitbox.implementation.location.HollowRectangleLocati
 import me.dnorris.pool.data.hitbox.implementation.location.RectangleLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
+import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
 import java.util.List;
@@ -29,7 +30,16 @@ public class HollowRectangle extends CompoundEntity {
             return;
         }
 
-        // TODO: 05/05/2020
+        Location collisionPoint = this.getHitbox().getLocation(other.getHitbox());
+
+        System.out.println(collisionPoint + " " + (this.getLocation().getX() + this.getHitbox().getDimensions().getWidth()));
+
+        if(collisionPoint.getX() >= this.getLocation().getX() && collisionPoint.getX() <= (this.getLocation().getX() + (other.getHitbox().getDimensions().getWidth()))) {
+            other.setMotion(other.getMotion().multiply(new Vector2D(-1, 1)));
+            return;
+        }
+
+        other.setMotion(other.getMotion().multiply(new Vector2D(1, -1)));
     }
 
     private static RectangleEntity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
