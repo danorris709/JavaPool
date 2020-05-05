@@ -32,14 +32,22 @@ public class HollowRectangle extends CompoundEntity {
 
         Location collisionPoint = this.getHitbox().getLocation(other.getHitbox());
 
-        System.out.println(collisionPoint + " " + (this.getLocation().getX() + this.getHitbox().getDimensions().getWidth()));
-
-        if(collisionPoint.getX() >= this.getLocation().getX() && collisionPoint.getX() <= (this.getLocation().getX() + (other.getHitbox().getDimensions().getWidth()))) {
+        if(this.hasCollidedWithXWalls(collisionPoint, other.getHitbox().getDimensions().getWidth())) {
             other.setMotion(other.getMotion().multiply(new Vector2D(-1, 1)));
             return;
         }
 
         other.setMotion(other.getMotion().multiply(new Vector2D(1, -1)));
+    }
+
+    private boolean hasCollidedWithXWalls(Location location, double width) {
+        if(location.getX() >= this.getLocation().getX() && location.getX() <= (this.getLocation().getX() + width)) {
+            return true;
+        }
+
+        double farX = this.getLocation().getX() + this.getHitbox().getDimensions().getWidth();
+
+        return location.getX() <= farX && location.getX() >= (farX - width);
     }
 
     private static RectangleEntity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
