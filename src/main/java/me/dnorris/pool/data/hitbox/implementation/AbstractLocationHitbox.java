@@ -73,13 +73,13 @@ public abstract class AbstractLocationHitbox implements Hitbox {
 
         double distanceY = Math.abs(this.getCenter().getY() - other.getCenter().getY());
 
-        if(distanceY > (this.getDimensions().getHeight() / 2)) {
+        if(distanceY > this.getDimensions().getHeight()) {
             return false;
         }
 
         double distanceX = Math.abs(this.getCenter().getX() - other.getCenter().getX());
 
-        return distanceX <= (this.getDimensions().getWidth() / 2);
+        return distanceX <= this.getDimensions().getWidth();
     }
 
     @Override
