@@ -93,7 +93,7 @@ public abstract class AbstractEntity implements Entity {
 
     @Override
     public void tick() {
-        if (this.hitbox == null || this.hitbox.isImmovable()) {
+        if (this.hitbox == null || this.hitbox.isImmovable() || this.getArena() == null) {
             return;
         }
 
