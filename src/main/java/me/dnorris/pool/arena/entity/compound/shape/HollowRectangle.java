@@ -22,6 +22,16 @@ public class HollowRectangle extends CompoundEntity {
                 createEntities(centerLocation, colour, dimension, outsideWidth, immovable, interactable));
     }
 
+    @Override
+    public void collide(Entity other) {
+        if(other.getHitbox().getPriority() > this.getHitbox().getPriority()) {
+            other.collide(this);
+            return;
+        }
+
+        // TODO: 05/05/2020  
+    }
+
     private static RectangleEntity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
         List<RectangleEntity> entities = Lists.newArrayList();
 
