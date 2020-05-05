@@ -68,49 +68,8 @@ public class SimpleArena extends AbstractGameArena {
             }
 
             if(other.getHitbox().isColliding(entity.getHitbox())) {
-                this.handlePhysics(entity, other);
+                entity.collide(other);
             }
         }
-    }
-
-    private void handlePhysics(Entity first, Entity second) {
-        Location firstLocation = getEntityLocation(first, second);
-        Location secondLocation = getEntityLocation(second, first);
-        Vector impactVector = this.calculateNormalizedImpact(firstLocation, secondLocation);
-        double firstDotProduct = first.getMotion().dotProduct(impactVector);
-        double secondDotProduct = second.getMotion().dotProduct(impactVector);
-
-        Vector firstDeflect = new Vector2D(-impactVector.getX() * secondDotProduct, -impactVector.getY() * secondDotProduct);
-        Vector secondDeflect = new Vector2D(impactVector.getX() * firstDotProduct, impactVector.getY() * firstDotProduct);
-
-        Vector firstEndMotion = new Vector2D(first.getMotion().getX() + firstDeflect.getX() - secondDeflect.getX(), (first.getMotion().getY() + firstDeflect.getY() - secondDeflect.getY()));
-        Vector secondEndMotion = new Vector2D(second.getMotion().getX() + secondDeflect.getX() - firstDeflect.getX(), (second.getMotion().getY() + secondDeflect.getY() - firstDeflect.getY()));
-
-        double scalar = this.calculateScalar(first.getMotion(), second.getMotion(), firstEndMotion, secondEndMotion);
-
-        first.setMotion(firstEndMotion.multiply(scalar));
-        second.setMotion(secondEndMotion.multiply(scalar));
-    }
-
-    private Location getEntityLocation(Entity checking, Entity second) {
-        Location location = checking.getLocation();
-
-        if(checking instanceof HollowRectangle) {
-            location = checking.getHitbox().getLocation(second.getHitbox());
-        }
-
-        return location;
-    }
-
-    private Vector calculateNormalizedImpact(Location firstLocation, Location secondLocation) {
-        return new Vector2D(secondLocation.getX() - firstLocation.getX(), secondLocation.getY() - firstLocation.getY()).normalize();
-    }
-
-    private double calculateScalar(Vector startFirst, Vector startSecond, Vector endFirst, Vector endSecond) {
-        if((endFirst.getLength() + endSecond.getLength()) == 0) {
-            return 1;
-        }
-
-        return (startFirst.getLength() + startSecond.getLength()) / (endFirst.getLength() + endSecond.getLength());
     }
 }
