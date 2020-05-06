@@ -31,13 +31,26 @@ public class HollowRectangle extends CompoundEntity {
         }
 
         Location collisionPoint = this.getHitbox().getLocation(other.getHitbox());
+        boolean collidedWithX = this.hasCollidedWithXWalls(collisionPoint, other.getHitbox().getDimensions().getWidth());
+        boolean collidedWithY = this.hasCollidedWithYWalls(collisionPoint, other.getHitbox().getDimensions().getHeight());
 
-        if(this.hasCollidedWithXWalls(collisionPoint, other.getHitbox().getDimensions().getWidth())) {
+        if(collidedWithY && collidedWithX) {
+            other.setMotion(other.getMotion().multiply(new Vector2D(-1, -1)));
+        }else if(collidedWithY) {
+            other.setMotion(other.getMotion().multiply(new Vector2D(1, -1)));
+        }else {
             other.setMotion(other.getMotion().multiply(new Vector2D(-1, 1)));
-            return;
+        }
+    }
+
+    private boolean hasCollidedWithYWalls(Location location, double height) {
+        if(location.getY() >= this.getLocation().getY() && location.getY() <= (this.getLocation().getX() + height)) {
+            return true;
         }
 
-        other.setMotion(other.getMotion().multiply(new Vector2D(1, -1)));
+        double farX = this.getLocation().getY() + this.getHitbox().getDimensions().getHeight();
+
+        return location.getX() <= farX && location.getX() >= (farX - height);
     }
 
     private boolean hasCollidedWithXWalls(Location location, double width) {
