@@ -1,8 +1,12 @@
 package me.dnorris.pool.arena.entity.shape;
 
 import me.dnorris.pool.arena.entity.AbstractEntity;
+import me.dnorris.pool.arena.entity.EntityBuilder;
+import me.dnorris.pool.arena.entity.EntityType;
+import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.hitbox.implementation.location.EmptyHitbox;
 import me.dnorris.pool.data.location.Location;
+import me.dnorris.pool.data.vector.Vector;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
@@ -50,5 +54,132 @@ public class TextEntity extends AbstractEntity {
         graphics.setFont(this.font);
         graphics.setColor(this.getColour());
         graphics.drawString(this.text, (float) this.getLocation().getX(), (float) this.getLocation().getY());
+    }
+
+
+    public static class Builder extends EntityBuilder {
+
+        private String text;
+        private String font;
+        private int size;
+        private boolean bold;
+        private boolean italic;
+
+        public Builder() { super(); }
+
+        @Override
+        public Builder setColour(Color colour) {
+            return (Builder) super.setColour(colour);
+        }
+
+        @Override
+        public Builder setLocation(Location location) {
+            return (Builder) super.setLocation(location);
+        }
+
+        @Override
+        public Builder setHitbox(Hitbox hitbox) {
+            return (Builder) super.setHitbox(hitbox);
+        }
+
+        @Override
+        public Builder setMotion(Vector motion) {
+            return (Builder) super.setMotion(motion);
+        }
+
+        @Override
+        public Builder setHollow(boolean hollow) {
+            return (Builder) super.setHollow(hollow);
+        }
+
+        @Override
+        public Builder setType(EntityType type) {
+            return (Builder) super.setType(type);
+        }
+
+        @Override
+        public Builder setImmovable(boolean immovable) {
+            return (Builder) super.setImmovable(immovable);
+        }
+
+        @Override
+        public Builder setInteractable(boolean interactable) {
+            return (Builder) super.setInteractable(interactable);
+        }
+
+        @Override
+        public Builder setDimension(Dimension dimension) {
+            return (Builder) super.setDimension(dimension);
+        }
+
+        public Builder setText(String text) {
+            this.text = text;
+            return this;
+        }
+
+        public Builder setFont(String font) {
+            this.font = font;
+            return this;
+        }
+
+        public Builder setSize(int size) {
+            this.size = size;
+            return this;
+        }
+
+        public Builder setBold(boolean bold) {
+            this.bold = bold;
+            return this;
+        }
+
+        public Builder setItalic(boolean italic) {
+            this.italic = italic;
+            return this;
+        }
+
+        @Override
+        public TextEntity build() {
+            return new TextEntity(
+                    this.colour,
+                    this.location,
+                    this.text,
+                    this.font,
+                    this.size,
+                    this.bold,
+                    this.italic
+            );
+        }
+
+        @Override
+        public Builder clone() {
+            Builder newBuilder = new Builder();
+
+            if (this.hitbox != null) {
+                newBuilder.hitbox = this.hitbox.clone();
+            }
+
+            if (this.location != null) {
+                newBuilder.location = this.location.clone();
+            }
+
+            if (this.dimension != null) {
+                newBuilder.dimension = new Dimension(this.dimension.width, this.dimension.height);
+            }
+
+            newBuilder.colour = this.colour;
+            newBuilder.motion = this.motion;
+            newBuilder.hollow = this.hollow;
+            newBuilder.immovable = this.immovable;
+            newBuilder.interactable = this.interactable;
+            newBuilder.type = this.type;
+
+            newBuilder.text = this.text;
+            newBuilder.font = this.font;
+            newBuilder.size = this.size;
+            newBuilder.bold = this.bold;
+            newBuilder.italic = this.italic;
+
+            return newBuilder;
+        }
     }
 }
