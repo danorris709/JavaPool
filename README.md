@@ -2,6 +2,10 @@
 
 Project 2 - The java pool game
 
+## How to Play
+Make sure you're with a friend and run the game.
+Choose who's going to take the first shot and then start playing using the rules of Pool outlined [here](http://www.epa.org.uk/wrules.php)
+
 ## How to compile
 Below you will find a section for how to compile the project on each of the three main operating systems.
 All the below are to be executed via command line and require no extra installations.
@@ -35,9 +39,6 @@ then you should find a `build` directory has been generated.
 In the build directory you should find a `libs` directory which will contain the `PoolProject.jar` file.
 
 Double click the jar file to start the game.
-
-## How to Play
-Description of the game here
 
 ## Development
 If you want to use the GameArena implementation for development and have any questions then visit the [wiki](https://codefeedback.lancaster.ac.uk/git110/Term3-norrisd/project/wiki/Developer+API/)
