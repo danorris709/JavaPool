@@ -6,8 +6,23 @@ import me.dnorris.pool.data.location.Location;
 
 import java.awt.*;
 
+/**
+ *
+ * A spherical implementation of the {@link AbstractLocationHitbox}
+ *
+ * @author https://github.com/danorris709
+ */
 public class CircleLocationHitbox extends AbstractLocationHitbox {
 
+    /**
+     *
+     * Default constructor. Specifying priority of 1 for ball vs ball collisions.
+     *
+     * @param center Center {@link Location} of the ball
+     * @param dimensions {@link Dimension} of the ball
+     * @param immovable if the ball can be moved
+     * @param interactable if the ball can be interacted with
+     */
     public CircleLocationHitbox(Location center, Dimension dimensions, boolean immovable, boolean interactable) {
         super(1, center, dimensions, immovable, interactable);
     }
