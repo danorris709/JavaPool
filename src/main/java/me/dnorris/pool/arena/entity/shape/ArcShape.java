@@ -18,7 +18,7 @@ public class ArcShape extends AbstractEntity {
     private int arcAngle;
 
     public ArcShape(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable, int startAngle, int arcAngle) {
-        super(colour, location, new CircleLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
+        super(colour, location, new RectangleLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
 
         this.startAngle = startAngle;
         this.arcAngle = arcAngle;
@@ -28,12 +28,17 @@ public class ArcShape extends AbstractEntity {
     public void paint(Graphics2D graphics) {
         graphics.setColor(this.getColour());
 
+        int xPos = (int) (this.getLocation().getX() - (this.getHitbox().getDimensions().getWidth() / 2.0));
+        int yPos = (int) (this.getLocation().getY() - (this.getHitbox().getDimensions().getHeight() / 2.0));
+
+        graphics.setColor(Color.WHITE);
+        graphics.drawRect(xPos, yPos, this.getHitbox().getDimensions().width, this.getHitbox().getDimensions().height);
+        graphics.setColor(this.getColour());
+
         if (this.hollow) {
-            graphics.drawArc((int) this.getLocation().getX(), (int) this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight(),
-                    this.startAngle, this.arcAngle);
+            graphics.drawArc(xPos, yPos, this.getHitbox().getDimensions().width, this.getHitbox().getDimensions().height, this.startAngle, this.arcAngle);
         } else {
-            graphics.fillArc((int) this.getLocation().getX(), (int) this.getLocation().getY(), (int) this.getHitbox().getDimensions().getWidth(), (int) this.getHitbox().getDimensions().getHeight(),
-                    this.startAngle, this.arcAngle);
+            graphics.fillArc(xPos, yPos, this.getHitbox().getDimensions().width, this.getHitbox().getDimensions().height, this.startAngle, this.arcAngle);
         }
     }
 
