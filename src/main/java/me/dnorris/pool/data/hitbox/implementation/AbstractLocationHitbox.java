@@ -5,14 +5,33 @@ import me.dnorris.pool.data.location.Location;
 
 import java.awt.*;
 
+/**
+ *
+ * Abstract implementation of the {@link Hitbox} interface that uses a {@link Location}
+ * as the center point.
+ * Abstract class used to reduce repeated code in more specific implementations
+ *
+ * @author https://github.com/danorris709
+ */
 public abstract class AbstractLocationHitbox implements Hitbox {
 
     private final int priority;
+
     private Location center;
     private Dimension dimensions;
     private boolean immovable;
     private boolean interactable;
 
+    /**
+     *
+     * Default constructor setting all the variables for a {@link Hitbox}
+     *
+     * @param priority Priority of the {@link Hitbox}
+     * @param center Center {@link Location} of the {@link Hitbox}
+     * @param dimensions {@link Dimension} of the {@link Hitbox}
+     * @param immovable If the {@link Hitbox} can be moved
+     * @param interactable If the {@link Hitbox} can be hit
+     */
     public AbstractLocationHitbox(int priority, Location center, Dimension dimensions, boolean immovable, boolean interactable) {
         this.priority = priority;
         this.center = center;
