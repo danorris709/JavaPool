@@ -19,6 +19,8 @@ import java.lang.reflect.InvocationTargetException;
 
 public class GameFactory {
 
+    private static GameData activeGame;
+
     public static void initBoard() {
         GameArena gameArena = new SimpleArena(new Dimension(1500, 750));
 
