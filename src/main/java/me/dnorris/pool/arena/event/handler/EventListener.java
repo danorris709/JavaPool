@@ -18,6 +18,8 @@ public class EventListener {
     }
 
     public void addListener(Listener listener, EventHandler eventHandler, Method method) {
+        method.setAccessible(true);
+
         this.listeners.add(new EventListenerDetails(method, event -> {
             try {
                 method.invoke(listener, event);
