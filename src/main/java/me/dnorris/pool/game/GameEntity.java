@@ -31,7 +31,7 @@ public class GameEntity {
             .setDimension(new Dimension(60, 60))
             .setHollow(false)
             .setImmovable(true)
-            .setInteractable(false);
+            .setInteractable(true);
 
     private static final Entity TOP_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
             .setLocation(new Location2D(70, 70))
