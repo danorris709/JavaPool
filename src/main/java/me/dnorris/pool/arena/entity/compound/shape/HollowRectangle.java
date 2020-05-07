@@ -44,13 +44,13 @@ public class HollowRectangle extends CompoundEntity {
     }
 
     private boolean hasCollidedWithYWalls(Location location, double height) {
-        if(location.getY() >= this.getLocation().getY() && location.getY() <= (this.getLocation().getX() + height)) {
+        if(location.getY() >= this.getLocation().getY() && location.getY() <= (this.getLocation().getY() + height)) {
             return true;
         }
 
-        double farX = this.getLocation().getY() + this.getHitbox().getDimensions().getHeight();
+        double farY = this.getLocation().getY() + this.getHitbox().getDimensions().getHeight();
 
-        return location.getX() <= farX && location.getX() >= (farX - height);
+        return location.getY() <= farY && location.getY() >= (farY - height);
     }
 
     private boolean hasCollidedWithXWalls(Location location, double width) {
