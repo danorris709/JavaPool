@@ -15,6 +15,12 @@ public class Events {
 
     public static void callEvent(Event event) {
         for (EventListenerDetails listener : event.getHandler().getListeners()) {
+            if(event instanceof Cancellable) {
+                if(!listener.isIgnoreCancelled() && ((Cancellable) event).isCancelled()) {
+                    continue;
+                }
+            }
+
             listener.getEventMethod().run(event);
         }
     }
@@ -38,7 +44,7 @@ public class Events {
     private static EventListener getHandlers(Class<? extends Event> clazz) {
         return EVENT_LISTENER_CACHE.computeIfAbsent(clazz, ___ -> {
             try {
-                Method declaredMethod = clazz.getDeclaredMethod("getHandler");
+                Method declaredMethod = clazz.getDeclaredMethod("getHandlers");
 
                 declaredMethod.setAccessible(true);
 
