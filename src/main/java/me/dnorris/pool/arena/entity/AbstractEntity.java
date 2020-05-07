@@ -2,6 +2,7 @@ package me.dnorris.pool.arena.entity;
 
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
+import me.dnorris.pool.arena.event.EventFactory;
 import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
@@ -114,6 +115,7 @@ public abstract class AbstractEntity implements Entity {
 
         if (absX <= 1e-3 && absY <= 1e-3) {
             this.setMotion(Vector2D.NONE);
+            EventFactory.callStopMovingEvent(this);
         } else if (absX <= 1e-3) {
             this.setMotion(new Vector2D(0, this.getMotion().getY()));
         } else if (absY <= 1e-3) {
