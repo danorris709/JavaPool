@@ -18,6 +18,7 @@ public enum EntityType {
     ARC(null),
     LINE(null),
     PERCENTAGE_BAR(null),
+    TEXT(null),
 
     ;
 
