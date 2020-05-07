@@ -6,7 +6,7 @@ import me.dnorris.pool.arena.event.handler.EventListener;
 
 /**
  *
- * An event representing when an entity motion goes from a very small number to {@link me.dnorris.pool.data.vector.implementation.Vector2D#NONE}
+ * An event representing when an {@link Entity}'s motion goes from a very small number to {@link me.dnorris.pool.data.vector.implementation.Vector2D#NONE}
  *
  * @author https://github.com/danorris709
  */
