@@ -40,4 +40,8 @@ public class EntityCollisionEvent implements Event, Cancellable {
     public EventListener getHandler() {
         return EVENT_HANDLER;
     }
+
+    public static EventListener getHandlers() {
+        return EVENT_HANDLER;
+    }
 }
