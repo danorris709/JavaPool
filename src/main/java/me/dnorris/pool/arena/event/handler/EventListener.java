@@ -9,14 +9,32 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ * Event Listener for storing what event has what listeners
+ *
+ * @author https://github.com/danorris709
+ */
 public class EventListener {
 
     private final List<EventListenerDetails> listeners = Lists.newArrayList();
 
+    /**
+     *
+     * @return Registered {@link Listener}s
+     */
     public List<EventListenerDetails> getListeners() {
         return this.listeners;
     }
 
+    /**
+     *
+     * Added a listener for the event
+     *
+     * @param listener The listener object
+     * @param eventHandler The event handler annotation
+     * @param method the method annotated
+     */
     public void addListener(Listener listener, EventHandler eventHandler, Method method) {
         method.setAccessible(true);
 
@@ -29,6 +47,12 @@ public class EventListener {
         }, eventHandler.ignoreCancelled()));
     }
 
+    /**
+     *
+     * Remove all listener functions in the specified object
+     *
+     * @param listener The class containing listener functions
+     */
     public void removeListener(Listener listener) {
         for (Method declaredMethod : listener.getClass().getDeclaredMethods()) {
             me.dnorris.pool.arena.event.listener.EventHandler eventHandler = declaredMethod.getAnnotation(me.dnorris.pool.arena.event.listener.EventHandler.class);
