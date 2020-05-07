@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface EventHandler {
 
-    boolean ignoreCancelled();
+    boolean ignoreCancelled() default true;
 
 }
