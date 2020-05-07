@@ -8,8 +8,8 @@ public interface GameData {
 
     void setTurn(Team team);
 
-    int getCuePower();
+    boolean isPlacingCueBall();
 
-    void setCuePower(int cuePower);
+    void setPlacingCueBall(boolean placing);
 
 }
