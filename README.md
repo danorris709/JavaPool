@@ -40,8 +40,10 @@ In the build directory you should find a `libs` directory which will contain the
 
 Double click the jar file to start the game.
 
+
 ## Development
 If you want to use the GameArena implementation for development and have any questions then visit the [wiki](https://codefeedback.lancaster.ac.uk/git110/Term3-norrisd/project/wiki/Developer+API/)
+
 
 ## Contribution
 If you want to contribute to this implementation of the GameArena follow the guide on the [wiki](https://codefeedback.lancaster.ac.uk/git110/Term3-norrisd/project/wiki/Contribution)
