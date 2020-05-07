@@ -5,14 +5,28 @@ import me.dnorris.pool.arena.event.Cancellable;
 import me.dnorris.pool.arena.event.Event;
 import me.dnorris.pool.arena.event.handler.EventListener;
 
+/**
+ *
+ * An event for representing when two {@link Entity}s collide and interact
+ *
+ * @author https://github.com/danorris709
+ */
 public class EntityCollisionEvent implements Event, Cancellable {
 
     private static final EventListener EVENT_HANDLER = new EventListener();
 
-    private Entity first;
-    private Entity second;
+    private final Entity first;
+    private final Entity second;
+
     private boolean cancelled;
 
+    /**
+     *
+     * Constructor for the event giving the two entities that have collided
+     *
+     * @param first The first entity colliding
+     * @param second The second entity colliding
+     */
     public EntityCollisionEvent(Entity first, Entity second) {
         this.first = first;
         this.second = second;
