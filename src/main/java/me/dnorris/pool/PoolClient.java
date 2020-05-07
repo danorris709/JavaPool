@@ -45,13 +45,6 @@ public class PoolClient {
         gameArena.addHandler(CuePowerHandler.class);
         gameArena.addHandler(PointerDirectionHandler.class);
         gameArena.addHandler(CueReleaseHandler.class);
-
-        Events.registerListener(new Listener() {
-            @EventHandler
-            public void onEntityCollide(EntityCollisionEvent event) {
-                System.out.println("COLLISION!");
-            }
-        });
     }
 
     private static Entity getBall(int position) {
