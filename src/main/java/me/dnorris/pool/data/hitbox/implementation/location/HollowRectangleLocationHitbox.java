@@ -8,11 +8,27 @@ import me.dnorris.pool.data.location.Location;
 import java.awt.*;
 import java.util.List;
 
+/**
+ *
+ * A hollow rectangle implementation of the {@link AbstractLocationHitbox}
+ *
+ * @author https://github.com/danorris709
+ */
 public class HollowRectangleLocationHitbox extends AbstractLocationHitbox {
 
     private final List<Hitbox> hitboxes;
     private final int thickness;
 
+    /**
+     *
+     * A default constructor with high priority as it's a {@link me.dnorris.pool.arena.entity.compound.CompoundEntity} representation
+     *
+     * @param center Center {@link Location} of the rectangle
+     * @param dimensions {@link Dimension} of the rectangle
+     * @param thickness Thickness of the border of the rectangle
+     * @param immovable If the rectangle can be moved
+     * @param interactable If the rectangle is ignored by moving entities
+     */
     public HollowRectangleLocationHitbox(Location center, Dimension dimensions, int thickness, boolean immovable, boolean interactable) {
         super(10, center, dimensions, immovable, interactable);
 
