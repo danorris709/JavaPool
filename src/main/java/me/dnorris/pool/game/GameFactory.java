@@ -36,6 +36,7 @@ public class GameFactory {
         gameArena.addEntity(GameEntity.getBlackBall());
         gameArena.addEntity(GameEntity.getPercentageBar());
         gameArena.addEntity(GameEntity.getPointer());
+        gameArena.addEntity(GameEntity.getTurnIdentifier());
 
         for(int i = 0; i < GameLocation.BALL_SPAWN_POINTS.length; i++) {
             gameArena.addEntity(getBall(i));

@@ -7,6 +7,7 @@ import me.dnorris.pool.arena.entity.compound.shape.HollowRectangle;
 import me.dnorris.pool.arena.entity.compound.shape.PercentageBar;
 import me.dnorris.pool.arena.entity.shape.ArcShape;
 import me.dnorris.pool.arena.entity.shape.LineEntity;
+import me.dnorris.pool.arena.entity.shape.TextEntity;
 import me.dnorris.pool.data.Colour;
 import me.dnorris.pool.data.location.implementation.Location2D;
 
@@ -78,6 +79,16 @@ public class GameEntity {
             .setEndPoint(new Location2D(100 + (1000 / 4) + 750, 100 + 250))
             .build();
 
+    private static final TextEntity TURN_IDENTIFIER = new TextEntity.Builder()
+            .setLocation(new Location2D(100, 50))
+            .setBold(true)
+            .setItalic(false)
+            .setSize(20)
+            .setColour(Color.WHITE)
+            .setText("PLAYER 1's TURN")
+            .setFont("SansSerif")
+            .build();
+
     private static Entity cloth;
     private static Entity headString;
     private static Entity blackBallSpot;
@@ -111,6 +122,10 @@ public class GameEntity {
 
     public static Entity getBottomLeftCornerHole() {
         return BOTTOM_LEFT_CORNER_HOLE;
+    }
+
+    public static TextEntity getTurnIdentifier() {
+        return TURN_IDENTIFIER;
     }
 
     public static Entity getCloth() {
