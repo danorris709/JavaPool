@@ -5,6 +5,11 @@ import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.arena.jframe.SimpleArena;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
+import me.dnorris.pool.arena.event.Events;
+import me.dnorris.pool.arena.event.event.EntityCollisionEvent;
+import me.dnorris.pool.arena.event.listener.EventHandler;
+import me.dnorris.pool.arena.event.listener.Listener;
+import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameLocation;
 import me.dnorris.pool.game.handler.CuePowerHandler;
@@ -41,6 +46,15 @@ public class PoolClient {
         gameArena.addHandler(CuePowerHandler.class);
         gameArena.addHandler(PointerDirectionHandler.class);
         gameArena.addHandler(CueReleaseHandler.class);
+
+        Events.registerListener(new Listener() {
+            @EventHandler
+            public void onEntityCollide(EntityCollisionEvent event) {
+                event.setCancelled(true);
+                event.getFirst().setMotion(Vector2D.NONE);
+                event.getSecond().setMotion(Vector2D.NONE);
+            }
+        });
     }
 
     private static Entity getBall(int position) {
