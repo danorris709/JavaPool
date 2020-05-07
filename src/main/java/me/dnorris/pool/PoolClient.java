@@ -5,7 +5,6 @@ import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.arena.jframe.SimpleArena;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
-import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameLocation;
 import me.dnorris.pool.game.handler.CuePowerHandler;
