@@ -1,7 +1,9 @@
 package me.dnorris.pool.arena.event;
 
+import me.dnorris.pool.arena.event.handler.EventListener;
+
 public interface Event {
 
-    EventHandler getHandler();
+    EventListener getHandler();
 
 }
