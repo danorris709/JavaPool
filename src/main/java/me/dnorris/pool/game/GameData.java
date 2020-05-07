@@ -17,4 +17,8 @@ public interface GameData {
 
     boolean haveBallsStoppedMoving();
 
+    int getPottedBalls();
+
+    void setPottedBalls(int pottedBalls);
+
 }
