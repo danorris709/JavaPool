@@ -3,6 +3,8 @@ package me.dnorris.pool.arena.arena.jframe;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.arena.AbstractGameArena;
 import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
+import me.dnorris.pool.arena.event.EventFactory;
+import me.dnorris.pool.arena.event.event.EntityCollisionEvent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,7 +66,11 @@ public class SimpleArena extends AbstractGameArena {
             }
 
             if(other.getHitbox().isColliding(entity.getHitbox())) {
-                entity.collide(other);
+                EntityCollisionEvent collisionEvent = EventFactory.callCollisionEvent(entity, other);
+
+                if(!collisionEvent.isCancelled()) {
+                    entity.collide(other);
+                }
             }
         }
     }
