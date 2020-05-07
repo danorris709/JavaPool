@@ -34,39 +34,39 @@ public class GameEntity {
             .setInteractable(true);
 
     private static final Entity TOP_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(70, 70))
+            .setLocation(new Location2D(100, 100))
             .setStartAngle(0)
             .setArcAngle(-90)
             .build();
 
     private static final Entity TOP_LEFT_CORNER_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(70, 570))
+            .setLocation(new Location2D(100, 600))
             .setStartAngle(0)
             .setArcAngle(90)
             .build();
 
     private static final Entity TOP_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(100 + 500, 75))
+            .setLocation(new Location2D(600, 100))
             .setDimension(new Dimension(50, 50))
             .setStartAngle(180)
             .setArcAngle(180)
             .build();
 
     private static final Entity BOTTOM_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(100 + 500, 575))
+            .setLocation(new Location2D(600, 600))
             .setDimension(new Dimension(50, 50))
             .setStartAngle(0)
             .setArcAngle(180)
             .build();
 
     private static final Entity BOTTOM_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(70 + 1000, 70))
+            .setLocation(new Location2D(1100, 100))
             .setStartAngle(180)
             .setArcAngle(90)
             .build();
 
     private static final Entity BOTTOM_LEFT_CORNER_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(70 + 1000, 570))
+            .setLocation(new Location2D(1100, 600))
             .setStartAngle(90)
             .setArcAngle(90)
             .build();

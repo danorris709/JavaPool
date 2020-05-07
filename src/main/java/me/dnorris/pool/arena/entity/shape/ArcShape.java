@@ -31,10 +31,6 @@ public class ArcShape extends AbstractEntity {
         int xPos = (int) (this.getLocation().getX() - (this.getHitbox().getDimensions().getWidth() / 2.0));
         int yPos = (int) (this.getLocation().getY() - (this.getHitbox().getDimensions().getHeight() / 2.0));
 
-        graphics.setColor(Color.WHITE);
-        graphics.drawRect(xPos, yPos, this.getHitbox().getDimensions().width, this.getHitbox().getDimensions().height);
-        graphics.setColor(this.getColour());
-
         if (this.hollow) {
             graphics.drawArc(xPos, yPos, this.getHitbox().getDimensions().width, this.getHitbox().getDimensions().height, this.startAngle, this.arcAngle);
         } else {
