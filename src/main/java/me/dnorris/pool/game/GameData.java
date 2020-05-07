@@ -11,9 +11,9 @@ public interface GameData {
 
     void setTurn(Team team);
 
-    boolean isPlacingCueBall();
+    boolean isCueBallInHand();
 
-    void setPlacingCueBall(boolean placing);
+    void setCueBallInHand(boolean placing);
 
     boolean haveBallsStoppedMoving();
 
