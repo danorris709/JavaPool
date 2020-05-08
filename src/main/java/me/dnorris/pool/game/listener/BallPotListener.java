@@ -27,6 +27,10 @@ public class BallPotListener implements Listener {
 
     @EventHandler
     public void onEntityCollide(EntityCollisionEvent event) {
+        if(currentGame.isCueBallInHand()) {
+            return;
+        }
+
         if (!(event.getFirst() instanceof ArcShape) && !(event.getSecond() instanceof ArcShape)) {
             return;
         }
@@ -42,20 +46,21 @@ public class BallPotListener implements Listener {
         this.currentGame.setPottedBalls(this.currentGame.getPottedBalls() + 1);
 
         if (Objects.equals(ball, GameEntity.getCueBall())) {
-            this.handleCueBallPot(ball);
+            this.handleCueBallPot(ball, this.currentGame);
         } else if (Objects.equals(ball, GameEntity.getBlackBall())) {
             // TODO: 07/05/2020 win the game
         } else {
-            Events.callEvent(new BallPotEvent(GameFactory.getActiveGame(), ball));
+            Events.callEvent(new BallPotEvent(this.currentGame, ball));
             // TODO: 07/05/2020 remove the ball and place it up above yanno
         }
     }
 
-    private void handleCueBallPot(CircleEntity ball) {
+    private void handleCueBallPot(CircleEntity ball, GameData activeGame) {
         ball.setLocation(new Location2D(350, 350));
         GameFactory.getActiveGame().setCueBallInHand(true);
         GameFactory.getActiveGame().setTurn(GameFactory.getActiveGame().getTurn().getOpposition());
         GameFactory.getActiveGame().setShotsInTurn(2);
+        activeGame.getArena().removeEntity(GameEntity.getPointer());
     }
 
     private CircleEntity getBall(EntityCollisionEvent event) {
