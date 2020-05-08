@@ -9,8 +9,27 @@ import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
 
+/**
+ *
+ * Basic implementation for a Circle {@link Entity}
+ *
+ * @author https://github.com/danorris709
+ */
 public class CircleEntity extends AbstractEntity {
 
+    /**
+     *
+     * Default constructor
+     * Public for instantiation via {@link me.dnorris.pool.arena.entity.EntityBuilder}
+     *
+     * @param location Location of the Rectangle
+     * @param colour Colour of the rectangle
+     * @param motion initial motion of the rectangle
+     * @param dimension dimensions of the rectangle
+     * @param hollow If the rectangle is hollow
+     * @param immovable If the rectangle can be moved
+     * @param interactable If the rectangle can be interacted with
+     */
     public CircleEntity(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable) {
         super(colour, location, new CircleLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
     }
