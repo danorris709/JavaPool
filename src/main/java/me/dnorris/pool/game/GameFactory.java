@@ -5,11 +5,13 @@ import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.arena.jframe.SimpleArena;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
+import me.dnorris.pool.arena.event.Events;
 import me.dnorris.pool.game.data.BasicGameData;
 import me.dnorris.pool.game.handler.CuePlaceHandler;
 import me.dnorris.pool.game.handler.CuePowerHandler;
 import me.dnorris.pool.game.handler.CueReleaseHandler;
 import me.dnorris.pool.game.handler.PointerDirectionHandler;
+import me.dnorris.pool.game.listener.BallPotListener;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
@@ -44,7 +46,10 @@ public class GameFactory {
         gameArena.addHandler(PointerDirectionHandler.class);
         gameArena.addHandler(CueReleaseHandler.class);
         gameArena.addHandler(CuePlaceHandler.class);
+
         activeGame = new BasicGameData(gameArena);
+
+        Events.registerListener(new BallPotListener(activeGame));
     }
 
     private static Entity getBall(int position) {
