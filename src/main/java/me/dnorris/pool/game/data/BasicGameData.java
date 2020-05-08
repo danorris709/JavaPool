@@ -21,6 +21,8 @@ public class BasicGameData implements GameData {
 
     public BasicGameData(GameArena arena) {
         this.arena = arena;
+
+        this.setTurn(Team.PLAYER_ONE);
     }
 
     @Override
