@@ -12,12 +12,12 @@ public class TurnFinishEvent implements Event {
     private static final EventListener EVENT_HANDLER = new EventListener();
 
     private final Team turn;
-    private final int ballsHit;
+    private final Entity firstCollision;
     private final List<Entity> pottedBalls;
 
-    public TurnFinishEvent(Team turn, int ballsHit, List<Entity> pottedBalls) {
+    public TurnFinishEvent(Team turn, Entity firstCollision, List<Entity> pottedBalls) {
         this.turn = turn;
-        this.ballsHit = ballsHit;
+        this.firstCollision = firstCollision;
         this.pottedBalls = pottedBalls;
     }
 
@@ -25,8 +25,8 @@ public class TurnFinishEvent implements Event {
         return this.turn;
     }
 
-    public int getBallsHit() {
-        return this.ballsHit;
+    public Entity getFirstCollision() {
+        return this.firstCollision;
     }
 
     public List<Entity> getPottedBalls() {
