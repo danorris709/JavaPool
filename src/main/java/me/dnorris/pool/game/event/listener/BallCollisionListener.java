@@ -1,4 +1,4 @@
-package me.dnorris.pool.game.listener;
+package me.dnorris.pool.game.event.listener;
 
 import me.dnorris.pool.arena.entity.shape.CircleEntity;
 import me.dnorris.pool.arena.event.Events;
