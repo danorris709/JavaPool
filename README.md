@@ -16,7 +16,24 @@ Otherwise, find the relevant section below for your OS and follow the instructio
 
 
 ### Linux
+Start by right-clicking in your directory of choice (one you have administrator access to) and clicking to open the terminal.
+Clone the repository into the folder using the `git clone https://codefeedback.lancaster.ac.uk/git110/Term3-norrisd/project.git` command
+or extract the compressed file downloaded from the website.
 
+Then using the `cd` command enter the directory to which you cloned the repository.
+
+Once in the correct directory ensure the `gradlew` file exists and the `gradle` directory exists.
+If they do not exist then there was an issue in cloning the repository!
+
+To compile the project run: `gradlew clean shadowJar`
+
+Then you should see something similar to the following output:
+![Image of build success](https://i.gyazo.com/71074b51f3018baa18a312fa2df9b276.png)
+then you should find a `build` directory has been generated.
+
+In the `build` directory you'll find a `libs` directory which contains the `PoolProject.jar` file.
+
+Double click the jar file to start the game.
 
 ### Windows
 Start by opening the command prompt, or if you have Git bash then go to the directory and open it there.
@@ -25,7 +42,7 @@ or extract the compressed file downloaded from the website.
 
 Then using the `cd` command enter the directory to which you cloned the repository.
 
-Once in the correct directory ensure the `gradlew` and `gradlew.bat` files exist.
+Once in the correct directory ensure the `gradlew` and `gradlew.bat` files exists and the `gradle` directory exists.
 If they do not exist then there was an issue in cloning the repository!
 
 To compile the project run: `gradlew clean shadowJar`.
