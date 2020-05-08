@@ -17,4 +17,12 @@ public enum Team {
         return this.displayText;
     }
 
+    public Team getOpposition() {
+        if(this.ordinal() == 0) {
+            return PLAYER_TWO;
+        }
+
+        return PLAYER_ONE;
+    }
+
 }
