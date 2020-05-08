@@ -13,6 +13,7 @@ import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameFactory;
 import me.dnorris.pool.game.event.BallPotEvent;
+import me.dnorris.pool.game.team.Team;
 
 import java.util.Objects;
 
@@ -48,7 +49,14 @@ public class BallPotListener implements Listener {
         if (Objects.equals(ball, GameEntity.getCueBall())) {
             this.handleCueBallPot(ball, this.currentGame);
         } else if (Objects.equals(ball, GameEntity.getBlackBall())) {
-            // TODO: 07/05/2020 win the game
+            Team team = this.currentGame.getTurn();
+
+            if(this.currentGame.isOnBlackBall(team)) {
+                // TODO: 08/05/2020  WON THE GAME!
+                return;
+            }
+
+            // TODO: 08/05/2020 LOST THE GAME!
         } else {
             Events.callEvent(new BallPotEvent(this.currentGame, ball));
             // TODO: 07/05/2020 remove the ball and place it up above yanno
