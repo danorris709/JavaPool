@@ -52,7 +52,7 @@ public class BallPotListener implements Listener {
             Team team = this.currentGame.getTurn();
 
             if(this.currentGame.isOnBlackBall(team)) {
-                // TODO: 08/05/2020  WON THE GAME!
+                Events.callEvent(new BallPotEvent(this.currentGame, ball));
                 return;
             }
 
