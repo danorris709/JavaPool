@@ -3,6 +3,7 @@ package me.dnorris.pool.game.handler;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.key.KeyEventType;
 import me.dnorris.pool.arena.key.KeyHandler;
+import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.location.implementation.Location2D;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameFactory;
@@ -30,7 +31,13 @@ public class CuePlaceHandler {
         }
 
         MouseEvent mouseEvent = (MouseEvent) event;
+        Location newCueBallPoint = new Location2D(mouseEvent.getPoint());
 
-        GameEntity.getCueBall().setLocation(new Location2D(mouseEvent.getLocationOnScreen()));
+        newCueBallPoint.setX(Math.max(100, newCueBallPoint.getX()));
+        newCueBallPoint.setX(Math.min(350, newCueBallPoint.getX()));
+        newCueBallPoint.setY(Math.max(100, newCueBallPoint.getY()));
+        newCueBallPoint.setY(Math.min(600, newCueBallPoint.getY()));
+
+        GameEntity.getCueBall().setLocation(newCueBallPoint);
     }
 }
