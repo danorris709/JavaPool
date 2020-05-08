@@ -4,8 +4,7 @@ import me.dnorris.pool.arena.GameFunction;
 import me.dnorris.pool.arena.arena.jframe.SimpleArena;
 import me.dnorris.pool.arena.key.KeyEventType;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 
 /**
  *
@@ -14,7 +13,7 @@ import java.awt.event.KeyListener;
  *
  * @author https://github.com/danorris709
  */
-public class KeyHandlerListener implements KeyListener {
+public class KeyHandlerListener implements KeyListener, MouseListener, MouseMotionListener {
 
     private final SimpleArena gameArena;
 
@@ -43,13 +42,58 @@ public class KeyHandlerListener implements KeyListener {
         this.attemptRun(event, KeyEventType.KEY_RELEASED);
     }
 
-    private void attemptRun(KeyEvent event, KeyEventType type) {
-        for (GameFunction handler : this.gameArena.getHandlers(event.getKeyCode())) {
+    @Override
+    public void mouseClicked(MouseEvent event) {
+        this.attemptRun(event, KeyEventType.MOUSE_CLICKED);
+    }
+
+    @Override
+    public void mousePressed(MouseEvent event) {
+        this.attemptRun(event, KeyEventType.MOUSE_PRESSED);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent event) {
+        this.attemptRun(event, KeyEventType.MOUSE_RELEASED);
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent event) {
+        this.attemptRun(event, KeyEventType.MOUSE_ENTERED);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent event) {
+        this.attemptRun(event, KeyEventType.MOUSE_EXITED);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent event) {
+        this.attemptRun(event, KeyEventType.MOUSE_MOVED);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent event) {
+        this.attemptRun(event, KeyEventType.MOUSE_DRAGGED);
+    }
+
+    private void attemptRun(InputEvent event, KeyEventType type) {
+        int keyCode = this.getKeyCode(event);
+
+        for (GameFunction handler : this.gameArena.getHandlers(keyCode)) {
             if(handler.getEventType() != type) {
                 continue;
             }
 
             handler.getFunction().run(this.gameArena, event);
+        }
+    }
+
+    private int getKeyCode(InputEvent event) {
+        if(event instanceof MouseEvent) {
+            return ((MouseEvent) event).getButton();
+        }else {
+            return ((KeyEvent) event).getKeyCode();
         }
     }
 }
