@@ -1,3 +1,2 @@
-./gradlew.bat clean shadowJar
-./gradlew.bat javadoc
-java -jar build/libs/PoolProject.jar
+@ECHO OFF
+gradlew.bat clean shadowJar javadoc && java -jar build/libs/PoolProject.jar
