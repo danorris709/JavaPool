@@ -28,6 +28,16 @@ public class Location2D implements Location {
         this.y = y;
     }
 
+    /**
+     *
+     * Constructor converting a {@link Point} to a {@link Location}
+     *
+     * @param point The point being converted
+     */
+    public Location2D(Point point) {
+        this(point.x, point.y);
+    }
+
     @Override
     public double getX() {
         return this.x;
