@@ -20,6 +20,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ *
+ * Abstract implementation of the {@link GameArena} interface
+ * to reduce repeated code in further implementations
+ *
+ * @author https://github.com/danorris709
+ */
 public abstract class AbstractGameArena implements GameArena {
 
     private final List<Entity> entities = Lists.newArrayList();
@@ -28,6 +35,12 @@ public abstract class AbstractGameArena implements GameArena {
 
     private Dimension dimensions;
 
+    /**
+     *
+     * Default constructor
+     *
+     * @param dimensions Dimensions of the arena
+     */
     public AbstractGameArena(Dimension dimensions) {
         this.dimensions = dimensions;
     }
