@@ -59,7 +59,6 @@ public class BallPotListener implements Listener {
             // TODO: 08/05/2020 LOST THE GAME!
         } else {
             Events.callEvent(new BallPotEvent(this.currentGame, ball));
-            // TODO: 07/05/2020 remove the ball and place it up above yanno
         }
     }
 
