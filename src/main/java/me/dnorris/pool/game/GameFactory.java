@@ -5,11 +5,7 @@ import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.arena.jframe.SimpleArena;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
-import me.dnorris.pool.arena.event.Events;
-import me.dnorris.pool.arena.event.event.EntityCollisionEvent;
-import me.dnorris.pool.arena.event.listener.EventHandler;
-import me.dnorris.pool.arena.event.listener.Listener;
-import me.dnorris.pool.data.vector.implementation.Vector2D;
+import me.dnorris.pool.game.data.BasicGameData;
 import me.dnorris.pool.game.handler.CuePowerHandler;
 import me.dnorris.pool.game.handler.CueReleaseHandler;
 import me.dnorris.pool.game.handler.PointerDirectionHandler;
@@ -47,6 +43,7 @@ public class GameFactory {
         gameArena.addHandler(CuePowerHandler.class);
         gameArena.addHandler(PointerDirectionHandler.class);
         gameArena.addHandler(CueReleaseHandler.class);
+        activeGame = new BasicGameData(gameArena);
     }
 
     private static Entity getBall(int position) {
@@ -65,5 +62,9 @@ public class GameFactory {
         }
 
         return null;
+    }
+
+    public static GameData getActiveGame() {
+        return activeGame;
     }
 }
