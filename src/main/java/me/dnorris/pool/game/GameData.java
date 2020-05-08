@@ -21,4 +21,8 @@ public interface GameData {
 
     void setPottedBalls(int pottedBalls);
 
+    int getShotsInTurn();
+
+    void setShotsInTurn(int shotsInTurn);
+
 }
