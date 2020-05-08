@@ -10,10 +10,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ *
+ * Simple implementation of the {@link me.dnorris.pool.arena.GameArena} interface
+ * using a concurrent {@link Thread} for ticking and painting the entities, and using a
+ * basic lock object to prevent {@link java.util.ConcurrentModificationException}
+ *
+ * @author https://github.com/danorris709
+ */
 public class SimpleArena extends AbstractGameArena {
 
     private final Object lock = new Object();
 
+    /**
+     *
+     * Basic constructor
+     *
+     * @param dimensions Dimensions of the {@link me.dnorris.pool.arena.GameArena}
+     */
     public SimpleArena(Dimension dimensions) {
         super(dimensions);
 
