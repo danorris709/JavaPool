@@ -12,12 +12,33 @@ import me.dnorris.pool.data.vector.Vector;
 
 import java.awt.*;
 
+/**
+ *
+ * Represents an arc on the {@link me.dnorris.pool.arena.GameArena}
+ *
+ * @author https://github.com/danorris709
+ */
 public class ArcShape extends AbstractEntity {
 
     private int startAngle;
     private int arcAngle;
 
-    public ArcShape(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable, int startAngle, int arcAngle) {
+    /**
+     *
+     * Default constructor
+     * Protected for instantiation via sub classes or the builder
+     *
+     * @param location Location of the arc
+     * @param colour Colour of the arc
+     * @param motion initial motion of the arc
+     * @param dimension dimensions of the arc
+     * @param hollow If the arc is hollow
+     * @param immovable If the arc can be moved
+     * @param interactable If the arc can be interacted with
+     * @param startAngle start angle of the arc
+     * @param arcAngle number of degrees the arc rotates from the start angle
+     */
+    protected ArcShape(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable, int startAngle, int arcAngle) {
         super(colour, location, new RectangleLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
 
         this.startAngle = startAngle;
@@ -43,6 +64,12 @@ public class ArcShape extends AbstractEntity {
         super.tick();
     }
 
+    /**
+     *
+     * Builder class for Arc as it has custom flags (i.e. start & end angles)
+     *
+     * @author https://github.com/danorris709
+     */
     public static class Builder extends EntityBuilder {
 
         private int startAngle;
