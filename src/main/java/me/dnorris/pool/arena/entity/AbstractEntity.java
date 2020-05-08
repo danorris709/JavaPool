@@ -10,8 +10,16 @@ import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
 
+/**
+ *
+ * Abstract implementation of the {@link Entity} interface to reduce the amount of
+ * repeated code in the lower, more specific, implementations of the {@link Entity} interface
+ *
+ * @author https://github.com/danorris709
+ */
 public abstract class AbstractEntity implements Entity {
 
+    // Friction constant
     private static Vector FRICTION = new Vector2D(0.995, 0.995);
 
     private GameArena arena;
@@ -22,6 +30,16 @@ public abstract class AbstractEntity implements Entity {
 
     protected boolean hollow;
 
+    /**
+     *
+     * Basic constructor that can only be accessed from classes extending this abstract implementation
+     *
+     * @param colour Colour of the entity
+     * @param location Center point of the entity
+     * @param hitbox Entity's hitbox
+     * @param motion The initial motion of the entity
+     * @param hollow If the entity is graphically hollow
+     */
     protected AbstractEntity(Color colour, Location location, Hitbox hitbox, Vector motion, boolean hollow) {
         this.colour = colour;
         this.location = location;
