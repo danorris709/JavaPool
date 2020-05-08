@@ -6,12 +6,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+/**
+ *
+ * Custom implementation of the {@link JFrame} for handling the {@link JFrame} implementation of the
+ * {@link GameArena} interface.
+ * Handles the painting and rendering of entities and updating the dimensions of the arena.
+ *
+ * @author https://github.com/danorris709
+ */
 public class GameFrame extends JFrame {
 
     private final GameArena gameArena;
 
     private boolean rendered = false;
 
+    /**
+     *
+     * Basic constructor
+     *
+     * @param gameArena The game arena being drawn
+     */
     public GameFrame(GameArena gameArena) {
         this.gameArena = gameArena;
 
