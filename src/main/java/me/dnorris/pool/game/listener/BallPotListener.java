@@ -19,7 +19,7 @@ import java.util.Objects;
 
 public class BallPotListener implements Listener {
 
-    private static final Location POTTED_BALLS = new Location2D(550, 50);
+    private static final Location POTTED_BALLS = new Location2D(350, 50);
     private final GameData currentGame;
 
     public BallPotListener(GameData currentGame) {
