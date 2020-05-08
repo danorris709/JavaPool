@@ -6,7 +6,6 @@ import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.data.hitbox.Hitbox;
 import me.dnorris.pool.data.hitbox.implementation.location.CircleLocationHitbox;
-import me.dnorris.pool.data.hitbox.implementation.location.RectangleLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
 
@@ -39,7 +38,7 @@ public class ArcShape extends AbstractEntity {
      * @param arcAngle number of degrees the arc rotates from the start angle
      */
     protected ArcShape(Location location, Color colour, Vector motion, Dimension dimension, boolean hollow, boolean immovable, boolean interactable, int startAngle, int arcAngle) {
-        super(colour, location, new RectangleLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
+        super(colour, location, new CircleLocationHitbox(location, dimension, immovable, interactable), motion, hollow);
 
         this.startAngle = startAngle;
         this.arcAngle = arcAngle;
