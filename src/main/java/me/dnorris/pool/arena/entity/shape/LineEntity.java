@@ -59,7 +59,7 @@ public class LineEntity extends AbstractEntity {
 
     /**
      *
-     * Builder class for Line as it has custom flags (i.e. end point & cannot be interacted with)
+     * Builder class for Line as it has custom flags (i.e. end point and cannot be interacted with)
      *
      * @author https://github.com/danorris709
      */

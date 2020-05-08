@@ -66,7 +66,7 @@ public class ArcShape extends AbstractEntity {
 
     /**
      *
-     * Builder class for Arc as it has custom flags (i.e. start & end angles)
+     * Builder class for Arc as it has custom flags (i.e. start and end angles)
      *
      * @author https://github.com/danorris709
      */

@@ -18,7 +18,7 @@ public class EventFactory {
      *
      * @param first The first {@link Entity}
      * @param second The second {@link Entity}
-     * @return The event created & called
+     * @return The event created and called
      */
     public static EntityCollisionEvent callCollisionEvent(Entity first, Entity second) {
         EntityCollisionEvent collisionEvent = new EntityCollisionEvent(first, second);

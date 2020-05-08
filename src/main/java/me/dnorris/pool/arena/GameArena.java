@@ -23,7 +23,7 @@ public interface GameArena {
      *
      * Set the {@link Dimension} of the {@link GameArena}
      *
-     * @return new height and width
+     * @param dimensions the new dimensions of the {@link GameArena}
      */
     void setDimensions(Dimension dimensions);
 

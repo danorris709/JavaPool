@@ -78,7 +78,7 @@ public class TextEntity extends AbstractEntity {
 
     /**
      *
-     * Builder class for Text as it has custom flags (i.e. font & text related)
+     * Builder class for Text as it has custom flags (i.e. font and text related)
      *
      * @author https://github.com/danorris709
      */
