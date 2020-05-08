@@ -7,14 +7,12 @@ import me.dnorris.pool.arena.key.KeyEventType;
 import me.dnorris.pool.arena.key.KeyHandler;
 import me.dnorris.pool.data.Pair;
 import me.dnorris.pool.data.location.Location;
-import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameFactory;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Map;
-import java.util.Objects;
 
 public class PointerDirectionHandler {
 
@@ -22,7 +20,7 @@ public class PointerDirectionHandler {
 
     @KeyHandler(keyCode = { KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT }, getType = KeyEventType.KEY_PRESSED)
     public void onLeftArrowPressed(GameArena arena, InputEvent event) {
-        if(!Objects.equals(GameEntity.getCueBall().getMotion(), Vector2D.NONE) || GameFactory.getActiveGame().isCueBallInHand()) {
+        if(!GameFactory.getActiveGame().haveBallsStoppedMoving() || GameFactory.getActiveGame().isCueBallInHand()) {
             return;
         }
 
