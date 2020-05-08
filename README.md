@@ -34,6 +34,8 @@ then you should find a `build` directory has been generated.
 In the `build` directory you'll find a `libs` directory which contains the `PoolProject.jar` file.
 
 Double click the jar file to start the game.
+Or to run the jar from the command line without switching directories run the following:
+```java -jar "build/libs/PoolProject.jar```
 
 ### Windows
 Start by opening the command prompt, or if you have Git bash then go to the directory and open it there.
@@ -56,7 +58,8 @@ then you should find a `build` directory has been generated.
 In the build directory you should find a `libs` directory which will contain the `PoolProject.jar` file.
 
 Double click the jar file to start the game.
-
+Or to run the jar from the command line without switching directories run the following:
+```java -jar "build/libs/PoolProject.jar```
 
 ## Development
 If you want to use the GameArena implementation for development and have any questions then visit the [wiki](https://codefeedback.lancaster.ac.uk/git110/Term3-norrisd/project/wiki/Developer+API/)
