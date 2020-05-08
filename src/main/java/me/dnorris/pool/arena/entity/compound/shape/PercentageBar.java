@@ -13,6 +13,12 @@ import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+/**
+ *
+ * Represents a percentage bar on the {@link me.dnorris.pool.arena.GameArena}
+ *
+ * @author https://github.com/danorris709
+ */
 public class PercentageBar extends CompoundEntity {
 
     private Entity emptyBar;
@@ -21,6 +27,18 @@ public class PercentageBar extends CompoundEntity {
     private int filledPercentage;
     private int maxHeight;
 
+    /**
+     *
+     * Default constructor publicly accessible
+     *
+     * @param centerLocation Center point of the percentage bar
+     * @param colour Colour of the percentage bar
+     * @param motion initial motion
+     * @param dimension dimensions
+     * @param maxHeight maximum height
+     * @param immovable if the percentage bar can be moved
+     * @param interactable if the percentage bar can be interacted with
+     */
     public PercentageBar(Location centerLocation, Color colour, Vector motion, Dimension dimension, int maxHeight, boolean immovable, boolean interactable) {
         super(centerLocation, colour, motion, new EmptyHitbox(centerLocation, immovable), createEntities(centerLocation, colour, dimension, maxHeight, immovable, interactable));
 
@@ -38,6 +56,17 @@ public class PercentageBar extends CompoundEntity {
         return entities.toArray(new Entity[0]);
     }
 
+    /**
+     *
+     * Used for constructing the entity during passing the arguments to the parent constructor
+     *
+     * @param centerLocation Center point of the percentage bar
+     * @param colour Colour of the percentage bar
+     * @param dimension dimensions
+     * @param interactable if the percentage bar can be interacted with
+     * @param immovable if the percentage bar can be moved
+     * @return The hollow version to show the power bar as not-full
+     */
     public static Entity createEmptyPowerBar(Location centerLocation, Color colour, Dimension dimension, boolean interactable, boolean immovable) {
         try {
             return new EntityBuilder()
@@ -56,6 +85,16 @@ public class PercentageBar extends CompoundEntity {
         return null;
     }
 
+    /**
+     *
+     * Used for constructing the entity during passing the arguments to the parent constructor
+     *
+     * @param centerLocation Center point of the percentage bar
+     * @param colour Colour of the percentage bar
+     * @param interactable if the percentage bar can be interacted with
+     * @param immovable if the percentage bar can be moved
+     * @return The filled version to show the power bar as full
+     */
     private static Entity createFullPowerBar(Location centerLocation, Color colour, int maxHeight, boolean interactable, boolean immovable) {
         try {
             return new EntityBuilder()
@@ -74,14 +113,32 @@ public class PercentageBar extends CompoundEntity {
         return null;
     }
 
+    /**
+     *
+     * Gets the percentage of the {@link PercentageBar} out of 100
+     *
+     * @return percentage out of 100
+     */
     public int getFilledPercentage() {
         return this.filledPercentage;
     }
 
+    /**
+     *
+     * Gets the filled percentage as a decimal
+     *
+     * @return percentage as a decimal [0, 1.0]
+     */
     public double getPercentage() {
         return this.filledPercentage / 100.00;
     }
 
+    /**
+     *
+     * Adds the percentage to the bar and updates the display
+     *
+     * @param delta The amount to change the percentage by
+     */
     public void addPercentage(int delta) {
         if((this.filledPercentage + delta) > 100) {
             delta = 100 - this.filledPercentage;
@@ -95,6 +152,12 @@ public class PercentageBar extends CompoundEntity {
         this.updateEmptyPercentage(pixelPercent);
     }
 
+    /**
+     *
+     * Takes the percentage to the bar and updates the display
+     *
+     * @param delta The amount to change the percentage by
+     */
     public void takePercentage(int delta) {
         if((this.filledPercentage - delta) < 0) {
             delta = this.filledPercentage;
@@ -108,6 +171,12 @@ public class PercentageBar extends CompoundEntity {
         this.updateEmptyPercentage(-pixelPercent);
     }
 
+    /**
+     *
+     * Updates the filled {@link Entity}
+     *
+     * @param change The amount it's changing by
+     */
     private void updateFilledPercentage(int change) {
         Dimension fullDimensions = this.filledBar.getHitbox().getDimensions();
 
@@ -118,6 +187,12 @@ public class PercentageBar extends CompoundEntity {
         );
     }
 
+    /**
+     *
+     * Updates the unfilled {@link Entity}
+     *
+     * @param change The amount it's changing by
+     */
     private void updateEmptyPercentage(int change) {
         Dimension emptyDimensions = this.emptyBar.getHitbox().getDimensions();
 
