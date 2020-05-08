@@ -10,6 +10,14 @@ import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ *
+ * Abstract builder class for generic entities.
+ * Used so there isn't a specific builder for each entity. However, if an entity has any custom flags
+ * then a custom builder extends this and is used instead.
+ *
+ * @author https://github.com/danorris709
+ */
 public class EntityBuilder {
 
     protected Color colour;
@@ -69,12 +77,28 @@ public class EntityBuilder {
         return this;
     }
 
+    /**
+     *
+     * Using the constructor from the {@link EntityType} it creates a new instance from all the
+     * specified flags
+     *
+     * @return The new entity
+     * @throws IllegalAccessException If the constructor cannot be access
+     * @throws InvocationTargetException If the constructor doesn't exist
+     * @throws InstantiationException If there's an error in the constructor
+     */
     public Entity build() throws IllegalAccessException, InvocationTargetException, InstantiationException {
         Constructor<? extends Entity> constructor = this.type.getConstructor();
 
         return constructor.newInstance(this.location, this.colour, this.motion, this.dimension, this.hollow, this.immovable, this.interactable);
     }
 
+    /**
+     *
+     * Get a copy of the current builder
+     *
+     * @return A new copy of the builder
+     */
     public EntityBuilder clone() {
         EntityBuilder newBuilder = new EntityBuilder();
 
