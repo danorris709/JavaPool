@@ -33,10 +33,10 @@ public class CuePlaceHandler {
         MouseEvent mouseEvent = (MouseEvent) event;
         Location newCueBallPoint = new Location2D(mouseEvent.getPoint());
 
-        newCueBallPoint.setX(Math.max(110, newCueBallPoint.getX()));
+        newCueBallPoint.setX(Math.max(115, newCueBallPoint.getX()));
         newCueBallPoint.setX(Math.min(350, newCueBallPoint.getX()));
-        newCueBallPoint.setY(Math.max(110, newCueBallPoint.getY()));
-        newCueBallPoint.setY(Math.min(590, newCueBallPoint.getY()));
+        newCueBallPoint.setY(Math.max(115, newCueBallPoint.getY()));
+        newCueBallPoint.setY(Math.min(585, newCueBallPoint.getY()));
 
         GameEntity.getCueBall().setLocation(newCueBallPoint);
     }
