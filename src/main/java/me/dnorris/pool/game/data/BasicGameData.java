@@ -1,5 +1,6 @@
 package me.dnorris.pool.game.data;
 
+import com.google.common.collect.Maps;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.entity.shape.CircleEntity;
@@ -8,11 +9,14 @@ import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.team.Team;
 
+import java.awt.*;
+import java.util.Map;
 import java.util.Objects;
 
 public class BasicGameData implements GameData {
 
     private final GameArena arena;
+    private final Map<Integer, Color> teamColour = Maps.newHashMap();
 
     private Team turn = Team.PLAYER_ONE;
     private boolean cueInHand = true;
@@ -83,5 +87,20 @@ public class BasicGameData implements GameData {
         this.shotsInTurn = shotsInTurn;
 
         GameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
+    }
+
+    @Override
+    public Color getTeamColour(Team team) {
+        return this.teamColour.get(team.ordinal());
+    }
+
+    @Override
+    public void setTeamColour(Team team, Color colour) {
+        this.teamColour.put(team.ordinal(), colour);
+    }
+
+    @Override
+    public boolean isOnBlackBall(Team team) {
+        return false; // TODO: 08/05/2020
     }
 }
