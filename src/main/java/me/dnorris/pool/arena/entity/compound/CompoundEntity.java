@@ -10,10 +10,26 @@ import me.dnorris.pool.data.vector.Vector;
 import java.awt.*;
 import java.util.List;
 
+/**
+ *
+ * Abstract implementation of a compound {@link Entity} to reduce amount of repeated code in lower classes
+ *
+ * @author https://github.com/danorris709
+ */
 public abstract class CompoundEntity extends AbstractEntity {
 
     protected List<Entity> entities;
 
+    /**
+     *
+     * Basic constructor accepting an array of entities using varargs
+     *
+     * @param centerLocation Center of the compound entity
+     * @param colour Colour of the sub entities
+     * @param motion Motion of the entities
+     * @param hitbox Hitbox of the entities
+     * @param entities array of sub entities
+     */
     public CompoundEntity(Location centerLocation, Color colour, Vector motion, Hitbox hitbox, Entity... entities) {
         super(colour, centerLocation, hitbox, motion, false);
 
