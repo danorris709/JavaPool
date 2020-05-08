@@ -36,9 +36,8 @@ public class BasicGameData implements GameData {
     @Override
     public void setTurn(Team turn) {
         this.turn = turn;
-        this.setShotsInTurn(1);
 
-        GameEntity.getTurnIdentifier().setText(this.turn.getDisplayText());
+        GameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
     }
 
     @Override
@@ -80,5 +79,7 @@ public class BasicGameData implements GameData {
     @Override
     public void setShotsInTurn(int shotsInTurn) {
         this.shotsInTurn = shotsInTurn;
+
+        GameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
     }
 }
