@@ -9,6 +9,7 @@ import me.dnorris.pool.data.Pair;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameEntity;
+import me.dnorris.pool.game.GameFactory;
 
 import java.awt.event.KeyEvent;
 import java.util.Map;
@@ -20,7 +21,7 @@ public class PointerDirectionHandler {
 
     @KeyHandler(keyCode = { KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT }, getType = KeyEventType.KEY_PRESSED)
     public void onLeftArrowPressed(GameArena arena, KeyEvent event) {
-        if(!Objects.equals(GameEntity.getCueBall().getMotion(), Vector2D.NONE)) {
+        if(!Objects.equals(GameEntity.getCueBall().getMotion(), Vector2D.NONE) || GameFactory.getActiveGame().isCueBallInHand()) {
             return;
         }
 
