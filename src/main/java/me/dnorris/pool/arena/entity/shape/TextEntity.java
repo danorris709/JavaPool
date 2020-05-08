@@ -11,11 +11,30 @@ import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
 
+/**
+ *
+ * Represents text on the {@link me.dnorris.pool.arena.GameArena}
+ *
+ * @author https://github.com/danorris709
+ */
 public class TextEntity extends AbstractEntity {
 
     private String text;
     private Font font;
 
+    /**
+     *
+     * Default constructor
+     * Protected so only accessible from classes extending this, and the builder
+     *
+     * @param colour Colour of the text
+     * @param location Location of the text
+     * @param text Text to display
+     * @param font Font of the text
+     * @param size Size of the font
+     * @param bold If the font is bold
+     * @param italic If the font is italic
+     */
     protected TextEntity(Color colour, Location location, String text, String font, int size, boolean bold, boolean italic) {
         super(colour, location, new EmptyHitbox(location, true), Vector2D.NONE, false);
 
@@ -57,6 +76,12 @@ public class TextEntity extends AbstractEntity {
     }
 
 
+    /**
+     *
+     * Builder class for Text as it has custom flags (i.e. font & text related)
+     *
+     * @author https://github.com/danorris709
+     */
     public static class Builder extends EntityBuilder {
 
         private String text;
