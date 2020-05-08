@@ -2,6 +2,7 @@ package me.dnorris.pool.game.listener;
 
 import me.dnorris.pool.arena.entity.shape.ArcShape;
 import me.dnorris.pool.arena.entity.shape.CircleEntity;
+import me.dnorris.pool.arena.event.Events;
 import me.dnorris.pool.arena.event.event.EntityCollisionEvent;
 import me.dnorris.pool.arena.event.listener.EventHandler;
 import me.dnorris.pool.arena.event.listener.Listener;
@@ -10,8 +11,9 @@ import me.dnorris.pool.data.location.implementation.Location2D;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.GameEntity;
+import me.dnorris.pool.game.GameFactory;
+import me.dnorris.pool.game.event.BallPotEvent;
 
-import java.util.Locale;
 import java.util.Objects;
 
 public class BallPotListener implements Listener {
@@ -40,10 +42,14 @@ public class BallPotListener implements Listener {
         this.currentGame.setPottedBalls(this.currentGame.getPottedBalls() + 1);
 
         if (Objects.equals(ball, GameEntity.getCueBall())) {
-            // TODO: 07/05/2020
+            ball.setLocation(new Location2D(350, 350));
+            GameFactory.getActiveGame().setCueBallInHand(true);
+            GameFactory.getActiveGame().setTurn(GameFactory.getActiveGame().getTurn().getOpposition());
+            GameFactory.getActiveGame().setShotsInTurn(2);
         } else if (Objects.equals(ball, GameEntity.getBlackBall())) {
-            // TODO: 07/05/2020
+            // TODO: 07/05/2020 win the game
         } else {
+            Events.callEvent(new BallPotEvent(ball));
             // TODO: 07/05/2020 remove the ball and place it up above yanno
         }
     }
