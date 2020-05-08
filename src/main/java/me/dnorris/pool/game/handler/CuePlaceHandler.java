@@ -21,7 +21,7 @@ public class CuePlaceHandler {
         GameFactory.getActiveGame().setCueBallInHand(false);
     }
 
-    @KeyHandler(getType = KeyEventType.MOUSE_MOVED)
+    @KeyHandler(keyCode = MouseEvent.NOBUTTON, getType = KeyEventType.MOUSE_MOVED)
     public void onMouseMoved(GameArena arena, InputEvent event) {
         if(!GameFactory.getActiveGame().isCueBallInHand()) {
             return;
