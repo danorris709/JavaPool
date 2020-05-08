@@ -42,16 +42,20 @@ public class BallPotListener implements Listener {
         this.currentGame.setPottedBalls(this.currentGame.getPottedBalls() + 1);
 
         if (Objects.equals(ball, GameEntity.getCueBall())) {
-            ball.setLocation(new Location2D(350, 350));
-            GameFactory.getActiveGame().setCueBallInHand(true);
-            GameFactory.getActiveGame().setTurn(GameFactory.getActiveGame().getTurn().getOpposition());
-            GameFactory.getActiveGame().setShotsInTurn(2);
+            this.handleCueBallPot(ball);
         } else if (Objects.equals(ball, GameEntity.getBlackBall())) {
             // TODO: 07/05/2020 win the game
         } else {
             Events.callEvent(new BallPotEvent(GameFactory.getActiveGame(), ball));
             // TODO: 07/05/2020 remove the ball and place it up above yanno
         }
+    }
+
+    private void handleCueBallPot(CircleEntity ball) {
+        ball.setLocation(new Location2D(350, 350));
+        GameFactory.getActiveGame().setCueBallInHand(true);
+        GameFactory.getActiveGame().setTurn(GameFactory.getActiveGame().getTurn().getOpposition());
+        GameFactory.getActiveGame().setShotsInTurn(2);
     }
 
     private CircleEntity getBall(EntityCollisionEvent event) {
