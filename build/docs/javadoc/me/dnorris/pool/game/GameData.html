@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -122,6 +122,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Known Implementing Classes:</dt>
+<dd><code><a href="data/BasicGameData.html" title="class in me.dnorris.pool.game.data">BasicGameData</a></code></dd>
+</dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">GameData</span></pre>
 </li>
@@ -155,31 +159,41 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShotsInTurn()">getShotsInTurn</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTurn()">getTurn</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#haveBallsStoppedMoving()">haveBallsStoppedMoving</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isCueBallInHand()">isCueBallInHand</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCueBallInHand(boolean)">setCueBallInHand</a></span>&#8203;(boolean&nbsp;placing)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPottedBalls(int)">setPottedBalls</a></span>&#8203;(int&nbsp;pottedBalls)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setShotsInTurn(int)">setShotsInTurn</a></span>&#8203;(int&nbsp;shotsInTurn)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTurn(me.dnorris.pool.game.team.Team)">setTurn</a></span>&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;team)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -267,10 +281,28 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <a id="setPottedBalls(int)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setPottedBalls</h4>
 <pre class="methodSignature">void&nbsp;setPottedBalls&#8203;(int&nbsp;pottedBalls)</pre>
+</li>
+</ul>
+<a id="getShotsInTurn()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getShotsInTurn</h4>
+<pre class="methodSignature">int&nbsp;getShotsInTurn()</pre>
+</li>
+</ul>
+<a id="setShotsInTurn(int)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setShotsInTurn</h4>
+<pre class="methodSignature">void&nbsp;setShotsInTurn&#8203;(int&nbsp;shotsInTurn)</pre>
 </li>
 </ul>
 </li>

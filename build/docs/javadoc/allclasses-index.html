@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":2,"i1":2,"i2":2,"i3":2,"i4":2,"i5":2,"i6":1,"i7":1,"i8":2,"i9":2,"i10":2,"i11":2,"i12":2,"i13":2,"i14":2,"i15":1,"i16":2,"i17":2,"i18":2,"i19":4,"i20":1,"i21":2,"i22":32,"i23":2,"i24":2,"i25":2,"i26":1,"i27":1,"i28":2,"i29":2,"i30":2,"i31":2,"i32":2,"i33":1,"i34":2,"i35":2,"i36":2,"i37":4,"i38":32,"i39":2,"i40":2,"i41":2,"i42":1,"i43":1,"i44":2,"i45":1,"i46":2,"i47":2,"i48":2,"i49":2,"i50":2,"i51":2,"i52":2,"i53":4,"i54":2,"i55":2,"i56":1,"i57":2};
+var data = {"i0":2,"i1":2,"i2":2,"i3":2,"i4":2,"i5":2,"i6":2,"i7":1,"i8":1,"i9":2,"i10":2,"i11":2,"i12":2,"i13":2,"i14":2,"i15":2,"i16":2,"i17":1,"i18":2,"i19":2,"i20":2,"i21":4,"i22":1,"i23":2,"i24":32,"i25":2,"i26":2,"i27":2,"i28":1,"i29":1,"i30":2,"i31":2,"i32":2,"i33":2,"i34":2,"i35":1,"i36":2,"i37":2,"i38":2,"i39":4,"i40":32,"i41":2,"i42":2,"i43":2,"i44":1,"i45":1,"i46":2,"i47":1,"i48":2,"i49":2,"i50":2,"i51":2,"i52":2,"i53":2,"i54":2,"i55":4,"i56":2,"i57":2,"i58":1,"i59":2};
 var tabs = {65535:["t0","All Classes"],1:["t1","Interface Summary"],2:["t2","Class Summary"],4:["t3","Enum Summary"],32:["t6","Annotation Types Summary"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -148,274 +148,282 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
 <tr id="i6" class="altColor">
+<td class="colFirst"><a href="me/dnorris/pool/game/data/BasicGameData.html" title="class in me.dnorris.pool.game.data">BasicGameData</a></td>
+<th class="colLast" scope="row">&nbsp;</th>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/BiFunction.html" title="interface in me.dnorris.pool.data">BiFunction</a>&lt;<a href="me/dnorris/pool/data/BiFunction.html" title="type parameter in BiFunction">A</a>,&#8203;<a href="me/dnorris/pool/data/BiFunction.html" title="type parameter in BiFunction">B</a>&gt;</td>
 <th class="colLast" scope="row">
 <div class="block">Interface used for representation a function that takes two parameters but
  doesn't return anything.</div>
 </th>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/Cancellable.html" title="interface in me.dnorris.pool.arena.event">Cancellable</a></td>
 <th class="colLast" scope="row">
 <div class="block">An interface to represent an event that can be cancelled</div>
 </th>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/shape/CircleEntity.html" title="class in me.dnorris.pool.arena.entity.shape">CircleEntity</a></td>
 <th class="colLast" scope="row">
 <div class="block">Basic implementation for a Circle <a href="me/dnorris/pool/arena/Entity.html" title="interface in me.dnorris.pool.arena"><code>Entity</code></a></div>
 </th>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/hitbox/implementation/location/CircleLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation.location">CircleLocationHitbox</a></td>
 <th class="colLast" scope="row">
 <div class="block">A spherical implementation of the <a href="me/dnorris/pool/data/hitbox/implementation/AbstractLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation"><code>AbstractLocationHitbox</code></a></div>
 </th>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/Colour.html" title="class in me.dnorris.pool.data">Colour</a></td>
 <th class="colLast" scope="row">
 <div class="block">Class used for storing colours that are commonly used as constants</div>
 </th>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/compound/CompoundEntity.html" title="class in me.dnorris.pool.arena.entity.compound">CompoundEntity</a></td>
 <th class="colLast" scope="row">
 <div class="block">Abstract implementation of a compound <a href="me/dnorris/pool/arena/Entity.html" title="interface in me.dnorris.pool.arena"><code>Entity</code></a> to reduce amount of repeated code in lower classes</div>
 </th>
 </tr>
-<tr id="i12" class="altColor">
-<td class="colFirst"><a href="me/dnorris/pool/game/handler/CuePowerHandler.html" title="class in me.dnorris.pool.game.handler">CuePowerHandler</a></td>
-<th class="colLast" scope="row">&nbsp;</th>
-</tr>
 <tr id="i13" class="rowColor">
-<td class="colFirst"><a href="me/dnorris/pool/game/handler/CueReleaseHandler.html" title="class in me.dnorris.pool.game.handler">CueReleaseHandler</a></td>
+<td class="colFirst"><a href="me/dnorris/pool/game/handler/CuePlaceHandler.html" title="class in me.dnorris.pool.game.handler">CuePlaceHandler</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
 <tr id="i14" class="altColor">
+<td class="colFirst"><a href="me/dnorris/pool/game/handler/CuePowerHandler.html" title="class in me.dnorris.pool.game.handler">CuePowerHandler</a></td>
+<th class="colLast" scope="row">&nbsp;</th>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><a href="me/dnorris/pool/game/handler/CueReleaseHandler.html" title="class in me.dnorris.pool.game.handler">CueReleaseHandler</a></td>
+<th class="colLast" scope="row">&nbsp;</th>
+</tr>
+<tr id="i16" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/hitbox/implementation/location/EmptyHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation.location">EmptyHitbox</a></td>
 <th class="colLast" scope="row">
 <div class="block">An implementation of the <a href="me/dnorris/pool/data/hitbox/implementation/AbstractLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation"><code>AbstractLocationHitbox</code></a> that cannot be interacted with
  and has 0 height and 0 width.</div>
 </th>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a></td>
 <th class="colLast" scope="row">
 <div class="block">An interface that represents anything that can be added to the <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a></div>
 </th>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/EntityBuilder.html" title="class in me.dnorris.pool.arena.entity">EntityBuilder</a></td>
 <th class="colLast" scope="row">
 <div class="block">Abstract builder class for generic entities.</div>
 </th>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/event/EntityCollisionEvent.html" title="class in me.dnorris.pool.arena.event.event">EntityCollisionEvent</a></td>
 <th class="colLast" scope="row">
 <div class="block">An event for representing when two <a href="me/dnorris/pool/arena/Entity.html" title="interface in me.dnorris.pool.arena"><code>Entity</code></a>s collide and interact</div>
 </th>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/event/EntityStopMovingEvent.html" title="class in me.dnorris.pool.arena.event.event">EntityStopMovingEvent</a></td>
 <th class="colLast" scope="row">
 <div class="block">An event representing when an <a href="me/dnorris/pool/arena/Entity.html" title="interface in me.dnorris.pool.arena"><code>Entity</code></a>'s motion goes from a very small number to <a href="me/dnorris/pool/data/vector/implementation/Vector2D.html#NONE"><code>Vector2D.NONE</code></a></div>
 </th>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/EntityType.html" title="enum in me.dnorris.pool.arena.entity">EntityType</a></td>
 <th class="colLast" scope="row">
 <div class="block">An enum representing the different types of buildable entity.</div>
 </th>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/Event.html" title="interface in me.dnorris.pool.arena.event">Event</a></td>
 <th class="colLast" scope="row">
 <div class="block">Interface for representing an event</div>
 </th>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/EventFactory.html" title="class in me.dnorris.pool.arena.event">EventFactory</a></td>
 <th class="colLast" scope="row">
 <div class="block">The static factory for calling events without polluting other logic further</div>
 </th>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/listener/EventHandler.html" title="annotation in me.dnorris.pool.arena.event.listener">EventHandler</a></td>
 <th class="colLast" scope="row">
 <div class="block">Annotation for flagging functions as methods to handle events</div>
 </th>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/handler/EventListener.html" title="class in me.dnorris.pool.arena.event.handler">EventListener</a></td>
 <th class="colLast" scope="row">
 <div class="block">Event Listener for storing what event has what listeners</div>
 </th>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/handler/EventListenerDetails.html" title="class in me.dnorris.pool.arena.event.handler">EventListenerDetails</a></td>
 <th class="colLast" scope="row">
 <div class="block">A DTO for details about an event listener</div>
 </th>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/Events.html" title="class in me.dnorris.pool.arena.event">Events</a></td>
 <th class="colLast" scope="row">
 <div class="block">Static factory for handling the events and listeners</div>
 </th>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena">GameArena</a></td>
 <th class="colLast" scope="row">
 <div class="block">Represents a gameboard with <a href="me/dnorris/pool/arena/Entity.html" title="interface in me.dnorris.pool.arena"><code>Entity</code></a>s</div>
 </th>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/game/GameData.html" title="interface in me.dnorris.pool.game">GameData</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/game/GameEntity.html" title="class in me.dnorris.pool.game">GameEntity</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/game/GameFactory.html" title="class in me.dnorris.pool.game">GameFactory</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/arena/jframe/GameFrame.html" title="class in me.dnorris.pool.arena.arena.jframe">GameFrame</a></td>
 <th class="colLast" scope="row">
 <div class="block">Custom implementation of the <code>JFrame</code> for handling the <code>JFrame</code> implementation of the
  <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a> interface.</div>
 </th>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/GameFunction.html" title="class in me.dnorris.pool.arena">GameFunction</a></td>
 <th class="colLast" scope="row">
 <div class="block">Immutable object used by the <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a> for <a href="me/dnorris/pool/arena/key/KeyHandler.html" title="annotation in me.dnorris.pool.arena.key"><code>KeyHandler</code></a> annotations</div>
 </th>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/game/GameLocation.html" title="class in me.dnorris.pool.game">GameLocation</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/hitbox/Hitbox.html" title="interface in me.dnorris.pool.data.hitbox">Hitbox</a></td>
 <th class="colLast" scope="row">
 <div class="block">Hitbox interface for determining what entities have what physical space</div>
 </th>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i36" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/compound/shape/HollowRectangle.html" title="class in me.dnorris.pool.arena.entity.compound.shape">HollowRectangle</a></td>
 <th class="colLast" scope="row">
 <div class="block">Represents a hollow rectangle on the <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a>
  Used for when entities need to be inside the <a href="me/dnorris/pool/arena/entity/shape/RectangleEntity.html" title="class in me.dnorris.pool.arena.entity.shape"><code>RectangleEntity</code></a> BUT it cannot escape (i.e.</div>
 </th>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i37" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/compound/shape/HollowRectangle.Builder.html" title="class in me.dnorris.pool.arena.entity.compound.shape">HollowRectangle.Builder</a></td>
 <th class="colLast" scope="row">
 <div class="block">Builder class for Hollow Rectangle as it has custom flags (i.e.</div>
 </th>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i38" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/hitbox/implementation/location/HollowRectangleLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation.location">HollowRectangleLocationHitbox</a></td>
 <th class="colLast" scope="row">
 <div class="block">A hollow rectangle implementation of the <a href="me/dnorris/pool/data/hitbox/implementation/AbstractLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation"><code>AbstractLocationHitbox</code></a></div>
 </th>
 </tr>
-<tr id="i37" class="rowColor">
+<tr id="i39" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/key/KeyEventType.html" title="enum in me.dnorris.pool.arena.key">KeyEventType</a></td>
 <th class="colLast" scope="row">
 <div class="block">Different types of key press for optimized handling of key press events</div>
 </th>
 </tr>
-<tr id="i38" class="altColor">
+<tr id="i40" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/key/KeyHandler.html" title="annotation in me.dnorris.pool.arena.key">KeyHandler</a></td>
 <th class="colLast" scope="row">
 <div class="block">Annotation for functions that will handle the key press of the specificed key code</div>
 </th>
 </tr>
-<tr id="i39" class="rowColor">
+<tr id="i41" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/arena/jframe/listener/KeyHandlerListener.html" title="class in me.dnorris.pool.arena.arena.jframe.listener">KeyHandlerListener</a></td>
 <th class="colLast" scope="row">
 <div class="block">Listener used by the <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a> for calling the
  <a href="me/dnorris/pool/arena/key/KeyHandler.html" title="annotation in me.dnorris.pool.arena.key"><code>KeyHandler</code></a> implementations when a key is pressed</div>
 </th>
 </tr>
-<tr id="i40" class="altColor">
+<tr id="i42" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/shape/LineEntity.html" title="class in me.dnorris.pool.arena.entity.shape">LineEntity</a></td>
 <th class="colLast" scope="row">
 <div class="block">Represents a line on the <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a></div>
 </th>
 </tr>
-<tr id="i41" class="rowColor">
+<tr id="i43" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/shape/LineEntity.Builder.html" title="class in me.dnorris.pool.arena.entity.shape">LineEntity.Builder</a></td>
 <th class="colLast" scope="row">
 <div class="block">Builder class for Line as it has custom flags (i.e.</div>
 </th>
 </tr>
-<tr id="i42" class="altColor">
+<tr id="i44" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/event/listener/Listener.html" title="interface in me.dnorris.pool.arena.event.listener">Listener</a></td>
 <th class="colLast" scope="row">
 <div class="block">An interface that represents a class that can contain functions for handling
  when events are called</div>
 </th>
 </tr>
-<tr id="i43" class="rowColor">
+<tr id="i45" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/location/Location.html" title="interface in me.dnorris.pool.data.location">Location</a></td>
 <th class="colLast" scope="row">
 <div class="block">Location interface for representing a single point in the x,y,z plane</div>
 </th>
 </tr>
-<tr id="i44" class="altColor">
+<tr id="i46" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/location/implementation/Location2D.html" title="class in me.dnorris.pool.data.location.implementation">Location2D</a></td>
 <th class="colLast" scope="row">
 <div class="block">Two dimensional implementation of the <a href="me/dnorris/pool/data/location/Location.html" title="interface in me.dnorris.pool.data.location"><code>Location</code></a> interface</div>
 </th>
 </tr>
-<tr id="i45" class="rowColor">
+<tr id="i47" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/Method.html" title="interface in me.dnorris.pool.data">Method</a>&lt;<a href="me/dnorris/pool/data/Method.html" title="type parameter in Method">T</a>&gt;</td>
 <th class="colLast" scope="row">
 <div class="block">Interface used for representation a function that takes one parameter but
  doesn't return anything.</div>
 </th>
 </tr>
-<tr id="i46" class="altColor">
+<tr id="i48" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/Pair.html" title="class in me.dnorris.pool.data">Pair</a>&lt;<a href="me/dnorris/pool/data/Pair.html" title="type parameter in Pair">A</a>,&#8203;<a href="me/dnorris/pool/data/Pair.html" title="type parameter in Pair">B</a>&gt;</td>
 <th class="colLast" scope="row">
 <div class="block">A DTO used for reducing the number of parameters passed to constructors
   and keeping related immutable objects together.</div>
 </th>
 </tr>
-<tr id="i47" class="rowColor">
+<tr id="i49" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/compound/shape/PercentageBar.html" title="class in me.dnorris.pool.arena.entity.compound.shape">PercentageBar</a></td>
 <th class="colLast" scope="row">
 <div class="block">Represents a percentage bar on the <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a></div>
 </th>
 </tr>
-<tr id="i48" class="altColor">
+<tr id="i50" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/game/handler/PointerDirectionHandler.html" title="class in me.dnorris.pool.game.handler">PointerDirectionHandler</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i49" class="rowColor">
+<tr id="i51" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/PoolClient.html" title="class in me.dnorris.pool">PoolClient</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i50" class="altColor">
+<tr id="i52" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/shape/RectangleEntity.html" title="class in me.dnorris.pool.arena.entity.shape">RectangleEntity</a></td>
 <th class="colLast" scope="row">
 <div class="block">Basic implementation for a Rectangle <a href="me/dnorris/pool/arena/Entity.html" title="interface in me.dnorris.pool.arena"><code>Entity</code></a></div>
 </th>
 </tr>
-<tr id="i51" class="rowColor">
+<tr id="i53" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/hitbox/implementation/location/RectangleLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation.location">RectangleLocationHitbox</a></td>
 <th class="colLast" scope="row">
 <div class="block">A rectangle implementation of the <a href="me/dnorris/pool/data/hitbox/implementation/AbstractLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation"><code>AbstractLocationHitbox</code></a></div>
 </th>
 </tr>
-<tr id="i52" class="altColor">
+<tr id="i54" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/arena/jframe/SimpleArena.html" title="class in me.dnorris.pool.arena.arena.jframe">SimpleArena</a></td>
 <th class="colLast" scope="row">
 <div class="block">Simple implementation of the <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a> interface
@@ -423,29 +431,29 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  basic lock object to prevent <code>ConcurrentModificationException</code></div>
 </th>
 </tr>
-<tr id="i53" class="rowColor">
+<tr id="i55" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/game/team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a></td>
 <th class="colLast" scope="row">&nbsp;</th>
 </tr>
-<tr id="i54" class="altColor">
+<tr id="i56" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/shape/TextEntity.html" title="class in me.dnorris.pool.arena.entity.shape">TextEntity</a></td>
 <th class="colLast" scope="row">
 <div class="block">Represents text on the <a href="me/dnorris/pool/arena/GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a></div>
 </th>
 </tr>
-<tr id="i55" class="rowColor">
+<tr id="i57" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/arena/entity/shape/TextEntity.Builder.html" title="class in me.dnorris.pool.arena.entity.shape">TextEntity.Builder</a></td>
 <th class="colLast" scope="row">
 <div class="block">Builder class for Text as it has custom flags (i.e.</div>
 </th>
 </tr>
-<tr id="i56" class="altColor">
+<tr id="i58" class="altColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/vector/Vector.html" title="interface in me.dnorris.pool.data.vector">Vector</a></td>
 <th class="colLast" scope="row">
 <div class="block">Interface representation a motion with values of X, Y, and Z.</div>
 </th>
 </tr>
-<tr id="i57" class="rowColor">
+<tr id="i59" class="rowColor">
 <td class="colFirst"><a href="me/dnorris/pool/data/vector/implementation/Vector2D.html" title="class in me.dnorris.pool.data.vector.implementation">Vector2D</a></td>
 <th class="colLast" scope="row">
 <div class="block">Two dimensional implementation of the <a href="me/dnorris/pool/data/vector/Vector.html" title="interface in me.dnorris.pool.data.vector"><code>Vector</code></a> interface</div>

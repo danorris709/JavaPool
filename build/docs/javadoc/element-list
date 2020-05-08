@@ -21,6 +21,7 @@ me.dnorris.pool.data.location.implementation
 me.dnorris.pool.data.vector
 me.dnorris.pool.data.vector.implementation
 me.dnorris.pool.game
+me.dnorris.pool.game.data
 me.dnorris.pool.game.handler
 me.dnorris.pool.game.listener
 me.dnorris.pool.game.team
