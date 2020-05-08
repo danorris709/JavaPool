@@ -3,6 +3,8 @@ package me.dnorris.pool.game;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.game.team.Team;
 
+import java.awt.*;
+
 public interface GameData {
 
     GameArena getArena();
@@ -24,5 +26,9 @@ public interface GameData {
     int getShotsInTurn();
 
     void setShotsInTurn(int shotsInTurn);
+
+    Color getTeamColour(Team team);
+
+    void setTeamColour(Team team, Color color);
 
 }
