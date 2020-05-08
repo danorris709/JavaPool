@@ -13,7 +13,12 @@ public enum KeyEventType {
     KEY_RELEASED(),
     KEY_PRESSED(),
     MOUSE_PRESSED(),
-    MOUSE_MOVEMENT(),
+    MOUSE_CLICKED(),
+    MOUSE_RELEASED(),
+    MOUSE_ENTERED(),
+    MOUSE_EXITED(),
+    MOUSE_MOVED(),
+    MOUSE_DRAGGED(),
 
     ;
 
