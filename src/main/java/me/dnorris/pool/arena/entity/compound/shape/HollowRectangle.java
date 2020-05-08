@@ -16,11 +16,59 @@ import me.dnorris.pool.data.vector.implementation.Vector2D;
 import java.awt.*;
 import java.util.List;
 
+/**
+ *
+ * Represents a hollow rectangle on the {@link me.dnorris.pool.arena.GameArena}
+ * Used for when entities need to be inside the {@link RectangleEntity} BUT it cannot escape (i.e.
+ * need to interact with the walls but not the internals)
+ * Thus requiring a different entity to handle the hitbox and collisions seperately.
+ *
+ * @author https://github.com/danorris709
+ */
 public class HollowRectangle extends CompoundEntity {
 
-    public HollowRectangle(Location centerLocation, Color colour, Vector motion, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
+    /**
+     *
+     * Basic constructor
+     * Protected for sub classes and the builder
+     *
+     * @param centerLocation Location of the Rectangle
+     * @param colour Colour of the rectangle
+     * @param motion initial motion of the rectangle
+     * @param dimension dimensions of the rectangle
+     * @param outsideWidth The thickness of the outside bars
+     * @param immovable If the rectangle can be moved
+     * @param interactable If the rectangle can be interacted with
+     */
+    protected HollowRectangle(Location centerLocation, Color colour, Vector motion, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
         super(centerLocation, colour, motion, new HollowRectangleLocationHitbox(centerLocation, dimension, outsideWidth, immovable, interactable),
                 createEntities(centerLocation, colour, dimension, outsideWidth, immovable, interactable));
+    }
+
+    /**
+     *
+     * Used in the constructor when passing the entities to the parent class.
+     * Creates the rectangles as hollow
+     *
+     * @param centerPoint Location of the Rectangle
+     * @param colour Colour of the rectangle
+     * @param dimension dimensions of the rectangle
+     * @param outsideWidth The thickness of the outside bars
+     * @param immovable If the rectangle can be moved
+     * @param interactable If the rectangle can be interacted with
+     * @return The {@link RectangleEntity}s created
+     */
+    private static RectangleEntity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
+        List<RectangleEntity> entities = Lists.newArrayList();
+
+        for (int i = 0; i < outsideWidth; i++) {
+            Location nextPoint = centerPoint.subtract(i, i, 0);
+            Hitbox hitbox = new RectangleLocationHitbox(nextPoint, new Dimension(dimension.width + 2 * i, dimension.height + 2 * i), immovable, interactable);
+
+            entities.add(new RectangleEntity(nextPoint, colour, null, hitbox.getDimensions(), true, immovable, interactable));
+        }
+
+        return entities.toArray(new RectangleEntity[0]);
     }
 
     @Override
@@ -43,6 +91,15 @@ public class HollowRectangle extends CompoundEntity {
         }
     }
 
+    /**
+     *
+     * Determines if something has collided with the left or right hand walls and thus the Y velocity
+     * needs to be inverted.
+     *
+     * @param location The location of the collision
+     * @param height The height of the ball
+     * @return If the entity collided with the left or right walls.
+     */
     private boolean hasCollidedWithYWalls(Location location, double height) {
         if(location.getY() >= this.getLocation().getY() && location.getY() <= (this.getLocation().getY() + height)) {
             return true;
@@ -53,6 +110,15 @@ public class HollowRectangle extends CompoundEntity {
         return location.getY() <= farY && location.getY() >= (farY - height);
     }
 
+    /**
+     *
+     * Determines if something has collided with the upper or lower walls and thus the X velocity
+     * needs to be inverted.
+     *
+     * @param location The location of the collision
+     * @param width The width of the ball
+     * @return If the entity collided with the upper or lower walls.
+     */
     private boolean hasCollidedWithXWalls(Location location, double width) {
         if(location.getX() >= this.getLocation().getX() && location.getX() <= (this.getLocation().getX() + width)) {
             return true;
@@ -63,19 +129,12 @@ public class HollowRectangle extends CompoundEntity {
         return location.getX() <= farX && location.getX() >= (farX - width);
     }
 
-    private static RectangleEntity[] createEntities(Location centerPoint, Color colour, Dimension dimension, int outsideWidth, boolean immovable, boolean interactable) {
-        List<RectangleEntity> entities = Lists.newArrayList();
-
-        for(int i = 0; i < outsideWidth; i++) {
-            Location nextPoint = centerPoint.subtract(i, i, 0);
-            Hitbox hitbox = new RectangleLocationHitbox(nextPoint, new Dimension(dimension.width + 2*i, dimension.height + 2*i), immovable, interactable);
-
-            entities.add(new RectangleEntity(nextPoint, colour, null, hitbox.getDimensions(), true, immovable, interactable));
-        }
-
-        return entities.toArray(new RectangleEntity[0]);
-    }
-
+    /**
+     *
+     * Builder class for Hollow Rectangle as it has custom flags (i.e. thickness)
+     *
+     * @author https://github.com/danorris709
+     */
     public static class Builder extends EntityBuilder {
 
         private int outsideWidth;
