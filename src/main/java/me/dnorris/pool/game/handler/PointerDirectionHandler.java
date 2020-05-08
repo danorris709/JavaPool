@@ -11,6 +11,7 @@ import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameFactory;
 
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Map;
 import java.util.Objects;
@@ -20,21 +21,21 @@ public class PointerDirectionHandler {
     private boolean slowed = false;
 
     @KeyHandler(keyCode = { KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT }, getType = KeyEventType.KEY_PRESSED)
-    public void onLeftArrowPressed(GameArena arena, KeyEvent event) {
+    public void onLeftArrowPressed(GameArena arena, InputEvent event) {
         if(!Objects.equals(GameEntity.getCueBall().getMotion(), Vector2D.NONE) || GameFactory.getActiveGame().isCueBallInHand()) {
             return;
         }
 
-        this.movePointerEndPoint(arena, GameEntity.getPointer(), Arrow.fromKeyCode(event.getKeyCode()));
+        this.movePointerEndPoint(arena, GameEntity.getPointer(), Arrow.fromKeyCode(((KeyEvent) event).getKeyCode()));
     }
 
     @KeyHandler(keyCode = KeyEvent.VK_SHIFT, getType = KeyEventType.KEY_PRESSED)
-    public void onShiftHeld(GameArena arena, KeyEvent event) {
+    public void onShiftHeld(GameArena arena, InputEvent event) {
         this.slowed = true;
     }
 
     @KeyHandler(keyCode = KeyEvent.VK_SHIFT, getType = KeyEventType.KEY_RELEASED)
-    public void onShiftRelease(GameArena arena, KeyEvent event) {
+    public void onShiftRelease(GameArena arena, InputEvent event) {
         this.slowed = false;
     }
 

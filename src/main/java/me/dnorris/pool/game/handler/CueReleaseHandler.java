@@ -9,6 +9,7 @@ import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameFactory;
 
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Objects;
 
@@ -17,7 +18,7 @@ public class CueReleaseHandler {
     private static final int MAX_POWER = 50;
 
     @KeyHandler(keyCode = KeyEvent.VK_SPACE, getType = KeyEventType.KEY_PRESSED)
-    public void onSpaceBarPressed(GameArena arena, KeyEvent event) {
+    public void onSpaceBarPressed(GameArena arena, InputEvent event) {
         if(!Objects.equals(GameEntity.getCueBall().getMotion(), Vector2D.NONE) || GameFactory.getActiveGame().isCueBallInHand()) {
             return;
         }
