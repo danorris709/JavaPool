@@ -25,17 +25,13 @@ Then using the `cd` command enter the directory to which you cloned the reposito
 Once in the correct directory ensure the `gradlew` file exists and the `gradle` directory exists.
 If they do not exist then there was an issue in cloning the repository!
 
-To compile the project run: `gradlew clean shadowJar`
+To compile and run the project run the following command: `sh run.sh`
 
-Then you should see something similar to the following output:
-![Image of build success](https://i.gyazo.com/71074b51f3018baa18a312fa2df9b276.png)
-then you should find a `build` directory has been generated.
+If that doesn't work then there was an issue in cloning the repository!
 
-In the `build` directory you'll find a `libs` directory which contains the `PoolProject.jar` file.
-
-Double click the jar file to start the game.
-Or to run the jar from the command line without switching directories run the following:
-```java -jar "build/libs/PoolProject.jar```
+You'll know it was successful as the program will open once the compiler has finished.
+Upon the first compile it may take longer than the typical compile time (i.e. anywhere from 2 minutes depending
+on how fast your computer is).
 
 ### Windows
 Start by opening the command prompt, or if you have Git bash then go to the directory and open it there.
@@ -47,19 +43,13 @@ Then using the `cd` command enter the directory to which you cloned the reposito
 Once in the correct directory ensure the `gradlew` and `gradlew.bat` files exists and the `gradle` directory exists.
 If they do not exist then there was an issue in cloning the repository!
 
-To compile the project run: `gradlew clean shadowJar`.
+To compile and run the project run the following command: `run.bat`
 
-If that doesn't work then try: `./gradlew.bat clean shadowJar`.
+If that doesn't work then there was an issue in cloning the repository!
 
-Once the following output has been received:
-![Image of build success](https://i.gyazo.com/fa56fb41b65b401cfbfaa1863e981e41.png)
-then you should find a `build` directory has been generated.
-
-In the build directory you should find a `libs` directory which will contain the `PoolProject.jar` file.
-
-Double click the jar file to start the game.
-Or to run the jar from the command line without switching directories run the following:
-```java -jar "build/libs/PoolProject.jar```
+You'll know it was successful as the program will open once the compiler has finished.
+Upon the first compile it may take longer than the typical compile time (i.e. anywhere from 2 minutes depending
+on how fast your computer is).
 
 ## Development
 If you want to use the GameArena implementation for development and have any questions then visit the [wiki](https://codefeedback.lancaster.ac.uk/git110/Term3-norrisd/project/wiki/Developer+API/)
