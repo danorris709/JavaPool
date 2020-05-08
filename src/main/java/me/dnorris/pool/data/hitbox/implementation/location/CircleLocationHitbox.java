@@ -28,6 +28,23 @@ public class CircleLocationHitbox extends AbstractLocationHitbox {
     }
 
     @Override
+    public boolean isColliding(Hitbox other) {
+        if(!(this.isInteractable() && other.isInteractable())) {
+            return false;
+        }
+
+        if(other.getPriority() > this.getPriority()) {
+            return other.isColliding(this);
+        }
+
+        double distanceY = this.getCenter().getY() - other.getCenter().getY();
+        double radius = this.getDimensions().height;
+        double distanceX = this.getCenter().getX() - other.getCenter().getX();
+
+        return Math.pow(distanceY, 2) + Math.pow(distanceX, 2) <= Math.pow(radius, 2);
+    }
+
+    @Override
     public Hitbox clone() {
         return new CircleLocationHitbox(
                 this.getCenter().clone(),
