@@ -16,6 +16,8 @@ hs_err_pid*
 **/.idea/
 
 # Gradle
-**/build/
+**/build/classes/
+**/build/libs/
+**/build/tmp/
 **/.gradle/
 **/gradle/
