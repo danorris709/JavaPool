@@ -11,11 +11,28 @@ import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
 
+/**
+ *
+ * Represents a line on the {@link me.dnorris.pool.arena.GameArena}
+ *
+ * @author https://github.com/danorris709
+ */
 public class LineEntity extends AbstractEntity {
 
     private Location endPoint;
 
-    public LineEntity(Location location, Location endPoint, Color colour, Vector motion, boolean immovable) {
+    /**
+     *
+     * Default constructor
+     * Protected so only accessible from classes extending this, and the builder
+     *
+     * @param location start point of the line
+     * @param endPoint end of the line
+     * @param colour Colour of the line
+     * @param motion initial motion of the line
+     * @param immovable if the line can be moved
+     */
+    protected LineEntity(Location location, Location endPoint, Color colour, Vector motion, boolean immovable) {
         super(colour, location, new EmptyHitbox(location, immovable), motion, false);
 
         this.endPoint = endPoint;
@@ -40,6 +57,12 @@ public class LineEntity extends AbstractEntity {
         super.tick();
     }
 
+    /**
+     *
+     * Builder class for Line as it has custom flags (i.e. end point & cannot be interacted with)
+     *
+     * @author https://github.com/danorris709
+     */
     public static class Builder extends EntityBuilder {
 
         private Location endPoint;
