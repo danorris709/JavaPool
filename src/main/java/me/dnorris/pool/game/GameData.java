@@ -31,4 +31,6 @@ public interface GameData {
 
     void setTeamColour(Team team, Color color);
 
+    boolean isOnBlackBall(Team team);
+
 }
