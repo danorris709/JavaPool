@@ -11,7 +11,7 @@ import me.dnorris.pool.data.BiFunction;
 import me.dnorris.pool.data.Pair;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -30,7 +30,7 @@ import java.util.Objects;
 public abstract class AbstractGameArena implements GameArena {
 
     private final List<Entity> entities = Lists.newArrayList();
-    private final Map<Class<?>, List<Pair<Long, BiFunction<GameArena, KeyEvent>>>> classFunctionCache = Maps.newHashMap();
+    private final Map<Class<?>, List<Pair<Long, BiFunction<GameArena, InputEvent>>>> classFunctionCache = Maps.newHashMap();
     private final Map<Long, List<GameFunction>> keyHandlers = new Long2ObjectOpenHashMap<>();
 
     private Dimension dimensions;
@@ -91,11 +91,11 @@ public abstract class AbstractGameArena implements GameArena {
             Parameter[] parameters = declaredMethod.getParameters();
 
             if (!GameArena.class.isAssignableFrom(parameters[0].getType())
-                    || !KeyEvent.class.isAssignableFrom(parameters[1].getType())) {
+                    || !InputEvent.class.isAssignableFrom(parameters[1].getType())) {
                 continue;
             }
 
-            BiFunction<GameArena, KeyEvent> function = this.createFunctionFromMethod(declaredMethod, keyHandlerInstance);
+            BiFunction<GameArena, InputEvent> function = this.createFunctionFromMethod(declaredMethod, keyHandlerInstance);
 
             for (long keyCode : keyHandlerAnnotation.keyCode()) {
                 this.keyHandlers.computeIfAbsent(keyCode, ___ -> Lists.newArrayList()).add(new GameFunction(keyHandlerAnnotation.getType(), function));
@@ -114,7 +114,7 @@ public abstract class AbstractGameArena implements GameArena {
         return null;
     }
 
-    private BiFunction<GameArena, KeyEvent> createFunctionFromMethod(Method method, Object instance) {
+    private BiFunction<GameArena, InputEvent> createFunctionFromMethod(Method method, Object instance) {
         return (gameArena, keyEvent) -> {
             try {
                 method.invoke(instance, gameArena, keyEvent);
@@ -126,7 +126,7 @@ public abstract class AbstractGameArena implements GameArena {
 
     @Override
     public void removeHandler(Class<?> keyHandler) {
-        for (Pair<Long, BiFunction<GameArena, KeyEvent>> pairs : this.classFunctionCache.getOrDefault(keyHandler, Collections.emptyList())) {
+        for (Pair<Long, BiFunction<GameArena, InputEvent>> pairs : this.classFunctionCache.getOrDefault(keyHandler, Collections.emptyList())) {
             this.keyHandlers.getOrDefault(pairs.getFirst(), Collections.emptyList()).removeIf(gameFunction -> Objects.equals(gameFunction.getFunction(), pairs.getSecond()));
         }
 

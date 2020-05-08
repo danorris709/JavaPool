@@ -3,7 +3,7 @@ package me.dnorris.pool.arena;
 import me.dnorris.pool.arena.key.KeyEventType;
 import me.dnorris.pool.data.BiFunction;
 
-import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 
 /**
  *
@@ -14,7 +14,7 @@ import java.awt.event.KeyEvent;
 public class GameFunction {
 
     private final KeyEventType eventType;
-    private final BiFunction<GameArena, KeyEvent> function;
+    private final BiFunction<GameArena, InputEvent> function;
 
     /**
      *
@@ -23,7 +23,7 @@ public class GameFunction {
      * @param eventType The {@link KeyEventType} type
      * @param function The {@link BiFunction} executed once the key is pressed
      */
-    public GameFunction(KeyEventType eventType, BiFunction<GameArena, KeyEvent> function) {
+    public GameFunction(KeyEventType eventType, BiFunction<GameArena, InputEvent> function) {
         this.eventType = eventType;
         this.function = function;
     }
@@ -32,7 +32,7 @@ public class GameFunction {
         return this.eventType;
     }
 
-    public BiFunction<GameArena, KeyEvent> getFunction() {
+    public BiFunction<GameArena, InputEvent> getFunction() {
         return this.function;
     }
 }
