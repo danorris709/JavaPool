@@ -33,7 +33,11 @@ public class SimpleArena extends AbstractGameArena {
 
         JFrame jFrame = new GameFrame(this);
 
-        jFrame.addKeyListener(new KeyHandlerListener(this));
+        KeyHandlerListener listener = new KeyHandlerListener(this);
+
+        jFrame.addKeyListener(listener);
+        jFrame.addMouseListener(listener);
+        jFrame.addMouseMotionListener(listener);
 
         new Thread(() -> {
             while(true) {
