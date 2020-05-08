@@ -49,7 +49,7 @@ public class BallPotListener implements Listener {
         } else if (Objects.equals(ball, GameEntity.getBlackBall())) {
             // TODO: 07/05/2020 win the game
         } else {
-            Events.callEvent(new BallPotEvent(ball));
+            Events.callEvent(new BallPotEvent(GameFactory.getActiveGame(), ball));
             // TODO: 07/05/2020 remove the ball and place it up above yanno
         }
     }
