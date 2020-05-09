@@ -9,6 +9,7 @@ import me.dnorris.pool.data.vector.Vector;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 
 import java.awt.*;
+import java.util.Objects;
 
 /**
  *
@@ -131,7 +132,7 @@ public abstract class AbstractEntity implements Entity {
         double absX = Math.abs(this.getMotion().getX());
         double absY = Math.abs(this.getMotion().getY());
 
-        if (absX <= 1e-3 && absY <= 1e-3) {
+        if (absX <= 1e-3 && absY <= 1e-3 && !Objects.equals(this.getMotion(), Vector2D.NONE)) {
             this.setMotion(Vector2D.NONE);
             EventFactory.callStopMovingEvent(this);
         } else if (absX <= 1e-3) {
