@@ -28,7 +28,7 @@ public class BallTurnListener implements Listener {
 
     @EventHandler
     public void onTurnFinish(EntityStopMovingEvent event) {
-        if(!this.activeGame.haveBallsStoppedMoving()) {
+        if(!this.activeGame.haveBallsStoppedMoving() || this.activeGame.isCueBallInHand()) {
             return;
         }
 
