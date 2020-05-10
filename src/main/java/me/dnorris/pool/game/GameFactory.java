@@ -58,7 +58,7 @@ public class GameFactory {
         gameArena.addHandler(CueReleaseHandler.class);
         gameArena.addHandler(CuePlaceHandler.class);
 
-        activeGame = new BasicGameData(gameArena);
+        activeGame = new BasicGameData(gameArena, gameEntity);
 
         Events.registerListener(new BallPotListener(activeGame));
         Events.registerListener(new BallCollisionListener(activeGame));
