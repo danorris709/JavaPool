@@ -11,6 +11,12 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ *
+ * Class for managing all non-game screens
+ *
+ * @author https://github.com/danorris709
+ */
 public class ScreenManager {
 
     private Map<Class<? extends CardScreenPanel>, CardScreenPanel> screenPanels = Maps.newHashMap();
