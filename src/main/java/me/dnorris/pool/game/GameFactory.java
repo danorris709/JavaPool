@@ -21,6 +21,15 @@ import java.lang.reflect.InvocationTargetException;
 
 public class GameFactory {
 
+    private static final Entity[] POCKETS = new Entity[] {
+            GameEntity.getTopLeftCornerHole(),
+            GameEntity.getBottomLeftCornerHole(),
+            GameEntity.getTopMiddleHole(),
+            GameEntity.getBottomMiddleHole(),
+            GameEntity.getTopRightCornerHole(),
+            GameEntity.getBottomRightCornerHole()
+    };
+
     private static GameData activeGame;
 
     public static void initBoard() {
@@ -78,5 +87,9 @@ public class GameFactory {
 
     public static GameData getActiveGame() {
         return activeGame;
+    }
+
+    public static Entity[] getPockets() {
+        return POCKETS;
     }
 }

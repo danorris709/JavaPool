@@ -1,5 +1,6 @@
 package me.dnorris.pool.game.handler;
 
+import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.key.KeyEventType;
 import me.dnorris.pool.arena.key.KeyHandler;
@@ -19,9 +20,21 @@ public class CuePlaceHandler {
             return;
         }
 
-        GameFactory.getActiveGame().setCueBallInHand(false);
-        GameEntity.getPointer().setLocation(GameEntity.getCueBall().getLocation().clone());
-        GameFactory.getActiveGame().getArena().addEntity(GameEntity.getPointer());
+        if(this.canPlacePointer(GameEntity.getCueBall())) {
+            GameFactory.getActiveGame().setCueBallInHand(false);
+            GameEntity.getPointer().setLocation(GameEntity.getCueBall().getLocation().clone());
+            GameFactory.getActiveGame().getArena().addEntity(GameEntity.getPointer());
+        }
+    }
+
+    private boolean canPlacePointer(Entity cueBall) {
+        for(Entity entity : GameFactory.getPockets()) {
+            if(entity.getHitbox().isColliding(cueBall.getHitbox())) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @KeyHandler(keyCode = MouseEvent.NOBUTTON, getType = KeyEventType.MOUSE_MOVED)
