@@ -10,6 +10,8 @@ public interface GameData {
 
     GameArena getArena();
 
+    GameEntity getGameEntities();
+
     Instant getStartTime();
 
     Team getTurn();
