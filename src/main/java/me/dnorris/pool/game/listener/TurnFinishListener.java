@@ -27,53 +27,25 @@ public class TurnFinishListener implements Listener {
         GameData activeGame = event.getActiveGame();
 
         if(this.pottedCueBall(event)) {
-            GameEntity.getCueBall().setLocation(new Location2D(350, 350));
-            activeGame.setCueBallInHand(true);
-            activeGame.setTurn(turn.getOpposition());
-            activeGame.setShotsInTurn(2);
+            this.handleCueBallPotted(event);
             return;
         }
 
         if(event.getFirstCollision() == null) {
-            activeGame.setTurn(turn.getOpposition());
-            activeGame.setShotsInTurn(2);
+            this.penalizeCurrentPlayer(event);
             return;
         }
 
-        if(color == null) {
-            if(!event.getPottedBalls().isEmpty()) {
-                Color pottedColour = this.getPottedColour(event);
-
-                if(pottedColour == null) {
-                    return;
-                }
-
-                activeGame.setTeamColour(turn, pottedColour);
-                activeGame.setTeamColour(turn.getOpposition(), this.getOtherColour(pottedColour));
-            }
-        }else {
-            if(this.pottedOtherTeamsBall(event, color) || !Objects.equals(event.getFirstCollision().getColour(), color)) {
-                activeGame.setTurn(turn.getOpposition());
-                activeGame.setShotsInTurn(2);
-                return;
-            }
+        if((color == null && !this.attemptAssignColour(activeGame, event))) {
+            return;
+        } else if(this.hasCommittedFoul(activeGame, event)) {
+            this.penalizeCurrentPlayer(event);
+            return;
         }
 
-        if(event.getPottedBalls().isEmpty()) {
-            activeGame.setShotsInTurn(activeGame.getShotsInTurn() - 1);
-        }
-
-        if(activeGame.getShotsInTurn() <= 0) {
-            activeGame.setTurn(turn.getOpposition());
-            activeGame.setShotsInTurn(1);
-        }
-
-        if(!activeGame.isCueBallInHand()) {
-            Entity pointer = GameEntity.getPointer();
-
-            pointer.setLocation(GameEntity.getCueBall().getLocation().clone());
-            activeGame.getArena().addEntity(pointer);
-        }
+        this.attemptDecreaseShotsRemaining(event);
+        this.attemptSwitchPlayer(event);
+        this.attemptReplacePointer(event);
     }
 
     private boolean pottedCueBall(TurnFinishEvent event) {
@@ -86,14 +58,31 @@ public class TurnFinishListener implements Listener {
         return false;
     }
 
-    private boolean pottedOtherTeamsBall(TurnFinishEvent event, Color colour) {
-        for (Entity pottedBall : event.getPottedBalls()) {
-            if(!Objects.equals(pottedBall.getColour(), colour)) {
-                return true;
-            }
+    private void handleCueBallPotted(TurnFinishEvent event) {
+        GameEntity.getCueBall().setLocation(new Location2D(350, 350));
+        event.getActiveGame().setCueBallInHand(true);
+        this.penalizeCurrentPlayer(event);
+    }
+
+    private void penalizeCurrentPlayer(TurnFinishEvent event) {
+        event.getActiveGame().setTurn(event.getTurn().getOpposition());
+        event.getActiveGame().setShotsInTurn(2);
+    }
+
+    private boolean attemptAssignColour(GameData activeGame, TurnFinishEvent event) {
+        if (event.getPottedBalls().isEmpty()) {
+            return true;
         }
 
-        return false;
+        Color pottedColour = this.getPottedColour(event);
+
+        if (pottedColour == null) {
+            return false;
+        }
+
+        activeGame.setTeamColour(event.getTurn(), pottedColour);
+        activeGame.setTeamColour(event.getTurn().getOpposition(), this.getOtherColour(pottedColour));
+        return true;
     }
 
     private Color getPottedColour(TurnFinishEvent event) {
@@ -116,5 +105,51 @@ public class TurnFinishListener implements Listener {
         }
 
         return Color.YELLOW;
+    }
+
+    private boolean hasCommittedFoul(GameData activeGame, TurnFinishEvent event) {
+        if(this.pottedOtherTeamsBall(event, activeGame.getTeamColour(event.getTurn()))) {
+            return true;
+        }
+
+        return !Objects.equals(event.getFirstCollision().getColour(), activeGame.getTeamColour(event.getTurn()));
+    }
+
+    private boolean pottedOtherTeamsBall(TurnFinishEvent event, Color colour) {
+        for (Entity pottedBall : event.getPottedBalls()) {
+            if(!Objects.equals(pottedBall.getColour(), colour)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private void attemptDecreaseShotsRemaining(TurnFinishEvent event) {
+        if(!event.getPottedBalls().isEmpty()) {
+            return;
+        }
+
+        event.getActiveGame().setShotsInTurn(event.getActiveGame().getShotsInTurn() - 1);
+    }
+
+    private void attemptSwitchPlayer(TurnFinishEvent event) {
+        if (event.getActiveGame().getShotsInTurn() > 0) {
+            return;
+        }
+
+        event.getActiveGame().setTurn(event.getTurn().getOpposition());
+        event.getActiveGame().setShotsInTurn(1);
+    }
+
+    private void attemptReplacePointer(TurnFinishEvent event) {
+        if (event.getActiveGame().isCueBallInHand()) {
+            return;
+        }
+
+        Entity pointer = GameEntity.getPointer();
+
+        pointer.setLocation(GameEntity.getCueBall().getLocation().clone());
+        event.getActiveGame().getArena().addEntity(pointer);
     }
 }
