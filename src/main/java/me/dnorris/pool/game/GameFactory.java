@@ -7,7 +7,11 @@ import me.dnorris.pool.arena.arena.jframe.SimpleArena;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.event.Events;
+import me.dnorris.pool.arena.event.event.EntityCollisionEvent;
+import me.dnorris.pool.arena.event.event.EntityStopMovingEvent;
 import me.dnorris.pool.game.data.BasicGameData;
+import me.dnorris.pool.game.event.BallCollideEvent;
+import me.dnorris.pool.game.event.TurnFinishEvent;
 import me.dnorris.pool.game.event.listener.BallCollisionListener;
 import me.dnorris.pool.game.event.listener.BallTurnListener;
 import me.dnorris.pool.game.handler.CuePlaceHandler;
@@ -92,6 +96,10 @@ public class GameFactory {
     public static void finishGame(Team winner) {
         GameData activeGame = getActiveGame();
 
+        Events.unregisterAllListeners(TurnFinishEvent.class);
+        Events.unregisterAllListeners(BallCollideEvent.class);
+        Events.unregisterAllListeners(EntityCollisionEvent.class);
+        Events.unregisterAllListeners(EntityStopMovingEvent.class);
         activeGame.getArena().shutdown();
         PoolClient.getScreenManager().finishGame(winner.getDisplayName() + " has won the game!", activeGame.getStartTime());
     }
