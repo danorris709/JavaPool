@@ -52,7 +52,7 @@ public class TurnFinishListener implements Listener {
                 activeGame.setTeamColour(turn.getOpposition(), this.getOtherColour(pottedColour));
             }
         }else {
-            if(this.pottedOtherTeamsBall(event, color)) {
+            if(this.pottedOtherTeamsBall(event, color) || !Objects.equals(event.getFirstCollision().getColour(), color)) {
                 activeGame.setTurn(turn.getOpposition());
                 activeGame.setShotsInTurn(2);
                 return;
