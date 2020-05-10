@@ -36,9 +36,9 @@ public class TurnFinishListener implements Listener {
             return;
         }
 
-        if((color == null && !this.attemptAssignColour(activeGame, event))) {
+        if(color == null && !this.attemptAssignColour(activeGame, event)) {
             return;
-        } else if(this.hasCommittedFoul(activeGame, event)) {
+        } else if(color != null && this.hasCommittedFoul(activeGame, event)) {
             this.penalizeCurrentPlayer(event);
             return;
         }
@@ -104,7 +104,7 @@ public class TurnFinishListener implements Listener {
             return true;
         }
 
-        return !Objects.equals(event.getFirstCollision().getColour(), activeGame.getTeamColour(event.getTurn()));
+        return !Objects.equals(event.getFirstCollision().getColour(), turnColor);
     }
 
     private void attemptDecreaseShotsRemaining(TurnFinishEvent event) {
