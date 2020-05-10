@@ -22,6 +22,8 @@ public class SimpleArena extends AbstractGameArena {
 
     private final Object lock = new Object();
 
+    private boolean running = true;
+
     /**
      *
      * Basic constructor
@@ -41,7 +43,7 @@ public class SimpleArena extends AbstractGameArena {
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         new Thread(() -> {
-            while(true) {
+            while(this.running) {
                 jFrame.repaint();
 
                 try {
@@ -92,5 +94,10 @@ public class SimpleArena extends AbstractGameArena {
                 }
             }
         }
+    }
+
+    @Override
+    public void shutdown() {
+        this.running = false;
     }
 }
