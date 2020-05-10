@@ -31,12 +31,14 @@ public class GameWinListener implements Listener {
             return;
         }
 
-        if(event.hasPottedPredicate(e -> Objects.equals(e, GameEntity.getCueBall())) && Objects.equals(GameEntity.getBlackBall(), this.lastCollision)) {
+        GameEntity gameEntity = event.getActiveGame().getGameEntities();
+
+        if(event.hasPottedPredicate(e -> Objects.equals(e, gameEntity.getCueBall())) && Objects.equals(gameEntity.getBlackBall(), this.lastCollision)) {
             GameFactory.finishGame(event.getTurn().getOpposition());
             return;
         }
 
-        if(!event.hasPottedPredicate(e -> Objects.equals(e, GameEntity.getBlackBall()))) {
+        if(!event.hasPottedPredicate(e -> Objects.equals(e, gameEntity.getBlackBall()))) {
             return;
         }
 
@@ -45,9 +47,11 @@ public class GameWinListener implements Listener {
 
     @EventHandler
     public void onBallCollide(BallCollideEvent event) {
-        if (Objects.equals(event.getFirst(), GameEntity.getCueBall())) {
+        GameEntity gameEntity = event.getActiveGame().getGameEntities();
+
+        if (Objects.equals(event.getFirst(), gameEntity.getCueBall())) {
             lastCollision = event.getSecond();
-        } else if (Objects.equals(event.getSecond(), GameEntity.getCueBall())) {
+        } else if (Objects.equals(event.getSecond(), gameEntity.getCueBall())) {
             lastCollision = event.getFirst();
         }
     }
