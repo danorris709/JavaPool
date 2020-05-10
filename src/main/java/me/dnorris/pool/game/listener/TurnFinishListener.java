@@ -49,11 +49,11 @@ public class TurnFinishListener implements Listener {
     }
 
     private boolean hasPottedCueBall(TurnFinishEvent event) {
-        return event.hasPottedPredicate(e -> Objects.equals(e, GameEntity.getCueBall()));
+        return event.hasPottedPredicate(e -> Objects.equals(e, event.getActiveGame().getGameEntities().getCueBall()));
     }
 
     private void handleCueBallPotted(TurnFinishEvent event) {
-        GameEntity.getCueBall().setLocation(new Location2D(350, 350));
+        event.getActiveGame().getGameEntities().getCueBall().setLocation(new Location2D(350, 350));
         event.getActiveGame().setCueBallInHand(true);
         this.penalizeCurrentPlayer(event);
     }
@@ -139,9 +139,10 @@ public class TurnFinishListener implements Listener {
             return;
         }
 
-        Entity pointer = GameEntity.getPointer();
+        GameEntity gameEntity = event.getActiveGame().getGameEntities();
+        Entity pointer = gameEntity.getPointer();
 
-        pointer.setLocation(GameEntity.getCueBall().getLocation().clone());
+        pointer.setLocation(gameEntity.getCueBall().getLocation().clone());
         event.getActiveGame().getArena().addEntity(pointer);
     }
 }
