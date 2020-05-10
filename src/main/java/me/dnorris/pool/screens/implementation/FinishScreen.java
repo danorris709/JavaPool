@@ -11,6 +11,12 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.TimeZone;
 
+/**
+ *
+ * Finish screen panel
+ *
+ * @author https://github.com/danorris709
+ */
 public class FinishScreen extends CardScreenPanel {
 
     private static final String FINISH_SCREEN_IDENTIFIER = "FINISH";
@@ -25,6 +31,12 @@ public class FinishScreen extends CardScreenPanel {
         DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
+    /**
+     *
+     * Constructor taking the screen manager this will be used with
+     *
+     * @param screenManager Screen manager controlling when this is dispalyed
+     */
     public FinishScreen(ScreenManager screenManager) {
         super(FINISH_SCREEN_IDENTIFIER);
 
