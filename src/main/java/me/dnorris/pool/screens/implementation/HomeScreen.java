@@ -6,12 +6,24 @@ import me.dnorris.pool.screens.ScreenManager;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ *
+ * Home screen panel
+ *
+ * @author https://github.com/danorris709
+ */
 public class HomeScreen extends CardScreenPanel {
 
     public static final String HOME_SCREEN_IDENTIFIER = "HOME_SCREEN";
 
     private final ScreenManager screenManager;
 
+    /**
+     *
+     * Constructor taking the screen manager this will be used with
+     *
+     * @param screenManager Screen manager controlling when this is dispalyed
+     */
     public HomeScreen(ScreenManager screenManager) {
         super(HOME_SCREEN_IDENTIFIER);
 
