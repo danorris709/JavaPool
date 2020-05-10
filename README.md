@@ -57,3 +57,13 @@ If you want to use the GameArena implementation for development and have any que
 
 ## Contribution
 If you want to contribute to this implementation of the GameArena follow the guide on the [wiki](https://codefeedback.lancaster.ac.uk/git110/Term3-norrisd/project/wiki/Contribution)
+
+## Appendix
+
+Word | Defintion
+-----|----------
+POJO | [Plain Old Java Object](https://en.wikipedia.org/wiki/Plain_old_Java_object)  
+DTO  | [Data Transfer Object](https://en.wikipedia.org/wiki/Data_transfer_object)
+Getter | A method for accessing a private data type.
+Lazy Getter | A method for initializing the data upon first call, and then obtaining it all times after that. A.K.A [Lazy initialization](https://en.wikipedia.org/wiki/Lazy_initialization)
+Setter | A method for setting a private data type.
