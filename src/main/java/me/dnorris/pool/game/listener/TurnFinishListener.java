@@ -26,7 +26,7 @@ public class TurnFinishListener implements Listener {
         Color color = currentGame.getTeamColour(turn);
         GameData activeGame = event.getActiveGame();
 
-        if(event.hasPottedPredicate(e -> Objects.equals(e, GameEntity.getCueBall()))) {
+        if(this.hasPottedCueBall(event)) {
             this.handleCueBallPotted(event);
             return;
         }
@@ -46,6 +46,10 @@ public class TurnFinishListener implements Listener {
         this.attemptDecreaseShotsRemaining(event);
         this.attemptSwitchPlayer(event);
         this.attemptReplacePointer(event);
+    }
+
+    private boolean hasPottedCueBall(TurnFinishEvent event) {
+        return event.hasPottedPredicate(e -> Objects.equals(e, GameEntity.getCueBall()));
     }
 
     private void handleCueBallPotted(TurnFinishEvent event) {
@@ -104,11 +108,12 @@ public class TurnFinishListener implements Listener {
             return true;
         }
 
-        return !Objects.equals(event.getFirstCollision().getColour(), turnColor);
+        return !Objects.equals(event.getFirstCollision().getColour(), activeGame.getTeamColour(event.getTurn()));
     }
 
     private void attemptDecreaseShotsRemaining(TurnFinishEvent event) {
         if(!event.getPottedBalls().isEmpty()) {
+            System.out.println("Not decreasing");
             return;
         }
 
@@ -117,6 +122,7 @@ public class TurnFinishListener implements Listener {
 
     private void attemptSwitchPlayer(TurnFinishEvent event) {
         if (event.getActiveGame().getShotsInTurn() > 0) {
+            System.out.println("Not switching");
             return;
         }
 
