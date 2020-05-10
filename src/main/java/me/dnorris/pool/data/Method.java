@@ -10,6 +10,13 @@ package me.dnorris.pool.data;
  */
 public interface Method<T> {
 
+    /**
+     *
+     * Similar naming to {@link Runnable}. As can be represented by a lambda and thus there's no
+     * name that represents the function better.
+     *
+     * @param t The only parameter of type {@link T}
+     */
     void run(T t);
 
 }
