@@ -28,34 +28,26 @@ import java.lang.reflect.InvocationTargetException;
 
 public class GameFactory {
 
-    private static final Entity[] POCKETS = new Entity[] {
-            GameEntity.getTopLeftCornerHole(),
-            GameEntity.getBottomLeftCornerHole(),
-            GameEntity.getTopMiddleHole(),
-            GameEntity.getBottomMiddleHole(),
-            GameEntity.getTopRightCornerHole(),
-            GameEntity.getBottomRightCornerHole()
-    };
-
     private static GameData activeGame;
 
     public static void initBoard() {
         GameArena gameArena = new SimpleArena(new Dimension(1500, 750));
+        GameEntity gameEntity = new GameEntity();
 
-        gameArena.addEntity(GameEntity.getBorder());
-        gameArena.addEntity(GameEntity.getCloth());
-        gameArena.addEntity(GameEntity.getHeadString());
-        gameArena.addEntity(GameEntity.getTopRightCornerHole());
-        gameArena.addEntity(GameEntity.getTopLeftCornerHole());
-        gameArena.addEntity(GameEntity.getTopMiddleHole());
-        gameArena.addEntity(GameEntity.getBottomMiddleHole());
-        gameArena.addEntity(GameEntity.getBottomRightCornerHole());
-        gameArena.addEntity(GameEntity.getBottomLeftCornerHole());
-        gameArena.addEntity(GameEntity.getBlackBallSpot());
-        gameArena.addEntity(GameEntity.getCueBall());
-        gameArena.addEntity(GameEntity.getBlackBall());
-        gameArena.addEntity(GameEntity.getPercentageBar());
-        gameArena.addEntity(GameEntity.getTurnIdentifier());
+        gameArena.addEntity(gameEntity.getBorder());
+        gameArena.addEntity(gameEntity.getCloth());
+        gameArena.addEntity(gameEntity.getHeadString());
+        gameArena.addEntity(gameEntity.getTopRightCornerHole());
+        gameArena.addEntity(gameEntity.getTopLeftCornerHole());
+        gameArena.addEntity(gameEntity.getTopMiddleHole());
+        gameArena.addEntity(gameEntity.getBottomMiddleHole());
+        gameArena.addEntity(gameEntity.getBottomRightCornerHole());
+        gameArena.addEntity(gameEntity.getBottomLeftCornerHole());
+        gameArena.addEntity(gameEntity.getBlackBallSpot());
+        gameArena.addEntity(gameEntity.getCueBall());
+        gameArena.addEntity(gameEntity.getBlackBall());
+        gameArena.addEntity(gameEntity.getPercentageBar());
+        gameArena.addEntity(gameEntity.getTurnIdentifier());
 
         for(int i = 0; i < GameLocation.BALL_SPAWN_POINTS.length; i++) {
             gameArena.addEntity(getBall(i));
@@ -108,7 +100,16 @@ public class GameFactory {
         return activeGame;
     }
 
-    public static Entity[] getPockets() {
-        return POCKETS;
+    public static Entity[] getPockets(GameData gameData) {
+        GameEntity gameEntity = gameData.getGameEntities();
+
+        return new Entity[] {
+                gameEntity.getTopRightCornerHole(),
+                gameEntity.getTopLeftCornerHole(),
+                gameEntity.getTopMiddleHole(),
+                gameEntity.getBottomMiddleHole(),
+                gameEntity.getTopLeftCornerHole(),
+                gameEntity.getBottomLeftCornerHole()
+        };
     }
 }
