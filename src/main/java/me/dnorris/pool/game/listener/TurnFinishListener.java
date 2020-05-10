@@ -26,7 +26,7 @@ public class TurnFinishListener implements Listener {
         Color color = currentGame.getTeamColour(turn);
         GameData activeGame = event.getActiveGame();
 
-        if(this.pottedCueBall(event)) {
+        if(event.hasPottedPredicate(e -> Objects.equals(e, GameEntity.getCueBall()))) {
             this.handleCueBallPotted(event);
             return;
         }
@@ -46,16 +46,6 @@ public class TurnFinishListener implements Listener {
         this.attemptDecreaseShotsRemaining(event);
         this.attemptSwitchPlayer(event);
         this.attemptReplacePointer(event);
-    }
-
-    private boolean pottedCueBall(TurnFinishEvent event) {
-        for(Entity pottedBall : event.getPottedBalls()) {
-            if(Objects.equals(pottedBall, GameEntity.getCueBall())) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private void handleCueBallPotted(TurnFinishEvent event) {
@@ -108,21 +98,13 @@ public class TurnFinishListener implements Listener {
     }
 
     private boolean hasCommittedFoul(GameData activeGame, TurnFinishEvent event) {
-        if(this.pottedOtherTeamsBall(event, activeGame.getTeamColour(event.getTurn()))) {
+        Color turnColor = activeGame.getTeamColour(event.getTurn().getOpposition());
+
+        if(event.hasPottedPredicate(e -> Objects.equals(turnColor, e.getColour()))) {
             return true;
         }
 
         return !Objects.equals(event.getFirstCollision().getColour(), activeGame.getTeamColour(event.getTurn()));
-    }
-
-    private boolean pottedOtherTeamsBall(TurnFinishEvent event, Color colour) {
-        for (Entity pottedBall : event.getPottedBalls()) {
-            if(!Objects.equals(pottedBall.getColour(), colour)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private void attemptDecreaseShotsRemaining(TurnFinishEvent event) {
