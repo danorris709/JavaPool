@@ -15,6 +15,7 @@ import me.dnorris.pool.game.handler.CuePowerHandler;
 import me.dnorris.pool.game.handler.CueReleaseHandler;
 import me.dnorris.pool.game.handler.PointerDirectionHandler;
 import me.dnorris.pool.game.listener.BallPotListener;
+import me.dnorris.pool.game.listener.GameWinListener;
 import me.dnorris.pool.game.listener.TurnFinishListener;
 import me.dnorris.pool.game.team.Team;
 
@@ -67,6 +68,7 @@ public class GameFactory {
         Events.registerListener(new BallCollisionListener(activeGame));
         Events.registerListener(new BallTurnListener(activeGame));
         Events.registerListener(new TurnFinishListener(activeGame));
+        Events.registerListener(new GameWinListener(activeGame));
     }
 
     private static Entity getBall(int position) {
