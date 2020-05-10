@@ -47,14 +47,14 @@ public class GameEntity {
             .build();
 
     private static final Entity TOP_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(600, 100))
+            .setLocation(new Location2D(625, 100))
             .setDimension(new Dimension(50, 50))
             .setStartAngle(180)
             .setArcAngle(180)
             .build();
 
     private static final Entity BOTTOM_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(600, 600))
+            .setLocation(new Location2D(625, 600))
             .setDimension(new Dimension(50, 50))
             .setStartAngle(0)
             .setArcAngle(180)
