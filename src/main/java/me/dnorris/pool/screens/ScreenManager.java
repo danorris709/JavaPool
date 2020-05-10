@@ -40,7 +40,7 @@ public class ScreenManager {
      }
 
      private void setupFrame() {
-         this.frame = new JFrame("Hoppers");
+         this.frame = new JFrame("Cool Pool v 1.0");
          this.frame.setSize(600, 600);
          this.frame.setPreferredSize(new Dimension(600, 600));
          this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
