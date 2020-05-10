@@ -21,6 +21,7 @@ import java.util.Objects;
 public class SimpleArena extends AbstractGameArena {
 
     private final Object lock = new Object();
+    private final JFrame jFrame;
 
     private boolean running = true;
 
@@ -33,18 +34,18 @@ public class SimpleArena extends AbstractGameArena {
     public SimpleArena(Dimension dimensions) {
         super(dimensions);
 
-        JFrame jFrame = new GameFrame(this);
+        this.jFrame = new GameFrame(this);
 
         KeyHandlerListener listener = new KeyHandlerListener(this);
 
-        jFrame.addKeyListener(listener);
-        jFrame.addMouseListener(listener);
-        jFrame.addMouseMotionListener(listener);
-        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.jFrame.addKeyListener(listener);
+        this.jFrame.addMouseListener(listener);
+        this.jFrame.addMouseMotionListener(listener);
+        this.jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         new Thread(() -> {
             while(this.running) {
-                jFrame.repaint();
+                this.jFrame.repaint();
 
                 try {
                     Thread.sleep(10);
@@ -99,5 +100,6 @@ public class SimpleArena extends AbstractGameArena {
     @Override
     public void shutdown() {
         this.running = false;
+        this.jFrame.setVisible(false);
     }
 }
