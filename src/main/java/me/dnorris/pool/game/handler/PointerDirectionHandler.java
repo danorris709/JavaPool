@@ -7,7 +7,6 @@ import me.dnorris.pool.arena.key.KeyEventType;
 import me.dnorris.pool.arena.key.KeyHandler;
 import me.dnorris.pool.data.Pair;
 import me.dnorris.pool.data.location.Location;
-import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameFactory;
 
 import java.awt.event.InputEvent;
@@ -24,15 +23,15 @@ public class PointerDirectionHandler {
             return;
         }
 
-        this.movePointerEndPoint(arena, GameEntity.getPointer(), Arrow.fromKeyCode(((KeyEvent) event).getKeyCode()));
+        this.movePointerEndPoint(arena, GameFactory.getActiveGame().getGameEntities().getPointer(), Arrow.fromKeyCode(((KeyEvent) event).getKeyCode()));
     }
 
-    @KeyHandler(keyCode = KeyEvent.VK_SHIFT, getType = KeyEventType.KEY_PRESSED)
+    @KeyHandler(keyCode = { KeyEvent.VK_SHIFT }, getType = KeyEventType.KEY_PRESSED)
     public void onShiftHeld(GameArena arena, InputEvent event) {
         this.slowed = true;
     }
 
-    @KeyHandler(keyCode = KeyEvent.VK_SHIFT, getType = KeyEventType.KEY_RELEASED)
+    @KeyHandler(keyCode = { KeyEvent.VK_SHIFT }, getType = KeyEventType.KEY_RELEASED)
     public void onShiftRelease(GameArena arena, InputEvent event) {
         this.slowed = false;
     }
@@ -40,10 +39,10 @@ public class PointerDirectionHandler {
     private void movePointerEndPoint(GameArena arena, LineEntity line, Arrow arrow) {
         if(line.getArena() == null) {
             arena.addEntity(line);
-            line.setLocation(GameEntity.getCueBall().getLocation());
+            line.setLocation(GameFactory.getActiveGame().getGameEntities().getCueBall().getLocation());
         }
 
-        line.setEndPoint(arrow.moveLine(line, slowed));
+        line.setEndPoint(arrow.moveLine(line, this.slowed));
     }
 
     enum Arrow {
@@ -145,20 +144,22 @@ public class PointerDirectionHandler {
         private Location getUpdateNextPos(LineEntity lineEntity, boolean slowed) {
             Pair<Integer, Integer> nextPosition = getNextPosition(lineEntity);
 
-            if (slowed) {
-                if(nextPosition.getFirst() != 0) {
-                    if(nextPosition.getFirst() < 0) {
-                        nextPosition = new Pair<>(-1, 0);
-                    }else {
-                        nextPosition = new Pair<>(1, 0);
-                    }
-                }else {
-                    if(nextPosition.getSecond() < 0) {
-                        nextPosition = new Pair<>(0, -1);
-                    }else {
-                        nextPosition = new Pair<>(0, 1);
-                    }
+            if (nextPosition.getFirst() != 0) {
+                if (nextPosition.getFirst() < 0) {
+                    nextPosition = new Pair<>(-1, 0);
+                } else {
+                    nextPosition = new Pair<>(1, 0);
                 }
+            } else {
+                if (nextPosition.getSecond() < 0) {
+                    nextPosition = new Pair<>(0, -1);
+                } else {
+                    nextPosition = new Pair<>(0, 1);
+                }
+            }
+
+            if(!slowed) {
+                nextPosition = new Pair<>(nextPosition.getFirst() * 50, nextPosition.getSecond() * 50);
             }
 
             return lineEntity.getEndPoint().add(nextPosition.getFirst(), nextPosition.getSecond(), 0);

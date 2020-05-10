@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class GameEntity {
 
-    private static final Entity BORDER = new HollowRectangle.Builder()
+    private final Entity BORDER = new HollowRectangle.Builder()
             .setLocation(new Location2D(100, 100))
             .setColour(Colour.BROWN)
             .setInteractable(true)
@@ -26,7 +26,7 @@ public class GameEntity {
             .setOutsideWidth(20)
             .build();
 
-    private static final ArcShape.Builder HOLE_TEMPLATE = new ArcShape.Builder()
+    private final ArcShape.Builder HOLE_TEMPLATE = new ArcShape.Builder()
             .setType(EntityType.ARC)
             .setColour(Color.BLACK)
             .setDimension(new Dimension(60, 60))
@@ -34,52 +34,52 @@ public class GameEntity {
             .setImmovable(true)
             .setInteractable(true);
 
-    private static final Entity TOP_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
+    private final Entity TOP_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
             .setLocation(new Location2D(100, 100))
             .setStartAngle(0)
             .setArcAngle(-90)
             .build();
 
-    private static final Entity TOP_LEFT_CORNER_HOLE = HOLE_TEMPLATE.clone()
+    private final Entity TOP_LEFT_CORNER_HOLE = HOLE_TEMPLATE.clone()
             .setLocation(new Location2D(100, 600))
             .setStartAngle(0)
             .setArcAngle(90)
             .build();
 
-    private static final Entity TOP_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(600, 100))
+    private final Entity TOP_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
+            .setLocation(new Location2D(625, 100))
             .setDimension(new Dimension(50, 50))
             .setStartAngle(180)
             .setArcAngle(180)
             .build();
 
-    private static final Entity BOTTOM_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
-            .setLocation(new Location2D(600, 600))
+    private final Entity BOTTOM_MIDDLE_HOLE = HOLE_TEMPLATE.clone()
+            .setLocation(new Location2D(625, 600))
             .setDimension(new Dimension(50, 50))
             .setStartAngle(0)
             .setArcAngle(180)
             .build();
 
-    private static final Entity BOTTOM_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
+    private final Entity BOTTOM_RIGHT_CORNER_HOLE = HOLE_TEMPLATE.clone()
             .setLocation(new Location2D(1100, 100))
             .setStartAngle(180)
             .setArcAngle(90)
             .build();
 
-    private static final Entity BOTTOM_LEFT_CORNER_HOLE = HOLE_TEMPLATE.clone()
+    private final Entity BOTTOM_LEFT_CORNER_HOLE = HOLE_TEMPLATE.clone()
             .setLocation(new Location2D(1100, 600))
             .setStartAngle(90)
             .setArcAngle(90)
             .build();
 
-    private static final LineEntity POINTER = new LineEntity.Builder()
+    private final LineEntity POINTER = new LineEntity.Builder()
             .setColour(Color.WHITE)
             .setType(EntityType.LINE)
-            .setLocation(new Location2D(100 + (1000 / 4), 100 + 250))
-            .setEndPoint(new Location2D(100 + (1000 / 4) + 750, 100 + 250))
+            .setLocation(new Location2D(100 + (1000 / 4.0), 100 + 250))
+            .setEndPoint(new Location2D(100 + (1000 / 4.0) + 750, 100 + 250))
             .build();
 
-    private static final TextEntity TURN_IDENTIFIER = new TextEntity.Builder()
+    private final TextEntity TURN_IDENTIFIER = new TextEntity.Builder()
             .setLocation(new Location2D(100, 50))
             .setBold(true)
             .setItalic(false)
@@ -89,46 +89,46 @@ public class GameEntity {
             .setFont("SansSerif")
             .build();
 
-    private static Entity cloth;
-    private static Entity headString;
-    private static Entity blackBallSpot;
-    private static Entity cueBall;
-    private static Entity blackBall;
-    private static PercentageBar percentageBar;
+    private Entity cloth;
+    private Entity headString;
+    private Entity blackBallSpot;
+    private Entity cueBall;
+    private Entity blackBall;
+    private PercentageBar percentageBar;
 
-    public static Entity getBorder() {
+    public Entity getBorder() {
         return BORDER;
     }
 
-    public static Entity getTopRightCornerHole() {
+    public Entity getTopRightCornerHole() {
         return TOP_RIGHT_CORNER_HOLE;
     }
 
-    public static Entity getTopLeftCornerHole() {
+    public Entity getTopLeftCornerHole() {
         return TOP_LEFT_CORNER_HOLE;
     }
 
-    public static Entity getTopMiddleHole() {
+    public Entity getTopMiddleHole() {
         return TOP_MIDDLE_HOLE;
     }
 
-    public static Entity getBottomMiddleHole() {
+    public Entity getBottomMiddleHole() {
         return BOTTOM_MIDDLE_HOLE;
     }
 
-    public static Entity getBottomRightCornerHole() {
+    public Entity getBottomRightCornerHole() {
         return BOTTOM_RIGHT_CORNER_HOLE;
     }
 
-    public static Entity getBottomLeftCornerHole() {
+    public Entity getBottomLeftCornerHole() {
         return BOTTOM_LEFT_CORNER_HOLE;
     }
 
-    public static TextEntity getTurnIdentifier() {
+    public TextEntity getTurnIdentifier() {
         return TURN_IDENTIFIER;
     }
 
-    public static Entity getCloth() {
+    public Entity getCloth() {
         if(cloth == null) {
             try {
                 cloth = new EntityBuilder()
@@ -148,11 +148,11 @@ public class GameEntity {
         return cloth;
     }
 
-    public static Entity getHeadString() {
+    public Entity getHeadString() {
         if(headString == null) {
             try {
                 headString = new EntityBuilder()
-                        .setLocation(new Location2D(100 + (1000 / 4), 100))
+                        .setLocation(new Location2D(100 + (1000 / 4.0), 100))
                         .setColour(Color.WHITE)
                         .setDimension(new Dimension(1, 500))
                         .setInteractable(false)
@@ -168,7 +168,7 @@ public class GameEntity {
         return headString;
     }
 
-    public static Entity getBlackBallSpot() {
+    public Entity getBlackBallSpot() {
         if(blackBallSpot == null) {
             try {
                 blackBallSpot = new EntityBuilder()
@@ -188,7 +188,7 @@ public class GameEntity {
         return blackBallSpot;
     }
 
-    public static Entity getCueBall() {
+    public Entity getCueBall() {
         if(cueBall == null) {
             try {
                 cueBall = new EntityBuilder()
@@ -208,7 +208,7 @@ public class GameEntity {
         return cueBall;
     }
 
-    public static Entity getBlackBall() {
+    public Entity getBlackBall() {
         if(blackBall == null) {
             try {
                 blackBall = new EntityBuilder()
@@ -228,7 +228,7 @@ public class GameEntity {
         return blackBall;
     }
 
-    public static PercentageBar getPercentageBar() {
+    public PercentageBar getPercentageBar() {
         if(percentageBar == null) {
             percentageBar = new PercentageBar(new Location2D(1130, 100), Color.RED, null, new Dimension(25, 500), 500, true, false);
         }
@@ -236,7 +236,7 @@ public class GameEntity {
         return percentageBar;
     }
 
-    public static LineEntity getPointer() {
+    public LineEntity getPointer() {
         return POINTER;
     }
 }

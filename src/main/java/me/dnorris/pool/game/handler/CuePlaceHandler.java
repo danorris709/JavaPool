@@ -20,15 +20,17 @@ public class CuePlaceHandler {
             return;
         }
 
-        if(this.canPlacePointer(GameEntity.getCueBall())) {
+        GameEntity gameEntity = GameFactory.getActiveGame().getGameEntities();
+
+        if(this.canPlacePointer(gameEntity.getCueBall())) {
             GameFactory.getActiveGame().setCueBallInHand(false);
-            GameEntity.getPointer().setLocation(GameEntity.getCueBall().getLocation().clone());
-            GameFactory.getActiveGame().getArena().addEntity(GameEntity.getPointer());
+            gameEntity.getPointer().setLocation(gameEntity.getCueBall().getLocation().clone());
+            GameFactory.getActiveGame().getArena().addEntity(gameEntity.getPointer());
         }
     }
 
     private boolean canPlacePointer(Entity cueBall) {
-        for(Entity entity : GameFactory.getPockets()) {
+        for(Entity entity : GameFactory.getPockets(GameFactory.getActiveGame())) {
             if(entity.getHitbox().isColliding(cueBall.getHitbox())) {
                 return false;
             }
@@ -51,6 +53,6 @@ public class CuePlaceHandler {
         newCueBallPoint.setY(Math.max(115, newCueBallPoint.getY()));
         newCueBallPoint.setY(Math.min(585, newCueBallPoint.getY()));
 
-        GameEntity.getCueBall().setLocation(newCueBallPoint);
+        GameFactory.getActiveGame().getGameEntities().getCueBall().setLocation(newCueBallPoint);
     }
 }

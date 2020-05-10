@@ -64,6 +64,16 @@ public class Events {
 
     /**
      *
+     * Removes all {@link Listener}s for the specific {@link Event}
+     *
+     * @param event The event to be cleared
+     */
+    public static void unregisterAllListeners(Class<? extends Event> event) {
+        getHandlers(event).getListeners().clear();
+    }
+
+    /**
+     *
      * Function for handling the {@link Events#EVENT_LISTENER_CACHE} for optimizing reflection
      *
      * @param clazz The class being checked

@@ -4,18 +4,22 @@ import com.google.common.collect.Maps;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.entity.shape.CircleEntity;
+import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.team.Team;
 
 import java.awt.*;
+import java.time.Instant;
 import java.util.Map;
 import java.util.Objects;
 
 public class BasicGameData implements GameData {
 
     private final GameArena arena;
+    private final GameEntity gameEntity;
+    private final Instant startTime = Instant.now();
     private final Map<Integer, Color> teamColour = Maps.newHashMap();
 
     private Team turn = Team.PLAYER_ONE;
@@ -23,8 +27,9 @@ public class BasicGameData implements GameData {
     private int pottedBalls = 0;
     private int shotsInTurn = 1;
 
-    public BasicGameData(GameArena arena) {
+    public BasicGameData(GameArena arena, GameEntity gameEntity) {
         this.arena = arena;
+        this.gameEntity = gameEntity;
 
         this.setTurn(Team.PLAYER_ONE);
     }
@@ -35,15 +40,25 @@ public class BasicGameData implements GameData {
     }
 
     @Override
+    public GameEntity getGameEntities() {
+        return this.gameEntity;
+    }
+
+    @Override
     public Team getTurn() {
         return this.turn;
+    }
+
+    @Override
+    public Instant getStartTime() {
+        return this.startTime;
     }
 
     @Override
     public void setTurn(Team turn) {
         this.turn = turn;
 
-        GameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
+        this.gameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
     }
 
     @Override
@@ -86,7 +101,7 @@ public class BasicGameData implements GameData {
     public void setShotsInTurn(int shotsInTurn) {
         this.shotsInTurn = shotsInTurn;
 
-        GameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
+        this.gameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
     }
 
     @Override
@@ -101,6 +116,24 @@ public class BasicGameData implements GameData {
 
     @Override
     public boolean isOnBlackBall(Team team) {
-        return false; // TODO: 08/05/2020
+        Color teamColour = this.getTeamColour(team);
+
+        if(teamColour == null) {
+            return false;
+        }
+
+        for(Entity entity : this.getArena().getEntities()) {
+            if(!(entity instanceof CircleEntity) || !Objects.equals(teamColour, entity.getColour())) {
+                continue;
+            }
+
+            Location entityPosition = entity.getLocation();
+
+            if(entityPosition.getY() >= 100) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

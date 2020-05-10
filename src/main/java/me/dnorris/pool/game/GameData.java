@@ -4,10 +4,15 @@ import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.game.team.Team;
 
 import java.awt.*;
+import java.time.Instant;
 
 public interface GameData {
 
     GameArena getArena();
+
+    GameEntity getGameEntities();
+
+    Instant getStartTime();
 
     Team getTurn();
 

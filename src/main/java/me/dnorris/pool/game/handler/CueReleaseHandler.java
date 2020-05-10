@@ -22,12 +22,13 @@ public class CueReleaseHandler {
             return;
         }
 
-        LineEntity line = GameEntity.getPointer();
+        GameEntity gameEntity = GameFactory.getActiveGame().getGameEntities();
+        LineEntity line = gameEntity.getPointer();
         Vector normalVector = new Vector2D(line.getEndPoint(), line.getLocation()).normalize();
-        double strength = GameEntity.getPercentageBar().getFilledPercentage();
+        double strength = gameEntity.getPercentageBar().getFilledPercentage();
         Vector vector = normalVector.multiply(Math.max(1, strength) * 0.1);
 
-        GameEntity.getCueBall().setMotion(vector);
-        arena.removeEntity(GameEntity.getPointer());
+        gameEntity.getCueBall().setMotion(vector);
+        arena.removeEntity(gameEntity.getPointer());
     }
 }

@@ -94,4 +94,11 @@ public interface GameArena {
      */
     void doPhysics(Entity entity);
 
+    /**
+     *
+     * Closes all related threads and GUIs
+     *
+     */
+    void shutdown();
+
 }

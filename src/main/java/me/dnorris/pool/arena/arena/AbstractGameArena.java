@@ -29,7 +29,7 @@ import java.util.Objects;
  */
 public abstract class AbstractGameArena implements GameArena {
 
-    private final List<Entity> entities = Lists.newArrayList();
+    private final List<Entity> entities = Lists.newCopyOnWriteArrayList();
     private final Map<Class<?>, List<Pair<Long, BiFunction<GameArena, InputEvent>>>> classFunctionCache = Maps.newHashMap();
     private final Map<Long, List<GameFunction>> keyHandlers = new Long2ObjectOpenHashMap<>();
 

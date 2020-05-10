@@ -7,6 +7,7 @@ import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.team.Team;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class TurnFinishEvent implements Event {
 
@@ -38,6 +39,16 @@ public class TurnFinishEvent implements Event {
 
     public List<Entity> getPottedBalls() {
         return this.pottedBalls;
+    }
+
+    public boolean hasPottedPredicate(Predicate<Entity> predicate) {
+        for (Entity pottedBall : this.pottedBalls) {
+            if(predicate.test(pottedBall)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     @Override

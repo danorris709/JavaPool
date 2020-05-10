@@ -7,7 +7,7 @@ import me.dnorris.pool.arena.event.event.EntityStopMovingEvent;
 import me.dnorris.pool.arena.event.listener.EventHandler;
 import me.dnorris.pool.arena.event.listener.Listener;
 import me.dnorris.pool.game.GameData;
-import me.dnorris.pool.game.GameEntity;
+import me.dnorris.pool.game.GameFactory;
 import me.dnorris.pool.game.event.BallCollideEvent;
 import me.dnorris.pool.game.event.BallPotEvent;
 import me.dnorris.pool.game.event.TurnFinishEvent;
@@ -48,8 +48,8 @@ public class BallTurnListener implements Listener {
             return;
         }
 
-        boolean firstBallCue = Objects.equals(GameEntity.getCueBall(), event.getFirst());
-        boolean secondBallCue = Objects.equals(GameEntity.getCueBall(), event.getSecond());
+        boolean firstBallCue = Objects.equals(GameFactory.getActiveGame().getGameEntities().getCueBall(), event.getFirst());
+        boolean secondBallCue = Objects.equals(GameFactory.getActiveGame().getGameEntities().getCueBall(), event.getSecond());
 
         if(!firstBallCue && !secondBallCue) {
             return;
