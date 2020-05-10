@@ -10,12 +10,14 @@ import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.team.Team;
 
 import java.awt.*;
+import java.time.Instant;
 import java.util.Map;
 import java.util.Objects;
 
 public class BasicGameData implements GameData {
 
     private final GameArena arena;
+    private final Instant startTime = Instant.now();
     private final Map<Integer, Color> teamColour = Maps.newHashMap();
 
     private Team turn = Team.PLAYER_ONE;
@@ -37,6 +39,11 @@ public class BasicGameData implements GameData {
     @Override
     public Team getTurn() {
         return this.turn;
+    }
+
+    @Override
+    public Instant getStartTime() {
+        return this.startTime;
     }
 
     @Override

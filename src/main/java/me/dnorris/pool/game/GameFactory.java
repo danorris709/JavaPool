@@ -20,7 +20,6 @@ import me.dnorris.pool.game.team.Team;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
-import java.time.Instant;
 
 public class GameFactory {
 
@@ -92,7 +91,7 @@ public class GameFactory {
         GameData activeGame = getActiveGame();
 
         activeGame.getArena().shutdown();
-        PoolClient.getScreenManager().openFinishScreen(winner.name() + " has won the game!", Instant.now());
+        PoolClient.getScreenManager().openFinishScreen(winner.name() + " has won the game!", activeGame.getStartTime());
     }
 
     public static GameData getActiveGame() {
