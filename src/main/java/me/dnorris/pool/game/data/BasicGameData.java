@@ -18,6 +18,7 @@ import java.util.Objects;
 public class BasicGameData implements GameData {
 
     private final GameArena arena;
+    private final GameEntity gameEntity;
     private final Instant startTime = Instant.now();
     private final Map<Integer, Color> teamColour = Maps.newHashMap();
 
@@ -26,8 +27,9 @@ public class BasicGameData implements GameData {
     private int pottedBalls = 0;
     private int shotsInTurn = 1;
 
-    public BasicGameData(GameArena arena) {
+    public BasicGameData(GameArena arena, GameEntity gameEntity) {
         this.arena = arena;
+        this.gameEntity = gameEntity;
 
         this.setTurn(Team.PLAYER_ONE);
     }
@@ -35,6 +37,11 @@ public class BasicGameData implements GameData {
     @Override
     public GameArena getArena() {
         return this.arena;
+    }
+
+    @Override
+    public GameEntity getGameEntities() {
+        return this.gameEntity;
     }
 
     @Override
@@ -51,7 +58,7 @@ public class BasicGameData implements GameData {
     public void setTurn(Team turn) {
         this.turn = turn;
 
-        GameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
+        this.gameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
     }
 
     @Override
@@ -94,7 +101,7 @@ public class BasicGameData implements GameData {
     public void setShotsInTurn(int shotsInTurn) {
         this.shotsInTurn = shotsInTurn;
 
-        GameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
+        this.gameEntity.getTurnIdentifier().setText(this.turn.getDisplayText() + ": " + this.getShotsInTurn());
     }
 
     @Override
