@@ -47,7 +47,7 @@ public class HomeScreen extends CardScreenPanel {
         JPanel middlePanel = new JPanel();
         JButton localGameButton = new JButton("Play local game");
 
-        // TODO: 10/05/2020 add action listener to start game
+        localGameButton.addActionListener(e -> this.screenManager.openGameScreen());
 
         middlePanel.setLayout(new FlowLayout());
 
