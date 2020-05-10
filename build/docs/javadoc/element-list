@@ -22,6 +22,10 @@ me.dnorris.pool.data.vector
 me.dnorris.pool.data.vector.implementation
 me.dnorris.pool.game
 me.dnorris.pool.game.data
+me.dnorris.pool.game.event
+me.dnorris.pool.game.event.listener
 me.dnorris.pool.game.handler
 me.dnorris.pool.game.listener
 me.dnorris.pool.game.team
+me.dnorris.pool.screens
+me.dnorris.pool.screens.implementation

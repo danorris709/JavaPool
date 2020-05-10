@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -154,46 +154,72 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPottedBalls()">getPottedBalls</a></span>()</code></th>
+<td class="colFirst"><code><a href="GameEntity.html" title="class in me.dnorris.pool.game">GameEntity</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGameEntities()">getGameEntities</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShotsInTurn()">getShotsInTurn</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPottedBalls()">getPottedBalls</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShotsInTurn()">getShotsInTurn</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>java.time.Instant</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStartTime()">getStartTime</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.awt.Color</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTeamColour(me.dnorris.pool.game.team.Team)">getTeamColour</a></span>&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;team)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTurn()">getTurn</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#haveBallsStoppedMoving()">haveBallsStoppedMoving</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isCueBallInHand()">isCueBallInHand</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isOnBlackBall(me.dnorris.pool.game.team.Team)">isOnBlackBall</a></span>&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;team)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCueBallInHand(boolean)">setCueBallInHand</a></span>&#8203;(boolean&nbsp;placing)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPottedBalls(int)">setPottedBalls</a></span>&#8203;(int&nbsp;pottedBalls)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setShotsInTurn(int)">setShotsInTurn</a></span>&#8203;(int&nbsp;shotsInTurn)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTeamColour(me.dnorris.pool.game.team.Team,java.awt.Color)">setTeamColour</a></span>&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;team,
+             java.awt.Color&nbsp;color)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTurn(me.dnorris.pool.game.team.Team)">setTurn</a></span>&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;team)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -222,6 +248,24 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>getArena</h4>
 <pre class="methodSignature"><a href="../arena/GameArena.html" title="interface in me.dnorris.pool.arena">GameArena</a>&nbsp;getArena()</pre>
+</li>
+</ul>
+<a id="getGameEntities()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getGameEntities</h4>
+<pre class="methodSignature"><a href="GameEntity.html" title="class in me.dnorris.pool.game">GameEntity</a>&nbsp;getGameEntities()</pre>
+</li>
+</ul>
+<a id="getStartTime()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStartTime</h4>
+<pre class="methodSignature">java.time.Instant&nbsp;getStartTime()</pre>
 </li>
 </ul>
 <a id="getTurn()">
@@ -299,10 +343,38 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <a id="setShotsInTurn(int)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setShotsInTurn</h4>
 <pre class="methodSignature">void&nbsp;setShotsInTurn&#8203;(int&nbsp;shotsInTurn)</pre>
+</li>
+</ul>
+<a id="getTeamColour(me.dnorris.pool.game.team.Team)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTeamColour</h4>
+<pre class="methodSignature">java.awt.Color&nbsp;getTeamColour&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;team)</pre>
+</li>
+</ul>
+<a id="setTeamColour(me.dnorris.pool.game.team.Team,java.awt.Color)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTeamColour</h4>
+<pre class="methodSignature">void&nbsp;setTeamColour&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;team,
+                   java.awt.Color&nbsp;color)</pre>
+</li>
+</ul>
+<a id="isOnBlackBall(me.dnorris.pool.game.team.Team)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>isOnBlackBall</h4>
+<pre class="methodSignature">boolean&nbsp;isOnBlackBall&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;team)</pre>
 </li>
 </ul>
 </li>

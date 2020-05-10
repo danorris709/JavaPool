@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -196,13 +196,20 @@ extends <a href="../AbstractLocationHitbox.html" title="class in me.dnorris.pool
 <div class="block">Creates a direct copy of the object</div>
 </td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isColliding(me.dnorris.pool.data.hitbox.Hitbox)">isColliding</a></span>&#8203;(<a href="../../Hitbox.html" title="interface in me.dnorris.pool.data.hitbox">Hitbox</a>&nbsp;other)</code></th>
+<td class="colLast">
+<div class="block">Determine if the two <a href="../../Hitbox.html" title="interface in me.dnorris.pool.data.hitbox"><code>Hitbox</code></a> are interacting with eachother</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.me.dnorris.pool.data.hitbox.implementation.AbstractLocationHitbox">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;me.dnorris.pool.data.hitbox.implementation.<a href="../AbstractLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation">AbstractLocationHitbox</a></h3>
-<code><a href="../AbstractLocationHitbox.html#getCenter()">getCenter</a>, <a href="../AbstractLocationHitbox.html#getDimensions()">getDimensions</a>, <a href="../AbstractLocationHitbox.html#getLocation(me.dnorris.pool.data.hitbox.Hitbox)">getLocation</a>, <a href="../AbstractLocationHitbox.html#getPriority()">getPriority</a>, <a href="../AbstractLocationHitbox.html#isColliding(me.dnorris.pool.data.hitbox.Hitbox)">isColliding</a>, <a href="../AbstractLocationHitbox.html#isImmovable()">isImmovable</a>, <a href="../AbstractLocationHitbox.html#isInteractable()">isInteractable</a>, <a href="../AbstractLocationHitbox.html#setCenter(me.dnorris.pool.data.location.Location)">setCenter</a>, <a href="../AbstractLocationHitbox.html#setImmovable(boolean)">setImmovable</a>, <a href="../AbstractLocationHitbox.html#setInteractable(boolean)">setInteractable</a>, <a href="../AbstractLocationHitbox.html#toString()">toString</a></code></li>
+<code><a href="../AbstractLocationHitbox.html#getCenter()">getCenter</a>, <a href="../AbstractLocationHitbox.html#getDimensions()">getDimensions</a>, <a href="../AbstractLocationHitbox.html#getLocation(me.dnorris.pool.data.hitbox.Hitbox)">getLocation</a>, <a href="../AbstractLocationHitbox.html#getPriority()">getPriority</a>, <a href="../AbstractLocationHitbox.html#isImmovable()">isImmovable</a>, <a href="../AbstractLocationHitbox.html#isInteractable()">isInteractable</a>, <a href="../AbstractLocationHitbox.html#setCenter(me.dnorris.pool.data.location.Location)">setCenter</a>, <a href="../AbstractLocationHitbox.html#setImmovable(boolean)">setImmovable</a>, <a href="../AbstractLocationHitbox.html#setInteractable(boolean)">setInteractable</a>, <a href="../AbstractLocationHitbox.html#toString()">toString</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -257,6 +264,27 @@ extends <a href="../AbstractLocationHitbox.html" title="class in me.dnorris.pool
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="isColliding(me.dnorris.pool.data.hitbox.Hitbox)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isColliding</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isColliding&#8203;(<a href="../../Hitbox.html" title="interface in me.dnorris.pool.data.hitbox">Hitbox</a>&nbsp;other)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../Hitbox.html#isColliding(me.dnorris.pool.data.hitbox.Hitbox)">Hitbox</a></code></span></div>
+<div class="block">Determine if the two <a href="../../Hitbox.html" title="interface in me.dnorris.pool.data.hitbox"><code>Hitbox</code></a> are interacting with eachother</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../Hitbox.html#isColliding(me.dnorris.pool.data.hitbox.Hitbox)">isColliding</a></code>&nbsp;in interface&nbsp;<code><a href="../../Hitbox.html" title="interface in me.dnorris.pool.data.hitbox">Hitbox</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../AbstractLocationHitbox.html#isColliding(me.dnorris.pool.data.hitbox.Hitbox)">isColliding</a></code>&nbsp;in class&nbsp;<code><a href="../AbstractLocationHitbox.html" title="class in me.dnorris.pool.data.hitbox.implementation">AbstractLocationHitbox</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>other</code> - The other <a href="../../Hitbox.html" title="interface in me.dnorris.pool.data.hitbox"><code>Hitbox</code></a> being checked</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the two <a href="../../Hitbox.html" title="interface in me.dnorris.pool.data.hitbox"><code>Hitbox</code></a> have collided with eachother</dd>
+</dl>
+</li>
+</ul>
 <a id="clone()">
 <!--   -->
 </a>

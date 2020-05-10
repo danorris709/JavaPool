@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":9,"i2":9};
+var data = {"i0":10,"i1":10,"i2":10,"i3":9,"i4":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -189,17 +189,27 @@ extends java.lang.Enum&lt;<a href="Team.html" title="enum in me.dnorris.pool.gam
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDisplayText()">getDisplayText</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDisplayName()">getDisplayName</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getDisplayText()">getDisplayText</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="Team.html" title="enum in me.dnorris.pool.game.team">Team</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOpposition()">getOpposition</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static <a href="Team.html" title="enum in me.dnorris.pool.game.team">Team</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#valueOf(java.lang.String)">valueOf</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
 <td class="colLast">
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static <a href="Team.html" title="enum in me.dnorris.pool.game.team">Team</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#values()">values</a></span>()</code></th>
 <td class="colLast">
@@ -311,10 +321,28 @@ not permitted.)</div>
 <a id="getDisplayText()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getDisplayText</h4>
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getDisplayText()</pre>
+</li>
+</ul>
+<a id="getDisplayName()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDisplayName</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getDisplayName()</pre>
+</li>
+</ul>
+<a id="getOpposition()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getOpposition</h4>
+<pre class="methodSignature">public&nbsp;<a href="Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;getOpposition()</pre>
 </li>
 </ul>
 </li>

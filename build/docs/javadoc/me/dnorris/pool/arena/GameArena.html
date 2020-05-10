@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -215,6 +215,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#shutdown()">shutdown</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Closes all related threads and GUIs</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#tick(java.awt.Graphics2D)">tick</a></span>&#8203;(java.awt.Graphics2D&nbsp;graphics)</code></th>
 <td class="colLast">
 <div class="block">Painting the <a href="Entity.html" title="interface in me.dnorris.pool.arena"><code>Entity</code></a> to the <a href="GameArena.html" title="interface in me.dnorris.pool.arena"><code>GameArena</code></a> and ticking the entities for movement
@@ -370,7 +377,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <a id="doPhysics(me.dnorris.pool.arena.Entity)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>doPhysics</h4>
 <pre class="methodSignature">void&nbsp;doPhysics&#8203;(<a href="Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>&nbsp;entity)</pre>
@@ -380,6 +387,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>entity</code> - The entity being checked</dd>
 </dl>
+</li>
+</ul>
+<a id="shutdown()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>shutdown</h4>
+<pre class="methodSignature">void&nbsp;shutdown()</pre>
+<div class="block">Closes all related threads and GUIs</div>
 </li>
 </ul>
 </li>
