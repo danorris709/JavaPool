@@ -12,6 +12,7 @@ import me.dnorris.pool.data.location.implementation.Location2D;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.GameEntity;
+import me.dnorris.pool.game.GameFactory;
 import me.dnorris.pool.game.event.BallPotEvent;
 import me.dnorris.pool.game.team.Team;
 
@@ -54,7 +55,7 @@ public class BallPotListener implements Listener {
                 return;
             }
 
-            // TODO: 08/05/2020 LOST THE GAME!
+            GameFactory.finishGame(team.getOpposition());
         } else {
             Events.callEvent(new BallPotEvent(this.currentGame, ball));
         }
