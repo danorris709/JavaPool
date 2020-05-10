@@ -2,6 +2,7 @@ package me.dnorris.pool.game.listener;
 
 import me.dnorris.pool.arena.entity.shape.ArcShape;
 import me.dnorris.pool.arena.entity.shape.CircleEntity;
+import me.dnorris.pool.arena.event.EventFactory;
 import me.dnorris.pool.arena.event.Events;
 import me.dnorris.pool.arena.event.event.EntityCollisionEvent;
 import me.dnorris.pool.arena.event.listener.EventHandler;
@@ -57,6 +58,8 @@ public class BallPotListener implements Listener {
         } else {
             Events.callEvent(new BallPotEvent(this.currentGame, ball));
         }
+
+        EventFactory.callStopMovingEvent(ball);
     }
 
     private CircleEntity getBall(EntityCollisionEvent event) {
