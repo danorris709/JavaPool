@@ -66,12 +66,12 @@ public class ScreenManager {
     }
 
     public void finishGame(String winner, Instant startTime) {
-        // TODO: 10/05/2020 delete game frame
         this.frame.setVisible(true);
         this.openFinishScreen(winner, startTime);
     }
 
-    public void openFinishScreen(String winner, Instant startTime) {
+    private void openFinishScreen(String winner, Instant startTime) {
+        this.frame.setVisible(true);
         this.openFromIdentifier(FinishScreen.class);
         this.getPanelFromIdentifier(FinishScreen.class).ifPresent(finishScreen -> finishScreen.setState(winner, startTime));
     }
