@@ -91,7 +91,7 @@ public class GameFactory {
         GameData activeGame = getActiveGame();
 
         activeGame.getArena().shutdown();
-        PoolClient.getScreenManager().openFinishScreen(winner.name() + " has won the game!", activeGame.getStartTime());
+        PoolClient.getScreenManager().finishGame(winner.name() + " has won the game!", activeGame.getStartTime());
     }
 
     public static GameData getActiveGame() {
