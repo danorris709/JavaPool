@@ -3,6 +3,7 @@ package me.dnorris.pool.game.listener;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.event.listener.EventHandler;
 import me.dnorris.pool.arena.event.listener.Listener;
+import me.dnorris.pool.data.location.implementation.Location2D;
 import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.event.TurnFinishEvent;
@@ -26,6 +27,7 @@ public class TurnFinishListener implements Listener {
         GameData activeGame = event.getActiveGame();
 
         if(this.pottedCueBall(event)) {
+            GameEntity.getCueBall().setLocation(new Location2D(350, 350));
             activeGame.setCueBallInHand(true);
             activeGame.setTurn(turn.getOpposition());
             activeGame.setShotsInTurn(2);
