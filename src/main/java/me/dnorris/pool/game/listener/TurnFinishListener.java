@@ -67,6 +67,13 @@ public class TurnFinishListener implements Listener {
             activeGame.setTurn(turn.getOpposition());
             activeGame.setShotsInTurn(1);
         }
+
+        if(!activeGame.isCueBallInHand()) {
+            Entity pointer = GameEntity.getPointer();
+
+            pointer.setLocation(GameEntity.getCueBall().getLocation().clone());
+            activeGame.getArena().addEntity(pointer);
+        }
     }
 
     private boolean pottedCueBall(TurnFinishEvent event) {
