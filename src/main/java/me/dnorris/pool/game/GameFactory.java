@@ -1,5 +1,6 @@
 package me.dnorris.pool.game;
 
+import me.dnorris.pool.PoolClient;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.arena.jframe.SimpleArena;
@@ -15,9 +16,11 @@ import me.dnorris.pool.game.handler.CueReleaseHandler;
 import me.dnorris.pool.game.handler.PointerDirectionHandler;
 import me.dnorris.pool.game.listener.BallPotListener;
 import me.dnorris.pool.game.listener.TurnFinishListener;
+import me.dnorris.pool.game.team.Team;
 
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
+import java.time.Instant;
 
 public class GameFactory {
 
@@ -83,6 +86,13 @@ public class GameFactory {
         }
 
         return null;
+    }
+
+    public static void finishGame(Team winner) {
+        GameData activeGame = getActiveGame();
+
+        activeGame.getArena().shutdown();
+        PoolClient.getScreenManager().openFinishScreen(winner.name() + " has won the game!", Instant.now());
     }
 
     public static GameData getActiveGame() {
