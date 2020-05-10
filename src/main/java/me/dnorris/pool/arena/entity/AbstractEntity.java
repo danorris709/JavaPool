@@ -108,7 +108,7 @@ public abstract class AbstractEntity implements Entity {
             return;
         }
 
-        if(Objects.equals(motion, Vector2D.NONE)) {
+        if(Objects.equals(motion, Vector2D.NONE) && !Objects.equals(this.motion, Vector2D.NONE)) {
             EventFactory.callStopMovingEvent(this);
         }
 
