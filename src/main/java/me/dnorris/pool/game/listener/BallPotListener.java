@@ -47,6 +47,10 @@ public class BallPotListener implements Listener {
         ball.setLocation(POTTED_BALLS.add(20 * this.currentGame.getPottedBalls(), 0, 0));
         this.currentGame.setPottedBalls(this.currentGame.getPottedBalls() + 1);
 
+        if(Objects.equals(ball, GameEntity.getCueBall())) {
+            POTTED_BALLS.subtract(20, 0, 0);
+        }
+
         if (Objects.equals(ball, GameEntity.getBlackBall())) {
             Team team = this.currentGame.getTurn();
 
