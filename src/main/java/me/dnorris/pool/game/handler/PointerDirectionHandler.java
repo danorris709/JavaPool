@@ -7,7 +7,6 @@ import me.dnorris.pool.arena.key.KeyEventType;
 import me.dnorris.pool.arena.key.KeyHandler;
 import me.dnorris.pool.data.Pair;
 import me.dnorris.pool.data.location.Location;
-import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.GameFactory;
 
 import java.awt.event.InputEvent;
@@ -24,7 +23,7 @@ public class PointerDirectionHandler {
             return;
         }
 
-        this.movePointerEndPoint(arena, GameEntity.getPointer(), Arrow.fromKeyCode(((KeyEvent) event).getKeyCode()));
+        this.movePointerEndPoint(arena, GameFactory.getActiveGame().getGameEntities().getPointer(), Arrow.fromKeyCode(((KeyEvent) event).getKeyCode()));
     }
 
     @KeyHandler(keyCode = { KeyEvent.VK_SHIFT }, getType = KeyEventType.KEY_PRESSED)
@@ -40,7 +39,7 @@ public class PointerDirectionHandler {
     private void movePointerEndPoint(GameArena arena, LineEntity line, Arrow arrow) {
         if(line.getArena() == null) {
             arena.addEntity(line);
-            line.setLocation(GameEntity.getCueBall().getLocation());
+            line.setLocation(GameFactory.getActiveGame().getGameEntities().getCueBall().getLocation());
         }
 
         line.setEndPoint(arrow.moveLine(line, this.slowed));
