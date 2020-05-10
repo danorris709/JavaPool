@@ -26,10 +26,21 @@ import me.dnorris.pool.game.team.Team;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ *
+ * Static factory for starting, and ending games
+ *
+ * @author https://github.com/danorris709
+ */
 public class GameFactory {
 
     private static GameData activeGame;
 
+    /**
+     *
+     * Start a new game
+     *
+     */
     public static void initBoard() {
         GameArena gameArena = new SimpleArena(new Dimension(1500, 750));
         GameEntity gameEntity = new GameEntity();
@@ -67,6 +78,14 @@ public class GameFactory {
         Events.registerListener(new GameWinListener(activeGame));
     }
 
+    /**
+     *
+     * Private method for getting the {@link Entity} objects for the balls on the board
+     * using the {@link GameLocation} class
+     *
+     * @param position Position being got
+     * @return Entity at given {@param position}
+     */
     private static Entity getBall(int position) {
         try {
             return new EntityBuilder()
@@ -85,6 +104,12 @@ public class GameFactory {
         return null;
     }
 
+    /**
+     *
+     * Finish the game with specified winner
+     *
+     * @param winner Winner of the game
+     */
     public static void finishGame(Team winner) {
         GameData activeGame = getActiveGame();
 
@@ -96,10 +121,23 @@ public class GameFactory {
         PoolClient.getScreenManager().finishGame(winner.getDisplayName() + " has won the game!", activeGame.getStartTime());
     }
 
+    /**
+     *
+     * Get current running game
+     *
+     * @return Current game
+     */
     public static GameData getActiveGame() {
         return activeGame;
     }
 
+    /**
+     *
+     * Get the pocket entities in an array
+     *
+     * @param gameData Game for which you wish to obtain the pockets
+     * @return Pockets for said game
+     */
     public static Entity[] getPockets(GameData gameData) {
         GameEntity gameEntity = gameData.getGameEntities();
 
