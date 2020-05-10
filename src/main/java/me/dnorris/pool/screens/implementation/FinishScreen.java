@@ -66,6 +66,7 @@ public class FinishScreen extends CardScreenPanel {
         centerPanel.add(new JLabel( "   "));
         centerPanel.add(new JLabel( "   "));
         centerPanel.add(stateLabel);
+        centerPanel.add(new JLabel( "   "));
         centerPanel.add(this.timeLabel);
         centerPanel.add(new JLabel( "   "));
         centerPanel.add(new JLabel( "   "));
@@ -92,7 +93,7 @@ public class FinishScreen extends CardScreenPanel {
     public void setState(String winner, Instant startTime) {
         String timeFormat = DATE_FORMAT.format(Duration.between(startTime, Instant.now()).toMillis());
 
-        this.stateLabel.setText("<html><h2><b>" + winner + "\n</b></h2></html>");
+        this.stateLabel.setText("<html><h2><b>" + winner + "</b></h2></html>");
         this.timeLabel.setText("<html><h3><b>Time Elapsed: " + timeFormat + "</b></h3></html>");
     }
 }
