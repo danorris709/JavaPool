@@ -4,6 +4,7 @@ import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.event.listener.EventHandler;
 import me.dnorris.pool.arena.event.listener.Listener;
 import me.dnorris.pool.game.GameData;
+import me.dnorris.pool.game.GameEntity;
 import me.dnorris.pool.game.event.TurnFinishEvent;
 import me.dnorris.pool.game.team.Team;
 
@@ -23,6 +24,13 @@ public class TurnFinishListener implements Listener {
         Team turn = event.getTurn();
         Color color = currentGame.getTeamColour(turn);
         GameData activeGame = event.getActiveGame();
+
+        if(this.pottedCueBall(event)) {
+            activeGame.setCueBallInHand(true);
+            activeGame.setTurn(turn.getOpposition());
+            activeGame.setShotsInTurn(2);
+            return;
+        }
 
         if(event.getFirstCollision() == null) {
             activeGame.setTurn(turn.getOpposition());
@@ -57,6 +65,16 @@ public class TurnFinishListener implements Listener {
             activeGame.setTurn(turn.getOpposition());
             activeGame.setShotsInTurn(1);
         }
+    }
+
+    private boolean pottedCueBall(TurnFinishEvent event) {
+        for(Entity pottedBall : event.getPottedBalls()) {
+            if(Objects.equals(pottedBall, GameEntity.getCueBall())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private boolean pottedOtherTeamsBall(TurnFinishEvent event, Color colour) {

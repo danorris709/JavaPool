@@ -11,7 +11,6 @@ import me.dnorris.pool.data.location.implementation.Location2D;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.GameEntity;
-import me.dnorris.pool.game.GameFactory;
 import me.dnorris.pool.game.event.BallPotEvent;
 import me.dnorris.pool.game.team.Team;
 
@@ -46,9 +45,7 @@ public class BallPotListener implements Listener {
         ball.setLocation(POTTED_BALLS.add(20 * this.currentGame.getPottedBalls(), 0, 0));
         this.currentGame.setPottedBalls(this.currentGame.getPottedBalls() + 1);
 
-        if (Objects.equals(ball, GameEntity.getCueBall())) {
-            this.handleCueBallPot(ball, this.currentGame);
-        } else if (Objects.equals(ball, GameEntity.getBlackBall())) {
+        if (Objects.equals(ball, GameEntity.getBlackBall())) {
             Team team = this.currentGame.getTurn();
 
             if(this.currentGame.isOnBlackBall(team)) {
@@ -60,14 +57,6 @@ public class BallPotListener implements Listener {
         } else {
             Events.callEvent(new BallPotEvent(this.currentGame, ball));
         }
-    }
-
-    private void handleCueBallPot(CircleEntity ball, GameData activeGame) {
-        ball.setLocation(new Location2D(350, 350));
-        GameFactory.getActiveGame().setCueBallInHand(true);
-        GameFactory.getActiveGame().setTurn(GameFactory.getActiveGame().getTurn().getOpposition());
-        GameFactory.getActiveGame().setShotsInTurn(2);
-        activeGame.getArena().removeEntity(GameEntity.getPointer());
     }
 
     private CircleEntity getBall(EntityCollisionEvent event) {
