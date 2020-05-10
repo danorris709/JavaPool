@@ -108,6 +108,10 @@ public class TurnFinishListener implements Listener {
             return true;
         }
 
+        if(activeGame.isOnBlackBall(event.getTurn())) {
+            return false;
+        }
+
         return !Objects.equals(event.getFirstCollision().getColour(), activeGame.getTeamColour(event.getTurn()));
     }
 
