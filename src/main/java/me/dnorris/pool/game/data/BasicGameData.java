@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.entity.shape.CircleEntity;
+import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.implementation.Vector2D;
 import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.GameEntity;
@@ -108,6 +109,24 @@ public class BasicGameData implements GameData {
 
     @Override
     public boolean isOnBlackBall(Team team) {
-        return false; // TODO: 08/05/2020
+        Color teamColour = this.getTeamColour(team);
+
+        if(teamColour == null) {
+            return false;
+        }
+
+        for(Entity entity : this.getArena().getEntities()) {
+            if(!(entity instanceof CircleEntity) || !Objects.equals(teamColour, entity.getColour())) {
+                continue;
+            }
+
+            Location entityPosition = entity.getLocation();
+
+            if(entityPosition.getY() >= 100) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
