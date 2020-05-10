@@ -14,6 +14,12 @@ import me.dnorris.pool.data.location.implementation.Location2D;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ *
+ * Class for keeping all important entities in relation to the Pool Game
+ *
+ * @author https://github.com/danorris709
+ */
 public class GameEntity {
 
     private final Entity BORDER = new HollowRectangle.Builder()
