@@ -38,6 +38,7 @@ public class SimpleArena extends AbstractGameArena {
         jFrame.addKeyListener(listener);
         jFrame.addMouseListener(listener);
         jFrame.addMouseMotionListener(listener);
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         new Thread(() -> {
             while(true) {
