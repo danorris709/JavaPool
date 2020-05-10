@@ -1,6 +1,7 @@
 package me.dnorris.pool.screens;
 
 import com.google.common.collect.Maps;
+import me.dnorris.pool.game.GameFactory;
 import me.dnorris.pool.screens.implementation.FinishScreen;
 import me.dnorris.pool.screens.implementation.HomeScreen;
 
@@ -60,7 +61,8 @@ public class ScreenManager {
     }
 
     public void openGameScreen() {
-        // TODO: 10/05/2020 open game arena
+        this.frame.setVisible(false);
+        GameFactory.initBoard();
     }
 
     public void finishGame(String winner, Instant startTime) {
