@@ -70,7 +70,7 @@ public class GameFactory {
     private static Entity getBall(int position) {
         try {
             return new EntityBuilder()
-                    .setLocation(GameLocation.BALL_SPAWN_POINTS[position].getFirst())
+                    .setLocation(GameLocation.BALL_SPAWN_POINTS[position].getFirst().clone())
                     .setInteractable(true)
                     .setImmovable(false)
                     .setDimension(new Dimension(20, 20))
