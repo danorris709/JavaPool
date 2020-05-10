@@ -6,6 +6,12 @@ import me.dnorris.pool.data.location.implementation.Location2D;
 
 import java.awt.*;
 
+/**
+ *
+ * Static factory for handling important {@link Location}s to the Pool game
+ *
+ * @author https://github.com/danorris709
+ */
 public class GameLocation {
 
     private static final Pair<Integer, Integer> BLACK_BALL_POSITION = new Pair<>(850, 100 + 250);
