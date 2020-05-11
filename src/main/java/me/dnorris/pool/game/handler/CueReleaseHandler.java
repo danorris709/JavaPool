@@ -12,9 +12,13 @@ import me.dnorris.pool.game.GameFactory;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+/**
+ *
+ * A handler for when the space bar is used to shoot the cue ball
+ *
+ * @author https://github.com/danorris709
+ */
 public class CueReleaseHandler {
-
-    private static final int MAX_POWER = 50;
 
     @KeyHandler(keyCode = KeyEvent.VK_SPACE, getType = KeyEventType.KEY_PRESSED)
     public void onSpaceBarPressed(GameArena arena, InputEvent event) {
