@@ -133,6 +133,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">GameFactory</span>
 extends java.lang.Object</pre>
+<div class="block">Static factory for starting, and ending games</div>
 </li>
 </ul>
 </div>
@@ -177,22 +178,30 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#finishGame(me.dnorris.pool.game.team.Team)">finishGame</a></span>&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;winner)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Finish the game with specified winner</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static <a href="GameData.html" title="interface in me.dnorris.pool.game">GameData</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getActiveGame()">getActiveGame</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get current running game</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="../arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPockets(me.dnorris.pool.game.GameData)">getPockets</a></span>&#8203;(<a href="GameData.html" title="interface in me.dnorris.pool.game">GameData</a>&nbsp;gameData)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Get the pocket entities in an array</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initBoard()">initBoard</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Start a new game</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -244,6 +253,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>initBoard</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;initBoard()</pre>
+<div class="block">Start a new game</div>
 </li>
 </ul>
 <a id="finishGame(me.dnorris.pool.game.team.Team)">
@@ -253,6 +263,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>finishGame</h4>
 <pre class="methodSignature">public static&nbsp;void&nbsp;finishGame&#8203;(<a href="team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;winner)</pre>
+<div class="block">Finish the game with specified winner</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>winner</code> - Winner of the game</dd>
+</dl>
 </li>
 </ul>
 <a id="getActiveGame()">
@@ -262,6 +277,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getActiveGame</h4>
 <pre class="methodSignature">public static&nbsp;<a href="GameData.html" title="interface in me.dnorris.pool.game">GameData</a>&nbsp;getActiveGame()</pre>
+<div class="block">Get current running game</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Current game</dd>
+</dl>
 </li>
 </ul>
 <a id="getPockets(me.dnorris.pool.game.GameData)">
@@ -271,6 +291,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getPockets</h4>
 <pre class="methodSignature">public static&nbsp;<a href="../arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>[]&nbsp;getPockets&#8203;(<a href="GameData.html" title="interface in me.dnorris.pool.game">GameData</a>&nbsp;gameData)</pre>
+<div class="block">Get the pocket entities in an array</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>gameData</code> - Game for which you wish to obtain the pockets</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Pockets for said game</dd>
+</dl>
 </li>
 </ul>
 </li>
