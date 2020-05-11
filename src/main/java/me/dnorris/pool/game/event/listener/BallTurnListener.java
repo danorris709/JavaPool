@@ -15,6 +15,12 @@ import me.dnorris.pool.game.event.TurnFinishEvent;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ *
+ * A listener to handle calling the {@link TurnFinishEvent}
+ *
+ * @author https://github.com/danorris709
+ */
 public class BallTurnListener implements Listener {
 
     private final GameData activeGame;
@@ -22,6 +28,10 @@ public class BallTurnListener implements Listener {
     private Entity firstHit;
     private List<Entity> pottedBalls = Lists.newArrayList();
 
+    /**
+     *
+     * @param activeGame Linking the game being played to the listener
+     */
     public BallTurnListener(GameData activeGame) {
         this.activeGame = activeGame;
     }
