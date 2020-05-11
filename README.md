@@ -1,12 +1,20 @@
 # Term 3 - Java Pool Project (Daniel Norris)
 
-Project 2 - The java pool game
+Here you can find a multi-project Gradle build.
+Currently, you will find a GameArena project, and a CoolPool project in the respective directories.
 
-## How to Play
+### GameArena
+The game arena project is a different implementation and only provides a basic API for different types of games.
+
+### CoolPool
+The cool pool project utilizes the API found in the game arena project to create a simple single player implementation
+of pool.
+
+#### How to Play
 Make sure you're with a friend and run the game.
 Choose who's going to take the first shot and then start playing using the rules of Pool outlined [here](http://www.epa.org.uk/wrules.php)
 
-# Controls
+#### Controls
 
 Key | Action
 --- | ------
