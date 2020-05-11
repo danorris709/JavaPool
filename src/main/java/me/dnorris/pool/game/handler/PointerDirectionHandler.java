@@ -13,6 +13,13 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Map;
 
+/**
+ *
+ * Handler class for using the arrow keys, and shift key, to move the pointer around the board.
+ * When the shift key is pressed the movement of the pointer is slowed to 1 pixel per movement.
+ *
+ * @author https://github.com/danorris709
+ */
 public class PointerDirectionHandler {
 
     private boolean slowed = false;
@@ -36,6 +43,15 @@ public class PointerDirectionHandler {
         this.slowed = false;
     }
 
+    /**
+     *
+     * Moves the pointer around the board depending on the direction
+     * Adds the pointer to the board if it was removed and not replaced
+     *
+     * @param arena The game arena being moved around
+     * @param line The line being moved
+     * @param arrow The direction being moved in
+     */
     private void movePointerEndPoint(GameArena arena, LineEntity line, Arrow arrow) {
         if(line.getArena() == null) {
             arena.addEntity(line);
@@ -45,6 +61,13 @@ public class PointerDirectionHandler {
         line.setEndPoint(arrow.moveLine(line, this.slowed));
     }
 
+    /**
+     *
+     * Enum used for determining the movement of the pointer.
+     * Local to this class as it's only ever used here
+     *
+     * @author https://github.com/danorris709
+     */
     enum Arrow {
 
         LEFT(KeyEvent.VK_RIGHT) {
