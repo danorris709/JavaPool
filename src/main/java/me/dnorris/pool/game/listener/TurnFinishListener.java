@@ -12,10 +12,22 @@ import me.dnorris.pool.game.team.Team;
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ *
+ * A listener to enforce the basic rules of pool.
+ *
+ * @author https://github.com/danorris709
+ */
 public class TurnFinishListener implements Listener {
 
     private final GameData currentGame;
 
+    /**
+     *
+     * Constructor taking the current game
+     *
+     * @param currentGame Game related to this listener
+     */
     public TurnFinishListener(GameData currentGame) {
         this.currentGame = currentGame;
     }
@@ -48,21 +60,48 @@ public class TurnFinishListener implements Listener {
         this.attemptReplacePointer(event);
     }
 
+    /**
+     *
+     * Determines if the cue ball was potted during the {@link TurnFinishEvent}
+     *
+     * @param event The event being checked
+     * @return True if the cue ball was putted
+     */
     private boolean hasPottedCueBall(TurnFinishEvent event) {
         return event.hasPottedPredicate(e -> Objects.equals(e, event.getActiveGame().getGameEntities().getCueBall()));
     }
 
+    /**
+     *
+     * Handles the penalty for potting the cue ball
+     *
+     * @param event The event being used to handle the penalty
+     */
     private void handleCueBallPotted(TurnFinishEvent event) {
         event.getActiveGame().getGameEntities().getCueBall().setLocation(new Location2D(350, 350));
         event.getActiveGame().setCueBallInHand(true);
         this.penalizeCurrentPlayer(event);
     }
 
+    /**
+     *
+     * Generic penalization of a player
+     *
+     * @param event Event from which the player is being penalized
+     */
     private void penalizeCurrentPlayer(TurnFinishEvent event) {
         event.getActiveGame().setTurn(event.getTurn().getOpposition());
         event.getActiveGame().setShotsInTurn(2);
     }
 
+    /**
+     *
+     * Attempting to assign the person who took the turn a colour based on which balls they potted
+     *
+     * @param activeGame Current game
+     * @param event Turn event
+     * @return If the turn event should continue rule logic
+     */
     private boolean attemptAssignColour(GameData activeGame, TurnFinishEvent event) {
         if (event.getPottedBalls().isEmpty()) {
             return true;
@@ -79,6 +118,14 @@ public class TurnFinishListener implements Listener {
         return true;
     }
 
+    /**
+     *
+     * Get the colour of ball that was potted
+     * Will return null if more than one colour, or no colour, was potted
+     *
+     * @param event The event being tested
+     * @return The colour of the balls potted
+     */
     private Color getPottedColour(TurnFinishEvent event) {
         Color colour = null;
 
@@ -93,6 +140,13 @@ public class TurnFinishListener implements Listener {
         return colour;
     }
 
+    /**
+     *
+     * Gets the other colour between the two possible teams
+     *
+     * @param color The first team's colour
+     * @return Second team's colour
+     */
     private Color getOtherColour(Color color) {
         if(Objects.equals(color, Color.YELLOW)) {
             return Color.RED;
@@ -101,6 +155,14 @@ public class TurnFinishListener implements Listener {
         return Color.YELLOW;
     }
 
+    /**
+     *
+     * Determine if a rule has been broken during the event
+     *
+     * @param activeGame Game being played
+     * @param event Event being checked
+     * @return True if a rule has been broken
+     */
     private boolean hasCommittedFoul(GameData activeGame, TurnFinishEvent event) {
         Color turnColor = activeGame.getTeamColour(event.getTurn().getOpposition());
 
@@ -115,6 +177,12 @@ public class TurnFinishListener implements Listener {
         return !Objects.equals(event.getFirstCollision().getColour(), activeGame.getTeamColour(event.getTurn()));
     }
 
+    /**
+     *
+     * Attempts to decrease the shots in the turn if no balls have been potted
+     *
+     * @param event Event being tested
+     */
     private void attemptDecreaseShotsRemaining(TurnFinishEvent event) {
         if(!event.getPottedBalls().isEmpty()) {
             return;
@@ -123,6 +191,13 @@ public class TurnFinishListener implements Listener {
         event.getActiveGame().setShotsInTurn(event.getActiveGame().getShotsInTurn() - 1);
     }
 
+    /**
+     *
+     * Attempts to switch the player taking the shot if there are no more
+     * shots in their turn
+     *
+     * @param event The event being tested
+     */
     private void attemptSwitchPlayer(TurnFinishEvent event) {
         if (event.getActiveGame().getShotsInTurn() > 0) {
             return;
@@ -132,6 +207,12 @@ public class TurnFinishListener implements Listener {
         event.getActiveGame().setShotsInTurn(1);
     }
 
+    /**
+     *
+     * Attempts to place the pointer back on the {@link me.dnorris.pool.arena.GameArena}
+     *
+     * @param event The event being tested
+     */
     private void attemptReplacePointer(TurnFinishEvent event) {
         if (event.getActiveGame().isCueBallInHand()) {
             return;
