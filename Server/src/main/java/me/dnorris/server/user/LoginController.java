@@ -1,4 +1,4 @@
-package me.dnorris.server.login;
+package me.dnorris.server.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
