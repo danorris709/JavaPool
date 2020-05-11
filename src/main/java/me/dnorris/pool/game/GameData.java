@@ -112,7 +112,7 @@ public interface GameData {
 
     /**
      *
-     * Gets the colour of ball the {@param team} is allowed to pot
+     * Gets the colour of ball the team is allowed to pot
      *
      * @param team Team being checked
      * @return Team's ball colour - null if yet to be decided
