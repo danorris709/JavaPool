@@ -10,7 +10,7 @@ plugins {
     id 'maven'
 }
 
-group 'me.dnorris'
+group 'me.dnorris.arena'
 version '1.0-SNAPSHOT'
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
@@ -25,14 +25,6 @@ dependencies {
     shadow group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.0'
     shadow group: 'com.google.guava', name: 'guava', version: '21.0'
     shadow group: 'it.unimi.dsi', name: 'fastutil', version: '8.2.1'
-}
-
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'me.dnorris.pool.PoolClient'
-        )
-    }
 }
 
 compileJava {
