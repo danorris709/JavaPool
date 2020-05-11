@@ -11,12 +11,22 @@ import me.dnorris.pool.game.event.TurnFinishEvent;
 
 import java.util.Objects;
 
+/**
+ *
+ * A listener to check if the player has won (or lost due to potting the cue off the black)
+ *
+ * @author https://github.com/danorris709
+ */
 public class GameWinListener implements Listener {
 
     private final GameData activeGame;
 
     private Entity lastCollision;
 
+    /**
+     *
+     * @param activeGame Game linked to the listener
+     */
     public GameWinListener(GameData activeGame) {
         this.activeGame = activeGame;
     }
