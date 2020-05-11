@@ -1,5 +1,7 @@
 package me.dnorris.pool.arena;
 
+import me.dnorris.pool.arena.key.KeyHandler;
+
 import java.awt.*;
 import java.util.List;
 
@@ -62,7 +64,7 @@ public interface GameArena {
 
     /**
      *
-     * Add a new class that contains {@link me.dnorris.pool.arena.key.KeyHandler}s
+     * Add a new class that contains {@link KeyHandler}s
      *
      * @param keyHandler Class containing handlers
      */
@@ -70,7 +72,7 @@ public interface GameArena {
 
     /**
      *
-     * Remove a class that contains {@link me.dnorris.pool.arena.key.KeyHandler}s
+     * Remove a class that contains {@link KeyHandler}s
      *
      * @param keyHandler Class containing handlers
      */

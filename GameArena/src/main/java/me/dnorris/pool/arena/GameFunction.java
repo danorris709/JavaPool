@@ -1,13 +1,14 @@
 package me.dnorris.pool.arena;
 
 import me.dnorris.pool.arena.key.KeyEventType;
+import me.dnorris.pool.arena.key.KeyHandler;
 import me.dnorris.pool.data.BiFunction;
 
 import java.awt.event.InputEvent;
 
 /**
  *
- * Immutable object used by the {@link GameArena} for {@link me.dnorris.pool.arena.key.KeyHandler} annotations
+ * Immutable object used by the {@link GameArena} for {@link KeyHandler} annotations
  *
  * @author https://github.com/danorris709
  */

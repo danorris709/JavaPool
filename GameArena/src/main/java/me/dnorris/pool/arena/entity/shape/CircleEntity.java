@@ -2,6 +2,7 @@ package me.dnorris.pool.arena.entity.shape;
 
 import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.entity.AbstractEntity;
+import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.data.hitbox.implementation.location.CircleLocationHitbox;
 import me.dnorris.pool.data.location.Location;
 import me.dnorris.pool.data.vector.Vector;
@@ -20,7 +21,7 @@ public class CircleEntity extends AbstractEntity {
     /**
      *
      * Default constructor
-     * Public for instantiation via {@link me.dnorris.pool.arena.entity.EntityBuilder}
+     * Public for instantiation via {@link EntityBuilder}
      *
      * @param location Location of the Rectangle
      * @param colour Colour of the rectangle

@@ -2,6 +2,7 @@ package me.dnorris.pool.arena.entity.compound.shape;
 
 import com.google.common.collect.Lists;
 import me.dnorris.pool.arena.Entity;
+import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.CompoundEntity;
@@ -18,7 +19,7 @@ import java.util.List;
 
 /**
  *
- * Represents a hollow rectangle on the {@link me.dnorris.pool.arena.GameArena}
+ * Represents a hollow rectangle on the {@link GameArena}
  * Used for when entities need to be inside the {@link RectangleEntity} BUT it cannot escape (i.e.
  * need to interact with the walls but not the internals)
  * Thus requiring a different entity to handle the hitbox and collisions seperately.

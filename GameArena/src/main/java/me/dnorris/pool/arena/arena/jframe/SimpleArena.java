@@ -1,6 +1,7 @@
 package me.dnorris.pool.arena.arena.jframe;
 
 import me.dnorris.pool.arena.Entity;
+import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.arena.AbstractGameArena;
 import me.dnorris.pool.arena.arena.jframe.listener.KeyHandlerListener;
 import me.dnorris.pool.arena.event.EventFactory;
@@ -12,7 +13,7 @@ import java.util.Objects;
 
 /**
  *
- * Simple implementation of the {@link me.dnorris.pool.arena.GameArena} interface
+ * Simple implementation of the {@link GameArena} interface
  * using a concurrent {@link Thread} for ticking and painting the entities, and using a
  * basic lock object to prevent {@link java.util.ConcurrentModificationException}
  *
@@ -29,7 +30,7 @@ public class SimpleArena extends AbstractGameArena {
      *
      * Basic constructor
      *
-     * @param dimensions Dimensions of the {@link me.dnorris.pool.arena.GameArena}
+     * @param dimensions Dimensions of the {@link GameArena}
      */
     public SimpleArena(Dimension dimensions) {
         super(dimensions);

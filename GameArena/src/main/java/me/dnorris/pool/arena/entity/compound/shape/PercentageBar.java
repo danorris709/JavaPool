@@ -2,6 +2,7 @@ package me.dnorris.pool.arena.entity.compound.shape;
 
 import com.google.common.collect.Lists;
 import me.dnorris.pool.arena.Entity;
+import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
 import me.dnorris.pool.arena.entity.compound.CompoundEntity;
@@ -15,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * Represents a percentage bar on the {@link me.dnorris.pool.arena.GameArena}
+ * Represents a percentage bar on the {@link GameArena}
  *
  * @author https://github.com/danorris709
  */

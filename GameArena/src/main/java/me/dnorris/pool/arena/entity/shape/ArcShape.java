@@ -1,6 +1,7 @@
 package me.dnorris.pool.arena.entity.shape;
 
 import me.dnorris.pool.arena.Entity;
+import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.entity.AbstractEntity;
 import me.dnorris.pool.arena.entity.EntityBuilder;
 import me.dnorris.pool.arena.entity.EntityType;
@@ -13,7 +14,7 @@ import java.awt.*;
 
 /**
  *
- * Represents an arc on the {@link me.dnorris.pool.arena.GameArena}
+ * Represents an arc on the {@link GameArena}
  *
  * @author https://github.com/danorris709
  */

@@ -1,15 +1,17 @@
 package me.dnorris.pool.arena.arena.jframe.listener;
 
+import me.dnorris.pool.arena.GameArena;
 import me.dnorris.pool.arena.GameFunction;
 import me.dnorris.pool.arena.arena.jframe.SimpleArena;
 import me.dnorris.pool.arena.key.KeyEventType;
+import me.dnorris.pool.arena.key.KeyHandler;
 
 import java.awt.event.*;
 
 /**
  *
- * Listener used by the {@link me.dnorris.pool.arena.GameArena} for calling the
- * {@link me.dnorris.pool.arena.key.KeyHandler} implementations when a key is pressed
+ * Listener used by the {@link GameArena} for calling the
+ * {@link KeyHandler} implementations when a key is pressed
  *
  * @author https://github.com/danorris709
  */
