@@ -95,12 +95,12 @@ public class GameEntity {
             .setFont("SansSerif")
             .build();
 
-    private Entity cloth;
-    private Entity headString;
-    private Entity blackBallSpot;
-    private Entity cueBall;
-    private Entity blackBall;
-    private PercentageBar percentageBar;
+    private Entity cloth = null;
+    private Entity headString = null;
+    private Entity blackBallSpot = null;
+    private Entity cueBall = null;
+    private Entity blackBall = null;
+    private PercentageBar percentageBar = null;
 
     public Entity getBorder() {
         return BORDER;

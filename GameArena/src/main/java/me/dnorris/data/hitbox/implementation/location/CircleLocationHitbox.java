@@ -38,12 +38,8 @@ public class CircleLocationHitbox extends AbstractLocationHitbox {
         }
 
         double distanceY = this.getCenter().getY() - other.getCenter().getY();
-        double radius = this.getDimensions().height;
+        double radius = (this.getDimensions().height / 2.0) + (other.getDimensions().height / 2.0);
         double distanceX = this.getCenter().getX() - other.getCenter().getX();
-
-        if(radius > 30) {
-            radius /= 1.5;
-        }
 
         return (Math.pow(distanceY, 2) + Math.pow(distanceX, 2)) <= Math.pow(radius, 2);
     }
