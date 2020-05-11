@@ -15,6 +15,12 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ *
+ * Simple implementation of the {@link GameData} interface
+ *
+ * @author https://github.com/danorris709
+ */
 public class BasicGameData implements GameData {
 
     private final GameArena arena;
@@ -27,6 +33,13 @@ public class BasicGameData implements GameData {
     private int pottedBalls = 0;
     private int shotsInTurn = 1;
 
+    /**
+     *
+     * Constructor taking the game arena and game entity data
+     *
+     * @param arena Arena being used
+     * @param gameEntity Game entities being used
+     */
     public BasicGameData(GameArena arena, GameEntity gameEntity) {
         this.arena = arena;
         this.gameEntity = gameEntity;
