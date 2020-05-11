@@ -138,6 +138,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <pre>public class <span class="typeNameLabel">TurnFinishEvent</span>
 extends java.lang.Object
 implements <a href="../../arena/event/Event.html" title="interface in me.dnorris.pool.arena.event">Event</a></pre>
+<div class="block">An event called when all the balls on the pool table stop moving.
+ Used for rule logic</div>
 </li>
 </ul>
 </div>
@@ -162,7 +164,9 @@ implements <a href="../../arena/event/Event.html" title="interface in me.dnorris
                <a href="../team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;turn,
                <a href="../../arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>&nbsp;firstCollision,
                java.util.List&lt;<a href="../../arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>&gt;&nbsp;pottedBalls)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Basic constructor</div>
+</td>
 </tr>
 </table>
 </li>
@@ -217,7 +221,9 @@ implements <a href="../../arena/event/Event.html" title="interface in me.dnorris
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasPottedPredicate(java.util.function.Predicate)">hasPottedPredicate</a></span>&#8203;(java.util.function.Predicate&lt;<a href="../../arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>&gt;&nbsp;predicate)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Determine if the predicate is ever true for all the potted balls.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -253,6 +259,14 @@ implements <a href="../../arena/event/Event.html" title="interface in me.dnorris
                        <a href="../team/Team.html" title="enum in me.dnorris.pool.game.team">Team</a>&nbsp;turn,
                        <a href="../../arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>&nbsp;firstCollision,
                        java.util.List&lt;<a href="../../arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>&gt;&nbsp;pottedBalls)</pre>
+<div class="block">Basic constructor</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>activeGame</code> - The game being run in</dd>
+<dd><code>turn</code> - The player who's turn it is</dd>
+<dd><code>firstCollision</code> - The first collision of the turn</dd>
+<dd><code>pottedBalls</code> - The balls potted during the turn</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -308,6 +322,16 @@ implements <a href="../../arena/event/Event.html" title="interface in me.dnorris
 <li class="blockList">
 <h4>hasPottedPredicate</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;hasPottedPredicate&#8203;(java.util.function.Predicate&lt;<a href="../../arena/Entity.html" title="interface in me.dnorris.pool.arena">Entity</a>&gt;&nbsp;predicate)</pre>
+<div class="block">Determine if the predicate is ever true for all the potted balls.
+ Iterates through each of the potted balls and tests the predicate against them.
+ If true it'll return true.
+ Returns false otherwise</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>predicate</code> - To test against all potted balls</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>True if predicate is ever true</dd>
+</dl>
 </li>
 </ul>
 <a id="getHandler()">
