@@ -5,6 +5,12 @@ import me.dnorris.pool.arena.event.Event;
 import me.dnorris.pool.arena.event.handler.EventListener;
 import me.dnorris.pool.game.GameData;
 
+/**
+ *
+ * An event called when two balls collide
+ *
+ * @author https://github.com/danorris709
+ */
 public class BallCollideEvent implements Event {
 
     private static final EventListener EVENT_HANDLER = new EventListener();
@@ -13,6 +19,14 @@ public class BallCollideEvent implements Event {
     private final Entity first;
     private final Entity second;
 
+    /**
+     *
+     * Basic constructor
+     *
+     * @param activeGame The game being played
+     * @param first First ball colliding (initiator)
+     * @param second Second ball colliding
+     */
     public BallCollideEvent(GameData activeGame, Entity first, Entity second) {
         this.activeGame = activeGame;
         this.first = first;
