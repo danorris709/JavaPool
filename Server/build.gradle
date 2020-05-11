@@ -1,16 +1,55 @@
-plugins {
-    id 'java'
+buildscript {
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.2"
+    }
 }
 
-group 'me.dnorris.server'
+plugins {
+    id 'com.github.johnrengelman.shadow' version '4.0.2'
+    id 'java'
+    id 'maven'
+}
+
+group 'me.dnorris.s'
 version '1.0-SNAPSHOT'
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    shadow group: 'com.google.guava', name: 'guava', version: '21.0'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
+    options.forkOptions.executable = 'javac'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    jar.archiveName = rootProject.name + '.jar'
+    shadow
+    compile.extendsFrom provided
+    provided.extendsFrom shadow
+}
+
+shadowJar {
+    relocate 'com.google.common', 'me.dnorris.server.guava'
+    relocate 'com.google.thirdparty', 'me.dnorris.server.guava.thirdparty'
+
+    configurations = [ project.configurations.shadow ]
+
+    from(project.sourceSets.main.output)
+    archiveName = rootProject.name + '.jar'
 }
