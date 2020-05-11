@@ -117,7 +117,6 @@ public class TurnFinishListener implements Listener {
 
     private void attemptDecreaseShotsRemaining(TurnFinishEvent event) {
         if(!event.getPottedBalls().isEmpty()) {
-            System.out.println("Not decreasing");
             return;
         }
 
@@ -126,7 +125,6 @@ public class TurnFinishListener implements Listener {
 
     private void attemptSwitchPlayer(TurnFinishEvent event) {
         if (event.getActiveGame().getShotsInTurn() > 0) {
-            System.out.println("Not switching");
             return;
         }
 
