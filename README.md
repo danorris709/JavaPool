@@ -6,6 +6,17 @@ Project 2 - The java pool game
 Make sure you're with a friend and run the game.
 Choose who's going to take the first shot and then start playing using the rules of Pool outlined [here](http://www.epa.org.uk/wrules.php)
 
+# Controls
+
+Key | Action
+--- | ------
+Shift | Hold to slow down pointer movement
+Left Arrow | Move the pointer clockwise around the table
+Right Arrow | Move the pointer counter-clockwise around the table
+Space Bar | Shoot the cue ball
+Up Arrow | Increase the cue ball shooting power
+Down Arrow | Decrease the cue ball shooting power
+
 ## How to compile
 Below you will find a section for how to compile the project on each of the three main operating systems.
 All the below are to be executed via command line and require no extra installations.
