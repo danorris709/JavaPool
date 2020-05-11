@@ -8,10 +8,20 @@ import me.dnorris.pool.arena.event.listener.Listener;
 import me.dnorris.pool.game.GameData;
 import me.dnorris.pool.game.event.BallCollideEvent;
 
+/**
+ *
+ * A listener to call the {@link BallCollideEvent} as an abstraction, and simplification, of {@link EntityCollisionEvent}
+ *
+ * @author https://github.com/danorris709
+ */
 public class BallCollisionListener implements Listener {
 
     private final GameData currentGame;
 
+    /**
+     *
+     * @param currentGame Linking the game to the listener
+     */
     public BallCollisionListener(GameData currentGame) {
         this.currentGame = currentGame;
     }
