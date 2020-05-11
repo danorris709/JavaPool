@@ -27,6 +27,7 @@ dependencies {
     shadow group: 'com.google.guava', name: 'guava', version: '21.0'
     shadow 'org.springframework.boot:spring-boot-starter-thymeleaf'
     shadow 'org.springframework.boot:spring-boot-starter-web'
+    shadow 'org.springframework.boot:spring-boot-starter-security'
     shadow group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
 }
 
