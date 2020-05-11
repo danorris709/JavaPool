@@ -1,4 +1,6 @@
 rootProject.name = 'PoolProject'
 
 include 'GameArena',
-        'CoolPool'
+        'CoolPool',
+        'Server'
+
