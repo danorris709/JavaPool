@@ -1,5 +1,6 @@
 package me.dnorris.pool.game.listener;
 
+import me.dnorris.pool.arena.Entity;
 import me.dnorris.pool.arena.entity.shape.ArcShape;
 import me.dnorris.pool.arena.entity.shape.CircleEntity;
 import me.dnorris.pool.arena.event.EventFactory;
@@ -28,27 +29,13 @@ public class BallPotListener implements Listener {
 
     @EventHandler
     public void onEntityCollide(EntityCollisionEvent event) {
-        if(currentGame.isCueBallInHand()) {
-            return;
-        }
-
-        if (!(event.getFirst() instanceof ArcShape) && !(event.getSecond() instanceof ArcShape)) {
-            return;
-        }
-
-        if (!(event.getFirst() instanceof CircleEntity) && !(event.getSecond() instanceof CircleEntity)) {
+        if(!this.isBallToPocketCollision(event)) {
             return;
         }
 
         CircleEntity ball = this.getBall(event);
 
-        ball.setMotion(Vector2D.NONE);
-        ball.setLocation(POTTED_BALLS.add(20 * this.currentGame.getPottedBalls(), 0, 0));
-        this.currentGame.setPottedBalls(this.currentGame.getPottedBalls() + 1);
-
-        if(Objects.equals(ball, this.currentGame.getGameEntities().getCueBall())) {
-            POTTED_BALLS.subtract(20, 0, 0);
-        }
+        this.putBallInRack(ball);
 
         if (Objects.equals(ball, this.currentGame.getGameEntities().getBlackBall())) {
             Team team = this.currentGame.getTurn();
@@ -64,6 +51,28 @@ public class BallPotListener implements Listener {
         }
 
         EventFactory.callStopMovingEvent(ball);
+    }
+
+    private boolean isBallToPocketCollision(EntityCollisionEvent event) {
+        if(currentGame.isCueBallInHand()) {
+            return false;
+        }
+
+        if(!(event.getFirst() instanceof ArcShape) && !(event.getSecond() instanceof ArcShape)) {
+            return false;
+        }
+
+        return (event.getFirst() instanceof CircleEntity) || (event.getSecond() instanceof CircleEntity);
+    }
+
+    private void putBallInRack(Entity ball) {
+        ball.setMotion(Vector2D.NONE);
+        ball.setLocation(POTTED_BALLS.add(20 * this.currentGame.getPottedBalls(), 0, 0));
+        this.currentGame.setPottedBalls(this.currentGame.getPottedBalls() + 1);
+
+        if(Objects.equals(ball, this.currentGame.getGameEntities().getCueBall())) {
+            POTTED_BALLS.subtract(20, 0, 0);
+        }
     }
 
     private CircleEntity getBall(EntityCollisionEvent event) {
