@@ -8,11 +8,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
+    private final UserDatabaseController userDatabase;
+
+    public LoginController(UserDatabaseController userDatabase) {
+        this.userDatabase = userDatabase;
+    }
+
     @GetMapping("/get/user/attempt_login")
     public boolean attemptLogin(@RequestParam(name = "username") String username,
                                 @RequestParam(name = "password") String encodedPassword,
                                 Model model) {
-        return false;
+        return this.userDatabase.getPassword(username).equals(encodedPassword);
     }
 
 }
