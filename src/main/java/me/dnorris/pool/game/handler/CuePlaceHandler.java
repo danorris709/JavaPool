@@ -12,6 +12,12 @@ import me.dnorris.pool.game.GameFactory;
 import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 
+/**
+ *
+ * A handler for placing, and moving, the cue ball when it is "in hand"
+ *
+ * @author https://github.com/danorris709
+ */
 public class CuePlaceHandler {
 
     @KeyHandler(keyCode = MouseEvent.BUTTON1, getType = KeyEventType.MOUSE_CLICKED)
@@ -29,6 +35,13 @@ public class CuePlaceHandler {
         }
     }
 
+    /**
+     *
+     * Determines if the ball is trying to be placed in a pocket
+     *
+     * @param cueBall The ball being tested
+     * @return True if inside a pocket
+     */
     private boolean canPlacePointer(Entity cueBall) {
         for(Entity entity : GameFactory.getPockets(GameFactory.getActiveGame())) {
             if(entity.getHitbox().isColliding(cueBall.getHitbox())) {
