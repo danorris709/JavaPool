@@ -8,6 +8,12 @@ import me.dnorris.pool.game.GameFactory;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+/**
+ *
+ * A handler for increasing and decreasing the power when shooting the cue ball
+ *
+ * @author https://github.com/danorris709
+ */
 public class CuePowerHandler {
 
     @KeyHandler(keyCode = KeyEvent.VK_UP, getType = KeyEventType.KEY_PRESSED)
