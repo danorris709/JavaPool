@@ -18,11 +18,21 @@ import me.dnorris.pool.game.team.Team;
 
 import java.util.Objects;
 
+/**
+ *
+ * A listener to handle the {@link BallPotEvent}
+ *
+ * @author https://github.com/danorris709
+ */
 public class BallPotListener implements Listener {
 
     private static final Location POTTED_BALLS = new Location2D(350, 50);
     private final GameData currentGame;
 
+    /**
+     *
+     * @param currentGame The game linked to the listener
+     */
     public BallPotListener(GameData currentGame) {
         this.currentGame = currentGame;
     }
@@ -53,6 +63,13 @@ public class BallPotListener implements Listener {
         EventFactory.callStopMovingEvent(ball);
     }
 
+    /**
+     *
+     * Determines if the {@link EntityCollisionEvent} is between a ball and a pocket
+     *
+     * @param event The event being checked
+     * @return True if a valid pocket collision
+     */
     private boolean isBallToPocketCollision(EntityCollisionEvent event) {
         if(currentGame.isCueBallInHand()) {
             return false;
@@ -65,6 +82,13 @@ public class BallPotListener implements Listener {
         return (event.getFirst() instanceof CircleEntity) || (event.getSecond() instanceof CircleEntity);
     }
 
+    /**
+     *
+     * Handles putting the ball above the table and going back a spot for the white ball (as
+     * it gets replaced)
+     *
+     * @param ball The ball being put in the rack
+     */
     private void putBallInRack(Entity ball) {
         ball.setMotion(Vector2D.NONE);
         ball.setLocation(POTTED_BALLS.add(20 * this.currentGame.getPottedBalls(), 0, 0));
@@ -75,6 +99,13 @@ public class BallPotListener implements Listener {
         }
     }
 
+    /**
+     *
+     * Determines the ball from the event and returns it casted to a {@link CircleEntity}
+     *
+     * @param event The event being used
+     * @return The ball being obtained
+     */
     private CircleEntity getBall(EntityCollisionEvent event) {
         if(event.getFirst() instanceof CircleEntity) {
             return (CircleEntity) event.getFirst();
