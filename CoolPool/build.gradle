@@ -1,0 +1,66 @@
+buildscript {
+    dependencies {
+        classpath "com.github.jengelman.gradle.plugins:shadow:2.0.2"
+    }
+}
+
+plugins {
+    id 'com.github.johnrengelman.shadow' version '4.0.2'
+    id 'java'
+    id 'maven'
+}
+
+group 'me.dnorris'
+version '1.0-SNAPSHOT'
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    shadow group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.0'
+    shadow group: 'com.google.guava', name: 'guava', version: '21.0'
+    shadow group: 'it.unimi.dsi', name: 'fastutil', version: '8.2.1'
+    shadow project(":GameArena")
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'me.dnorris.pool.PoolClient'
+        )
+    }
+}
+
+compileJava {
+    options.compilerArgs += ["-parameters"]
+    options.fork = true
+    options.forkOptions.executable = 'javac'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    jar.archiveName = rootProject.name + '.jar'
+    shadow
+    compile.extendsFrom provided
+    provided.extendsFrom shadow
+}
+
+shadowJar {
+    relocate 'javax.annotation', 'me.dnorris.pool.code.findbugs'
+    relocate 'com.google.common', 'me.dnorris.pool.guava'
+    relocate 'com.google.thirdparty', 'me.dnorris.pool.guava.thirdparty'
+    relocate 'it.unimi.dsi', 'me.dnorris.pool.dsi'
+
+    configurations = [ project.configurations.shadow ]
+
+    from(project.sourceSets.main.output)
+    archiveName = rootProject.name + '.jar'
+}
