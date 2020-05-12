@@ -1,5 +1,7 @@
 package me.dnorris.pool.game.team;
 
+import java.awt.*;
+
 /**
  *
  * An enum for representing which player's turn it is in local games.
@@ -15,6 +17,8 @@ public enum Team {
 
     private final String displayText;
     private final String displayName;
+
+    private Color colour;
 
     /**
      *
@@ -34,6 +38,14 @@ public enum Team {
 
     public String getDisplayName() {
         return this.displayName;
+    }
+
+    public Color getColour() {
+        return this.colour;
+    }
+
+    public void setColour(Color colour) {
+        this.colour = colour;
     }
 
     /**
