@@ -1,6 +1,5 @@
 package me.dnorris.pool.game.data;
 
-import com.google.common.collect.Maps;
 import me.dnorris.arena.Entity;
 import me.dnorris.arena.GameArena;
 import me.dnorris.arena.entity.shape.CircleEntity;
@@ -12,7 +11,6 @@ import me.dnorris.pool.game.team.Team;
 
 import java.awt.*;
 import java.time.Instant;
-import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -26,7 +24,6 @@ public class BasicGameData implements GameData {
     private final GameArena arena;
     private final GameEntity gameEntity;
     private final Instant startTime = Instant.now();
-    private final Map<Integer, Color> teamColour = Maps.newHashMap();
 
     private Team turn = Team.PLAYER_ONE;
     private boolean cueInHand = true;
@@ -119,12 +116,12 @@ public class BasicGameData implements GameData {
 
     @Override
     public Color getTeamColour(Team team) {
-        return this.teamColour.get(team.ordinal());
+        return team.getColour();
     }
 
     @Override
     public void setTeamColour(Team team, Color colour) {
-        this.teamColour.put(team.ordinal(), colour);
+        team.setColour(colour);
     }
 
     @Override

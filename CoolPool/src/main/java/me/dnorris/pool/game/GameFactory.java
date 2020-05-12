@@ -117,6 +117,11 @@ public class GameFactory {
         Events.unregisterAllListeners(BallCollideEvent.class);
         Events.unregisterAllListeners(EntityCollisionEvent.class);
         Events.unregisterAllListeners(EntityStopMovingEvent.class);
+
+        for (Team team : Team.values()) {
+            team.setColour(null);
+        }
+
         activeGame.getArena().shutdown();
         PoolClient.getScreenManager().finishGame(winner.getDisplayName() + " has won the game!", activeGame.getStartTime());
     }
