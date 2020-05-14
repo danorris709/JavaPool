@@ -31,10 +31,7 @@ All the below are to be executed via command line and require no extra installat
 If you already have gradle installed then open the terminal in the directory and run `gradle clean shadowJar`
 Otherwise, find the relevant section below for your OS and follow the instructions found there.
 
-### Mac
-
-
-### Linux
+### MacOS / Linux
 Start by right-clicking in your directory of choice (one you have administrator access to) and clicking to open the terminal.
 Clone the repository into the folder using the `git clone https://codefeedback.lancaster.ac.uk/git110/Term3-norrisd/project.git` command
 or extract the compressed file downloaded from the website.
