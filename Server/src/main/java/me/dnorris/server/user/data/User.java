@@ -8,7 +8,6 @@ public class User {
     private final String name;
     private final String password;
 
-
     public User(long id, String username, String email, String name, String password) {
         this.id = id;
         this.username = username;
